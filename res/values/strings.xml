@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">V-Lib App</string>
+    
+    <string name="enter_keywords">Please Enter The Keywords</string>
+    <string name="sort_by">Sort By:</string>
+    <string name="search_by">Search By:</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="subject">Subject</string>
+    <string name="series">Series</string>
+    <string name="all">All</string>
+    <string name="isbn">ISBN</string>
+    <string name="browse_by_author">Browse By Author</string>
+    <string name="browse_by_subject">Browse By Subject</string>
+    <string name="browse_by_series">Browse By Series</string>
+    <string name="connection_error_title">Connection error</string>
+    <string name="connection_error_message">There is no internet connection</string>
+    
+    <string-array name="main_menu">
+        <item>Search</item>
+        <item>My Account</item>
+        <item>Settings</item>
+        <item>WebOpac</item>
+    </string-array>
+    
+    <string-array name="sort_by_items">
+        <item>None</item>
+        <item>Title</item>
+        <item>Author</item>
+        <item>Call No.</item>
+        <item>Publication Date</item>
+    </string-array>
+
+</resources>
