@@ -13,6 +13,8 @@ public class ParserFactory {
 			return new SiteNameParser();
 		} else if (ApiData.COMMAND_SEARCH.equalsIgnoreCase(command)) {
 			return new SearchParser();
+		} else if (ApiData.COMMAND_CATALOGUE.equalsIgnoreCase(command)) {
+			return new CatalogueParser();
 		} else {
 			return null;
 		}

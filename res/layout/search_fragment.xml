@@ -59,6 +59,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
 	            style="?android:attr/buttonBarButtonStyle"
+	            android:tag="title"
 	            android:text="@string/title" />
 	        
 	        <Button
@@ -67,6 +68,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
 	            style="?android:attr/buttonBarButtonStyle"
+	            android:tag="author"
 	            android:text="@string/author" />
 	        
 	        <Button
@@ -75,6 +77,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
 	            style="?android:attr/buttonBarButtonStyle"
+	            android:tag="subject"
 	            android:text="@string/subject" />
 	        
 	    </LinearLayout>
@@ -91,6 +94,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
 	            style="?android:attr/buttonBarButtonStyle"
+	            android:tag="series"
 	            android:text="@string/series" />
 	        
 	        <Button
@@ -99,6 +103,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
 	            style="?android:attr/buttonBarButtonStyle"
+	            android:tag="all"
 	            android:text="@string/all" />
 	        
 	        <Button
@@ -107,6 +112,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
 	            style="?android:attr/buttonBarButtonStyle"
+	            android:tag="isbn"
 	            android:text="@string/isbn" />
 	        
 	    </LinearLayout>

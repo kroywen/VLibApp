@@ -13,18 +13,9 @@ import android.widget.Spinner;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.api.ApiData;
-import com.vtecsys.vlib.ui.screen.BookListScreen;
+import com.vtecsys.vlib.ui.screen.SearchResultScreen;
 
 public class SearchFragment extends BaseFragment implements OnClickListener {
-	
-	public enum SearchBy {
-		TITLE,
-		AUTHOR,
-		SUBJECT,
-		SERIES,
-		ISBN,
-		ALL
-	}
 	
 	private EditText searchView;
 	private Spinner sortByView;
@@ -74,22 +65,12 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.searchTitleBtn:
-			search(SearchBy.TITLE);
-			break;
 		case R.id.searchAuthorBtn:
-			search(SearchBy.AUTHOR);
-			break;
 		case R.id.searchSubjectBtn:
-			search(SearchBy.SUBJECT);
-			break;
 		case R.id.searchSeriesBtn:
-			search(SearchBy.SERIES);
-			break;
 		case R.id.searchAllBtn:
-			search(SearchBy.ALL);
-			break;
 		case R.id.searchIsbnBtn:
-			search(SearchBy.ISBN);
+			showSearchScreen((String) v.getTag());
 			break;
 		case R.id.browseAuthorBtn:
 			break;
@@ -101,14 +82,16 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 	}
 	
 	@SuppressLint("DefaultLocale")
-	private void search(SearchBy search) {
-		Intent intent = new Intent(getActivity(), BookListScreen.class);
+	private void showSearchScreen(String searchBy) {
+		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
 		
 		intent.putExtra(ApiData.PARAM_TERM, searchView.getText().toString());
-		intent.putExtra(ApiData.PARAM_SEARCH_BY, search.name().toLowerCase());
+		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
 		
 		getActivity().startActivity(intent);
 	}
+	
+	
 
 }

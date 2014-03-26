@@ -33,7 +33,14 @@
             android:screenOrientation="portrait" />
         
         <activity
-            android:name="com.vtecsys.vlib.ui.screen.BookListScreen"
+            android:name="com.vtecsys.vlib.ui.screen.SearchResultScreen"
+            android:screenOrientation="portrait" />
+        
+        <activity android:name="com.vtecsys.vlib.ui.screen.SettingsScreen"
+            android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.vtecsys.vlib.ui.screen.CatalogueScreen"
             android:screenOrientation="portrait" />
         
         <service

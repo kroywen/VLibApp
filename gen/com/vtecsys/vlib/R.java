@@ -11,13 +11,12 @@ public final class R {
     public static final class array {
         public static final int main_menu=0x7f060000;
         public static final int sort_by_items=0x7f060001;
-        /**  <item>pubYearA</item> 
-         */
         public static final int sort_by_params=0x7f060002;
     }
     public static final class attr {
     }
     public static final class color {
+        public static final int list_selector=0x7f040001;
         public static final int progress_view_background=0x7f040000;
     }
     public static final class drawable {
@@ -26,52 +25,72 @@ public final class R {
         public static final int ic_search=0x7f020002;
     }
     public static final class id {
-        public static final int browseAuthorBtn=0x7f08000f;
-        public static final int browseSeriesBtn=0x7f080011;
-        public static final int browseSubjectBtn=0x7f080010;
-        public static final int content_frame=0x7f080005;
-        public static final int drawer_layout=0x7f080004;
-        public static final int infoView=0x7f080002;
-        public static final int left_drawer=0x7f080006;
-        public static final int listView=0x7f080003;
-        public static final int progress=0x7f080001;
-        public static final int searchAllBtn=0x7f08000d;
-        public static final int searchAuthorBtn=0x7f08000a;
-        public static final int searchIsbnBtn=0x7f08000e;
-        public static final int searchSeriesBtn=0x7f08000c;
-        public static final int searchSubjectBtn=0x7f08000b;
-        public static final int searchTitleBtn=0x7f080009;
-        public static final int searchView=0x7f080007;
-        public static final int sortByView=0x7f080008;
-        public static final int webView=0x7f080000;
+        public static final int author=0x7f080013;
+        public static final int bookCover=0x7f080011;
+        public static final int browseAuthorBtn=0x7f08000c;
+        public static final int browseSeriesBtn=0x7f08000e;
+        public static final int browseSubjectBtn=0x7f08000d;
+        public static final int callnumber=0x7f080015;
+        public static final int content_frame=0x7f080002;
+        public static final int drawer_layout=0x7f080001;
+        public static final int infoView=0x7f08000f;
+        public static final int item=0x7f080017;
+        public static final int left_drawer=0x7f080003;
+        public static final int listView=0x7f080010;
+        public static final int location=0x7f080019;
+        public static final int progress=0x7f080000;
+        public static final int publisher=0x7f080014;
+        public static final int renewBtn=0x7f08001a;
+        public static final int searchAllBtn=0x7f08000a;
+        public static final int searchAuthorBtn=0x7f080007;
+        public static final int searchIsbnBtn=0x7f08000b;
+        public static final int searchSeriesBtn=0x7f080009;
+        public static final int searchSubjectBtn=0x7f080008;
+        public static final int searchTitleBtn=0x7f080006;
+        public static final int searchView=0x7f080004;
+        public static final int sortByView=0x7f080005;
+        public static final int status=0x7f080018;
+        public static final int title=0x7f080012;
+        public static final int volume=0x7f080016;
+        public static final int webView=0x7f08001b;
     }
     public static final class layout {
-        public static final int about_fragment=0x7f030000;
-        public static final int account_fragment=0x7f030001;
-        public static final int book_list_fragment=0x7f030002;
-        public static final int book_list_screen=0x7f030003;
-        public static final int drawer_list_item=0x7f030004;
-        public static final int main_screen=0x7f030005;
-        public static final int search_fragment=0x7f030006;
-        public static final int settings_fragment=0x7f030007;
-        public static final int splash_screen=0x7f030008;
+        public static final int account_fragment=0x7f030000;
+        public static final int catalogue_fragment=0x7f030001;
+        public static final int drawer_list_item=0x7f030002;
+        public static final int fragment_screen=0x7f030003;
+        public static final int main_screen=0x7f030004;
+        public static final int search_fragment=0x7f030005;
+        public static final int search_result_fragment=0x7f030006;
+        public static final int search_result_list_item=0x7f030007;
+        public static final int settings_fragment=0x7f030008;
+        public static final int splash_screen=0x7f030009;
+        public static final int volume_list_item=0x7f03000a;
+        public static final int web_opac_fragment=0x7f03000b;
     }
     public static final class string {
         public static final int all=0x7f050008;
         public static final int app_name=0x7f050000;
         public static final int author=0x7f050005;
+        public static final int author_list=0x7f050012;
         public static final int browse_by_author=0x7f05000a;
         public static final int browse_by_series=0x7f05000c;
         public static final int browse_by_subject=0x7f05000b;
+        public static final int callnumber_list=0x7f050014;
         public static final int connection_error_message=0x7f05000e;
         public static final int connection_error_title=0x7f05000d;
+        public static final int empty=0x7f05000f;
         public static final int enter_keywords=0x7f050001;
         public static final int isbn=0x7f050009;
+        public static final int publisher_list=0x7f050013;
+        public static final int renew=0x7f050015;
         public static final int search_by=0x7f050003;
+        public static final int search_result_pattern=0x7f050010;
         public static final int series=0x7f050007;
         public static final int sort_by=0x7f050002;
         public static final int subject=0x7f050006;
         public static final int title=0x7f050004;
+        public static final int title_list=0x7f050011;
     }
     public static final class style {
         /** 

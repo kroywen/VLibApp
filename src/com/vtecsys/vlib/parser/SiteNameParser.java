@@ -7,8 +7,6 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public class SiteNameParser extends ApiParser {
 	
-	public static final String TAG_SITE_NAME = "SiteName";
-	
 	@Override
 	public Object readData(XmlPullParser parser)
 		throws XmlPullParserException, IOException
@@ -20,7 +18,7 @@ public class SiteNameParser extends ApiParser {
 	            continue;
 	        }
 			String tagName = parser.getName();
-			if (tagName.equalsIgnoreCase(TAG_SITE_NAME)) {
+			if (TAG_SITE_NAME.equalsIgnoreCase(tagName)) {
 				siteName = readSiteName(parser);
 			}
 		}

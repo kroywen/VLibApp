@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+    <Status>0</Status>
+    <Message>Successful!</Message>
+    <ResponseTime>0.010s</ResponseTime>
+    <RequestName>Search</RequestName>
+    <ResponseData>
+        <Results>
+            <Hits>2</Hits>
+            <Loaded>2</Loaded>
+            <OneRID>
+                <RID>BK006139</RID>
+                <Title>Inside fashion design / Sharon Lee Tate.</Title>
+                <Author>Tate, Sharon Lee</Author>
+                <Publication>New York : Studio Vista, 2007.</Publication>
+                <CallNo>792.0261 TAT</CallNo>
+                <BookCover>http://demo.vlibonline.com/images/Inside_fash_design.jpg</BookCover>
+            </OneRID>
+            <OneRID>
+                <RID>BK005143</RID>
+                <Title>The complete guide to fashion design / Pauline Gan Siew Eng ; illustrated by Lu Shufen.</Title>
+                <Author>Gan, Pauline Siew Eng.</Author>
+                <Publication>Singapore : Yen Yi Dressmaking School, c2007.</Publication>
+                <CallNo>q646.404 GAN</CallNo>
+                <BookCover>http://demo.vlibonline.com/images/no_image.jpg</BookCover>
+            </OneRID>
+        </Results>
+    </ResponseData>
+</Response>

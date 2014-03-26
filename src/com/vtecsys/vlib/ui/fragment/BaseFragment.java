@@ -1,9 +1,7 @@
 package com.vtecsys.vlib.ui.fragment;
 
 import android.app.Fragment;
-import android.content.Context;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
@@ -13,17 +11,18 @@ import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiResponseReceiver;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.api.OnApiResponseListener;
+import com.vtecsys.vlib.storage.Settings;
 
 public class BaseFragment extends Fragment implements OnApiResponseListener {
 	
 	protected View progress;
-	protected SharedPreferences prefs;
+	protected Settings settings;
 	protected ApiResponseReceiver responseReceiver;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		prefs = getActivity().getSharedPreferences("VLibApp", Context.MODE_PRIVATE);
+		settings = new Settings(getActivity());
 		
 		IntentFilter intentFilter = new IntentFilter(ApiService.ACTION_API_RESULT);
 		responseReceiver = new ApiResponseReceiver(this);

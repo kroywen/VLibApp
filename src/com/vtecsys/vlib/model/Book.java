@@ -1,5 +1,7 @@
 package com.vtecsys.vlib.model;
 
+import android.text.TextUtils;
+
 public class Book {
 	
 	private String rid;
@@ -43,6 +45,14 @@ public class Book {
 	
 	public void setPublication(String publication) {
 		this.publication = publication;
+	}
+	
+	public String getPublisher() {
+		if (TextUtils.isEmpty(publication)) {
+			return null;
+		}
+		String[] items = publication.split("[:,]");
+		return items[1].trim();
 	}
 	
 	public String getCallNumber() {

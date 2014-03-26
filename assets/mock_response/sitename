@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Response>
+	<Status>0</Status>
+	<Message>Successful!</Message>
+	<ResponseTime>0.010s</ResponseTime>
+	<RequestName>SiteName</RequestName>
+	<ResponseData>
+		<SiteName>V-Lib App</SiteName>
+	</ResponseData>
+</Response>

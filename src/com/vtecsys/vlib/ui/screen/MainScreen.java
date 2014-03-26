@@ -16,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.vtecsys.vlib.R;
-import com.vtecsys.vlib.ui.fragment.AboutFragment;
+import com.vtecsys.vlib.ui.fragment.WebOpacFragment;
 import com.vtecsys.vlib.ui.fragment.AccountFragment;
 import com.vtecsys.vlib.ui.fragment.SearchFragment;
 import com.vtecsys.vlib.ui.fragment.SettingsFragment;
@@ -119,7 +119,7 @@ public class MainScreen extends Activity implements OnItemClickListener {
 			fragment = new SettingsFragment();
 			break;
 		case 3:
-			fragment = new AboutFragment();
+			fragment = new WebOpacFragment();
 			break;
 		}
 		

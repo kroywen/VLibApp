@@ -17,6 +17,13 @@
     <string name="browse_by_series">Browse By Series</string>
     <string name="connection_error_title">Connection error</string>
     <string name="connection_error_message">There is no internet connection</string>
+    <string name="empty">Empty</string>
+    <string name="search_result_pattern">%1$d records found, %2$d records loaded.</string>
+    <string name="title_list">Title:&#160;</string>
+    <string name="author_list">Author:&#160;</string>
+    <string name="publisher_list">Publisher:&#160;</string>
+    <string name="callnumber_list">CallNo:&#160;</string>
+    <string name="renew">Renew</string>
     
     <string-array name="main_menu">
         <item>Search</item>
@@ -39,7 +46,6 @@
         <item>author</item>
         <item>callNo</item>
         <item>pubYearD</item>
-        <!-- <item>pubYearA</item> -->
     </string-array>
 
 </resources>
