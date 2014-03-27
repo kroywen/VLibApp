@@ -4,8 +4,6 @@
     <string name="app_name">V-App</string>
     
     <string name="enter_keywords">Please Enter The Keywords</string>
-    <string name="sort_by">Sort By:</string>
-    <string name="search_by">Search By:</string>
     <string name="title">Title</string>
     <string name="author">Author</string>
     <string name="subject">Subject</string>
@@ -20,12 +18,21 @@
     <string name="empty">Empty</string>
     <string name="search_result_pattern">%1$d records found, %2$d records loaded.</string>
     <string name="browse_result_pattern">%1$d records loaded</string>
-    <string name="title_list">Title:&#160;</string>
-    <string name="author_list">Author:&#160;</string>
-    <string name="publisher_list">Publisher:&#160;</string>
-    <string name="callnumber_list">CallNo:&#160;</string>
+    <string name="title_caption">Title:&#160;</string>
+    <string name="author_caption">Author:&#160;</string>
+    <string name="publisher_caption">Publisher:&#160;</string>
+    <string name="callnumber_caption">Call No:&#160;</string>
+    <string name="isbn_caption">ISBN:&#160;</string>
+    <string name="edition_caption">Editiion:&#160;</string>
+    <string name="publication_caption">Publication:&#160;</string>
+    <string name="sort_by_caption">Sort By:&#160;</string>
+    <string name="search_by_caption">Search By:&#160;</string>
+    <string name="volume">Volume</string>
+    <string name="item_number">Item No.</string>
+    <string name="status">Status</string>
+    <string name="location">Location</string>
     <string name="renew">Renew</string>
-    <string name="browser_result_pattern">%1$d records loaded</string>
+    <string name="reserve">Reserve</string>
     
     <string-array name="main_menu">
         <item>Search</item>

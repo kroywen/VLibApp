@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.fragment;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +16,7 @@ import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.ui.screen.BrowseResultScreen;
 import com.vtecsys.vlib.ui.screen.SearchResultScreen;
 
-public class SearchFragment extends BaseFragment implements OnClickListener {
+public class SearchFragment extends Fragment implements OnClickListener {
 	
 	private EditText searchView;
 	private Spinner sortByView;
@@ -36,9 +37,7 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 		return rootView;
 	}
 	
-	@Override
 	protected void initializeViews(View rootView) {
-		super.initializeViews(rootView);
 		searchView = (EditText) rootView.findViewById(R.id.searchView);
 		sortByView = (Spinner) rootView.findViewById(R.id.sortByView);
 		searchTitleBtn = (Button) rootView.findViewById(R.id.searchTitleBtn);

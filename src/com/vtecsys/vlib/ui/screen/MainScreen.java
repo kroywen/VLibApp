@@ -42,12 +42,9 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.drawer_list_item, mMainMenu));
 		mDrawerList.setOnItemClickListener(this);
-		
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
-		
+				
 		mDrawerToggle = new ActionBarDrawerToggle(
-	            MainScreen.this, mDrawerLayout, R.drawable.ic_drawer, 0, 0)
+			MainScreen.this, mDrawerLayout, R.drawable.ic_drawer, 0, 0)
 		{
 	        public void onDrawerClosed(View view) {
 	        	invalidateOptionsMenu();

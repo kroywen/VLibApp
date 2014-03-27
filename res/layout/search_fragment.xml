@@ -3,6 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    
 	<LinearLayout 
 	    android:layout_width="match_parent"
 	    android:layout_height="match_parent"
@@ -30,7 +34,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:text="@string/sort_by" />
+	            android:text="@string/sort_by_caption" />
 	        
 	        <Spinner
 	            android:id="@+id/sortByView"
@@ -45,7 +49,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="15dp"
-	        android:text="@string/search_by" />
+	        android:text="@string/search_by_caption" />
 	    
 	    <LinearLayout
 	        android:layout_width="match_parent"
@@ -145,6 +149,8 @@
 	        android:text="@string/browse_by_series" />
 	
 	</LinearLayout>
+	
+	</ScrollView>
 	
 	<RelativeLayout 
 	    android:id="@+id/progress"

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    
+    <LinearLayout 
+        android:id="@+id/main_content"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical">
+	    
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:orientation="horizontal">
+            
+            <ImageView
+                android:id="@+id/bookCover"
+                android:layout_width="100dp"
+                android:layout_height="140dp"
+                android:scaleType="fitXY" />
+            
+            <LinearLayout 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+                
+                <LinearLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:orientation="horizontal">
+		            
+		            <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:textStyle="bold"
+			            android:text="@string/isbn_caption" />
+		            
+		            <TextView 
+		                android:id="@+id/isbn"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dp"
+		                android:maxLength="20"
+		                android:maxLines="1"
+			            android:ellipsize="end" />
+		            
+		        </LinearLayout>
+		        
+                <LinearLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:orientation="horizontal">
+		            
+		            <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:textStyle="bold"
+			            android:text="@string/callnumber_caption" />
+		            
+		            <TextView 
+		                android:id="@+id/callnumber"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dp"
+		                android:maxLength="20"
+		                android:maxLines="1"
+			            android:ellipsize="end" />
+		            
+		        </LinearLayout>
+		        
+                <LinearLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:orientation="horizontal">
+		            
+		            <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:textStyle="bold"
+			            android:text="@string/author_caption" />
+		            
+		            <TextView 
+		                android:id="@+id/author"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dp"
+		                android:maxLength="30"
+		                android:maxLines="1"
+			            android:ellipsize="end" />
+		            
+		        </LinearLayout>
+		        
+                <LinearLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:orientation="horizontal">
+		            
+		            <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:textStyle="bold"
+			            android:text="@string/title_caption" />
+		            
+		            <TextView 
+		                android:id="@+id/title"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dp"
+		                android:maxLength="30"
+		                android:maxLines="1"
+			            android:ellipsize="end" />
+		            
+		        </LinearLayout>
+		        
+                <LinearLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:orientation="horizontal">
+		            
+		            <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:textStyle="bold"
+			            android:text="@string/edition_caption" />
+		            
+		            <TextView 
+		                android:id="@+id/edition"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dp"
+		                android:maxLength="6"
+		                android:maxLines="1"
+			            android:ellipsize="end" />
+		            
+		        </LinearLayout>
+		        
+                <LinearLayout 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginBottom="5dp"
+		            android:orientation="horizontal">
+		            
+		            <TextView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:textStyle="bold"
+			            android:text="@string/publication_caption" />
+		            
+		            <TextView 
+		                android:id="@+id/publication"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:layout_marginLeft="10dp"
+		                android:maxLength="30"
+		                android:maxLines="1"
+			            android:ellipsize="end" />
+		            
+		        </LinearLayout>
+                
+                <Button
+                    android:id="@+id/reserveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/reserve" />
+                
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+	    
+    </LinearLayout>
+    
+    </ScrollView>
+    
+    <RelativeLayout 
+	    android:id="@+id/progress"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@color/progress_view_background"
+	    android:visibility="invisible">
+	    
+	    <ProgressBar 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        style="@android:style/Widget.ProgressBar" />
+	    
+	</RelativeLayout>
+    
+</FrameLayout>

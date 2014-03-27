@@ -4,45 +4,46 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:padding="5dp">
+    android:padding="5dp"
+    android:background="@color/list_header_background">
     
     <TextView
-        android:id="@+id/volume"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="@dimen/volume_text_size"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="@string/volume" />
     
     <TextView
-        android:id="@+id/item"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="@dimen/volume_text_size"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="@string/item_number" />
     
     <TextView
-        android:id="@+id/status"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="@dimen/volume_text_size"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="@string/status" />
     
     <TextView
-        android:id="@+id/location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textSize="@dimen/volume_text_size"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="@string/location" />
     
     <Button
-        android:id="@+id/renewBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/renew" />
+        android:text="@string/renew"
+        android:visibility="invisible" />
 
 </LinearLayout>

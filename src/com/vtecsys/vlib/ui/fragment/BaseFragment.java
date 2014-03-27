@@ -15,6 +15,7 @@ import com.vtecsys.vlib.storage.Settings;
 
 public class BaseFragment extends Fragment implements OnApiResponseListener {
 	
+	protected View mainContent;
 	protected View progress;
 	protected Settings settings;
 	protected ApiResponseReceiver responseReceiver;
@@ -32,6 +33,7 @@ public class BaseFragment extends Fragment implements OnApiResponseListener {
 	
 	protected void initializeViews(View rootView) {
 		progress = rootView.findViewById(R.id.progress);
+		mainContent = rootView.findViewById(R.id.main_content);
 	}
 	
 	@Override
@@ -40,15 +42,21 @@ public class BaseFragment extends Fragment implements OnApiResponseListener {
 		LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(responseReceiver);
 	}
 	
-	protected void showProgress() {
+	protected void showProgress(boolean hideContent) {
 		if (progress != null) {
 			progress.setVisibility(View.VISIBLE);
+			if (hideContent && mainContent != null) {
+				mainContent.setVisibility(View.INVISIBLE);
+			}
 		}
 	}
 	
 	protected void hideProgress() {
 		if (progress != null) {
 			progress.setVisibility(View.INVISIBLE);
+		}
+		if (mainContent != null) {
+			mainContent.setVisibility(View.VISIBLE);
 		}
 	}
 
