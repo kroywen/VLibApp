@@ -37,6 +37,9 @@ public abstract class ApiParser {
 	public static final String TAG_ITEM = "Item";
 	public static final String TAG_LOCATION = "Location";
 	public static final String TAG_CAN_RESERVE = "CanReserve";
+	public static final String TAG_ONE_AUTH = "OneAuth";
+	public static final String TAG_AUTH_NO = "AuthNo";
+	public static final String TAG_AUTH_ENTRY = "AuthEntry";
 	
 	protected static final String namespace = null;
 	
@@ -78,8 +81,8 @@ public abstract class ApiParser {
 						Object data = readData(parser);
 						apiResponse.setData(data);
 					}
-	          }
-	          eventType = parser.next();
+				}
+				eventType = parser.next();
 			}
 			parser.require(XmlPullParser.END_TAG, namespace, TAG_RESPONSE);
 		} catch (Exception e) {

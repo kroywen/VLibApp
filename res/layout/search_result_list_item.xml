@@ -10,8 +10,7 @@
         android:id="@+id/bookCover" 
         android:layout_width="70dp"
         android:layout_height="100dp"
-        android:scaleType="center" 
-        android:background="#ff0000" />
+        android:scaleType="center" />
     
     <LinearLayout 
         android:layout_width="0dp"

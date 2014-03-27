@@ -13,25 +13,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
-import com.vtecsys.vlib.adapter.SearchResultAdapter;
+import com.vtecsys.vlib.adapter.BrowseResultAdapter;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
-import com.vtecsys.vlib.model.Book;
-import com.vtecsys.vlib.model.SearchResult;
+import com.vtecsys.vlib.model.Auth;
+import com.vtecsys.vlib.model.BrowseResult;
 import com.vtecsys.vlib.storage.Settings;
-import com.vtecsys.vlib.ui.screen.CatalogueScreen;
+import com.vtecsys.vlib.ui.screen.SearchResultScreen;
 
-public class SearchResultFragment extends BaseFragment implements OnItemClickListener {
+public class BrowseResultFragment extends BaseFragment implements OnItemClickListener {
 	
 	private TextView infoView;
 	private ListView listView;
 	private TextView emptyView;
 	
-	private String type;
 	private String term;
 	private String sortBy;
-	private String searchBy;
+	private String browseBy;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,16 +39,15 @@ public class SearchResultFragment extends BaseFragment implements OnItemClickLis
 		
 		Bundle args = getArguments();
 		if (args != null) {
-			type = args.getString(ApiData.PARAM_TYPE);
 			term = args.getString(ApiData.PARAM_TERM);
 			sortBy = sortByParams[args.getInt(ApiData.PARAM_SORT_BY)];
-			searchBy = args.getString(ApiData.PARAM_SEARCH_BY);
+			browseBy = args.getString(ApiData.PARAM_BROWSE_BY);
 		}
 	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.search_result_fragment, null);
+		View rootView = inflater.inflate(R.layout.browse_result_fragment, null);
 		initializeViews(rootView);
 		return rootView;
 	}
@@ -57,7 +55,7 @@ public class SearchResultFragment extends BaseFragment implements OnItemClickLis
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		requestSearch();
+		requestBrowse();
 	}
 	
 	@Override
@@ -72,13 +70,12 @@ public class SearchResultFragment extends BaseFragment implements OnItemClickLis
 		emptyView = (TextView) rootView.findViewById(R.id.emptyView);
 	}
 	
-	private void requestSearch() {
+	private void requestBrowse() {
 		Intent intent = new Intent(getActivity(), ApiService.class);
-		intent.setAction(ApiData.COMMAND_SEARCH);
-		intent.putExtra(ApiData.PARAM_TYPE, type);
+		intent.setAction(ApiData.COMMAND_BROWSE);
 		intent.putExtra(ApiData.PARAM_TERM, term);
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortBy);
-		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
+		intent.putExtra(ApiData.PARAM_BROWSE_BY, browseBy);
 		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
 		getActivity().startService(intent);
 		showProgress();
@@ -89,14 +86,14 @@ public class SearchResultFragment extends BaseFragment implements OnItemClickLis
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				SearchResult searchResult = (SearchResult) apiResponse.getData();
-				List<Book> books = searchResult.getBooks();
-				SearchResultAdapter adapter = new SearchResultAdapter(getActivity(), books);
+				BrowseResult browseResult = (BrowseResult) apiResponse.getData();
+				List<Auth> authes = browseResult.getAuthes();
+				BrowseResultAdapter adapter = new BrowseResultAdapter(getActivity(), authes);
 				listView.setAdapter(adapter);
 				listView.setVisibility(View.VISIBLE);
 				emptyView.setVisibility(View.GONE);
-				infoView.setText(getString(R.string.search_result_pattern, 
-					searchResult.getHits(), searchResult.getLoaded()));
+				infoView.setText(getString(R.string.browse_result_pattern,
+					browseResult.getLoaded()));
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);
@@ -109,9 +106,11 @@ public class SearchResultFragment extends BaseFragment implements OnItemClickLis
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Book book = ((SearchResultAdapter) parent.getAdapter()).getItem(position);
-		Intent intent = new Intent(getActivity(), CatalogueScreen.class);
-		intent.putExtra(ApiData.PARAM_RID, book.getRID());
+		Auth auth = ((BrowseResultAdapter) parent.getAdapter()).getItem(position);
+		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
+		intent.putExtra(ApiData.PARAM_TYPE, ApiData.TYPE_BROWSE);
+		intent.putExtra(ApiData.PARAM_TERM, auth.getAuthNo());
+		intent.putExtra(ApiData.PARAM_SORT_BY, 1);
 		getActivity().startActivity(intent);
 	}
 

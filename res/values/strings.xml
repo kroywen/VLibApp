@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">V-Lib App</string>
+    <string name="app_name">V-App</string>
     
     <string name="enter_keywords">Please Enter The Keywords</string>
     <string name="sort_by">Sort By:</string>
@@ -19,11 +19,13 @@
     <string name="connection_error_message">There is no internet connection</string>
     <string name="empty">Empty</string>
     <string name="search_result_pattern">%1$d records found, %2$d records loaded.</string>
+    <string name="browse_result_pattern">%1$d records loaded</string>
     <string name="title_list">Title:&#160;</string>
     <string name="author_list">Author:&#160;</string>
     <string name="publisher_list">Publisher:&#160;</string>
     <string name="callnumber_list">CallNo:&#160;</string>
     <string name="renew">Renew</string>
+    <string name="browser_result_pattern">%1$d records loaded</string>
     
     <string-array name="main_menu">
         <item>Search</item>

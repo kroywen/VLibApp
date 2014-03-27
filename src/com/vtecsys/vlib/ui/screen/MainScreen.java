@@ -1,9 +1,7 @@
 package com.vtecsys.vlib.ui.screen;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -16,12 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.vtecsys.vlib.R;
-import com.vtecsys.vlib.ui.fragment.WebOpacFragment;
 import com.vtecsys.vlib.ui.fragment.AccountFragment;
 import com.vtecsys.vlib.ui.fragment.SearchFragment;
 import com.vtecsys.vlib.ui.fragment.SettingsFragment;
+import com.vtecsys.vlib.ui.fragment.WebOpacFragment;
 
-public class MainScreen extends Activity implements OnItemClickListener {
+public class MainScreen extends BaseScreen implements OnItemClickListener {
 	
 	public static final String APP_TITLE = "app_title";
 	
@@ -31,20 +29,11 @@ public class MainScreen extends Activity implements OnItemClickListener {
 	
 	private String[] mMainMenu;
 	private int selected = -1;
-	private String appTitle;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_screen);
-		
-		Intent intent = getIntent();
-		if (intent != null && intent.hasExtra(APP_TITLE)) {
-			appTitle = intent.getStringExtra(APP_TITLE);
-		} else {
-			appTitle = getString(R.string.app_name);
-		}
-		setTitle(appTitle);
 		
 		mMainMenu = getResources().getStringArray(R.array.main_menu);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -91,7 +80,6 @@ public class MainScreen extends Activity implements OnItemClickListener {
 	@Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         mDrawerToggle.syncState();
     }
 	

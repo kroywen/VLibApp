@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Book;
 
@@ -49,6 +50,7 @@ public class SearchResultAdapter extends BaseAdapter {
 		Book book = getItem(position);
 		
 		ImageView bookCover = (ImageView) convertView.findViewById(R.id.bookCover);
+		ImageLoader.getInstance().displayImage(book.getBookCover(), bookCover);
 		
 		TextView title = (TextView) convertView.findViewById(R.id.title);
 		title.setText(book.getTitle());

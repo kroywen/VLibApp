@@ -1,6 +1,5 @@
 package com.vtecsys.vlib.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +12,7 @@ import android.widget.Spinner;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.api.ApiData;
+import com.vtecsys.vlib.ui.screen.BrowseResultScreen;
 import com.vtecsys.vlib.ui.screen.SearchResultScreen;
 
 public class SearchFragment extends BaseFragment implements OnClickListener {
@@ -69,22 +69,23 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 		case R.id.searchSubjectBtn:
 		case R.id.searchSeriesBtn:
 		case R.id.searchAllBtn:
-		case R.id.searchIsbnBtn:
 			showSearchScreen((String) v.getTag());
 			break;
+		case R.id.searchIsbnBtn:
+			// TODO
+			break;
 		case R.id.browseAuthorBtn:
-			break;
 		case R.id.browseSubjectBtn:
-			break;
 		case R.id.browseSeriesBtn:
+			showBrowseScreen((String) v.getTag());
 			break;
 		}
 	}
 	
-	@SuppressLint("DefaultLocale")
 	private void showSearchScreen(String searchBy) {
 		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
 		
+		intent.putExtra(ApiData.PARAM_TYPE, ApiData.TYPE_SEARCH);
 		intent.putExtra(ApiData.PARAM_TERM, searchView.getText().toString());
 		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
@@ -92,6 +93,14 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 		getActivity().startActivity(intent);
 	}
 	
-	
+	private void showBrowseScreen(String browseBy) {
+		Intent intent = new Intent(getActivity(), BrowseResultScreen.class);
+		
+		intent.putExtra(ApiData.PARAM_TERM, searchView.getText().toString());
+		intent.putExtra(ApiData.PARAM_BROWSE_BY, browseBy);
+		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
+		
+		getActivity().startActivity(intent);
+	}
 
 }

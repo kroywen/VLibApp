@@ -28,6 +28,8 @@ public class ApiService extends IntentService {
 	public static final int API_STATUS_SUCCESS = 0;
 	public static final int API_STATUS_ERROR = 1;
 	
+	private HttpClient client;
+	
 	public ApiService() {
 		this(ApiService.class.getSimpleName());
 	}
@@ -41,7 +43,7 @@ public class ApiService extends IntentService {
 		String command = intent.getAction();
 		String url = ApiData.createURL(command, intent.getExtras());
 		Log.d(TAG, "URL: " + url);
-		HttpClient client = AndroidHttpClient.newInstance(
+		client = AndroidHttpClient.newInstance(
 			System.getProperty("http.agent"), this);
 		HttpGet request = new HttpGet(url);
 		
@@ -50,10 +52,6 @@ public class ApiService extends IntentService {
 			response = client.execute(request);
 			HttpEntity entity = response.getEntity();
 			if (entity != null) {
-				
-//				String responseXml = Utilities.streamToString(entity.getContent());
-//				Log.d("ApiService", responseXml);
-							
 				InputStream is = entity.getContent();
 				ApiParser parser = ParserFactory.getParser(command);
 				if (parser != null) {

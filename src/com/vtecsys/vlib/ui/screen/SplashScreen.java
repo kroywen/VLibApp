@@ -11,7 +11,6 @@ import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiResponseReceiver;
 import com.vtecsys.vlib.api.ApiService;
-import com.vtecsys.vlib.api.MockApi;
 import com.vtecsys.vlib.api.OnApiResponseListener;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.DialogUtils;
@@ -34,8 +33,7 @@ public class SplashScreen extends BaseScreen implements OnApiResponseListener {
 			responseReceiver, intentFilter);
 		
 		if (Utilities.isConnectionAvailable(this)) {
-//			requestSiteName(); // TODO uncomment
-			MockApi.requestSitename(this); // TODO remove
+			requestSiteName();
 		} else {
 			showConnectionErrorDialog();
 		}
@@ -77,11 +75,9 @@ public class SplashScreen extends BaseScreen implements OnApiResponseListener {
 	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+				appTitle = (String) apiResponse.getData();
+				
 				Intent intent = new Intent(this, MainScreen.class);
-				
-				String siteName = (String) apiResponse.getData();
-				intent.putExtra(MainScreen.APP_TITLE, siteName);
-				
 				startActivity(intent);
 				finish();
 			}

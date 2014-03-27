@@ -11,7 +11,6 @@ import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
-import com.vtecsys.vlib.api.MockApi;
 import com.vtecsys.vlib.storage.Settings;
 
 public class CatalogueFragment extends BaseFragment {
@@ -44,8 +43,8 @@ public class CatalogueFragment extends BaseFragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-//		requestCatalogue(); // TODO uncomment
-		MockApi.requestCatalogue(getActivity()); // TODO remove
+		requestCatalogue(); // TODO uncomment
+//		MockApi.requestCatalogue(getActivity()); // TODO remove
 	}
 	
 	private void requestCatalogue() {

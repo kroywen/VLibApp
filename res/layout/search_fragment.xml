@@ -123,6 +123,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="15dp"
 	        android:layout_gravity="center_horizontal"
+	        android:tag="author"
 	        android:text="@string/browse_by_author" />
 	    
 	    <Button
@@ -131,6 +132,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dp"
 	        android:layout_gravity="center_horizontal"
+	        android:tag="subject"
 	        android:text="@string/browse_by_subject" />
 	    
 	    <Button
@@ -139,6 +141,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dp"
 	        android:layout_gravity="center_horizontal"
+	        android:tag="series"
 	        android:text="@string/browse_by_series" />
 	
 	</LinearLayout>

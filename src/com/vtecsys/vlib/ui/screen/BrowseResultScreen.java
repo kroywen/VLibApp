@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.vtecsys.vlib.api.ApiData;
-import com.vtecsys.vlib.ui.fragment.SearchResultFragment;
+import com.vtecsys.vlib.ui.fragment.BrowseResultFragment;
 
-public class SearchResultScreen extends BaseScreen {
+public class BrowseResultScreen extends BaseScreen {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +22,14 @@ public class SearchResultScreen extends BaseScreen {
 		}
 		
 		Bundle args = new Bundle();
-		args.putString(ApiData.PARAM_TYPE, 
-			intent.getStringExtra(ApiData.PARAM_TYPE));
 		args.putString(ApiData.PARAM_TERM, 
 			intent.getStringExtra(ApiData.PARAM_TERM));
 		args.putInt(ApiData.PARAM_SORT_BY, 
 			intent.getIntExtra(ApiData.PARAM_SORT_BY, 0));
-		args.putString(ApiData.PARAM_SEARCH_BY, 
-			intent.getStringExtra(ApiData.PARAM_SEARCH_BY));
+		args.putString(ApiData.PARAM_BROWSE_BY, 
+			intent.getStringExtra(ApiData.PARAM_BROWSE_BY));
 		
-		SearchResultFragment fragment = new SearchResultFragment();
+		BrowseResultFragment fragment = new BrowseResultFragment();
 		fragment.setArguments(args);
 		
 		FragmentManager fm = getFragmentManager();

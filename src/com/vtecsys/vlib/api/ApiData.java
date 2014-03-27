@@ -25,6 +25,7 @@ public class ApiData {
 	public static final String PARAM_RID = "RID";
 	
 	public static final String TYPE_SEARCH = "search";
+	public static final String TYPE_BROWSE = "browse";
 	
 	public static String createURL(String command, Bundle params) {
 		Uri.Builder uriBuilder = Uri.parse(BASE_URL + command).buildUpon();
