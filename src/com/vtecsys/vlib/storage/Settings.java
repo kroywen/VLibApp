@@ -14,6 +14,9 @@ public class Settings {
 	public static final String COLLECTION_NOTIFICATION = "collection_notification";
 	public static final String LANGUAGE = "language";
 	
+	public static final int PRE_DUE_THREE_DAYS = 0;
+	public static final int PRE_DUE_SEVEN_DAYS = 0;
+	
 	private SharedPreferences prefs;
 	
 	public Settings(Context context) {

@@ -1,12 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="TODO [Settings]" />
-
-</RelativeLayout>
+    
+	<ScrollView
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:padding="15dp"
+	    android:orientation="vertical">
+	
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginBottom="10dp">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:text="@string/font_size" />
+	        
+	        <Spinner
+	            android:id="@+id/fontSize"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:entries="@array/font_size_items" />
+	        
+	    </LinearLayout>
+	    
+	    <View
+	        android:layout_width="match_parent"
+	        android:layout_height="1px"
+	        android:background="@color/list_selector" />
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="10dp">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:text="@string/pre_due_days_notification" />
+	        
+	        <Spinner
+	            android:id="@+id/preDueDaysNotification"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:entries="@array/pre_due_days_notification_items" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="10dp">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:text="@string/due_date_notification" />
+	        
+	        <View
+	            android:layout_width="0dp"
+	            android:layout_height="1dp"
+	            android:layout_weight="1" />
+	        
+	        <Switch 
+	            android:id="@+id/dueDateNotification"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textOn="@string/on"
+	            android:textOff="@string/off" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="10dp">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:text="@string/overdue_date_notification" />
+	        
+	        <View
+	            android:layout_width="0dp"
+	            android:layout_height="1dp"
+	            android:layout_weight="1" />
+	        
+	        <Switch 
+	            android:id="@+id/overdueDateNotification"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textOn="@string/on"
+	            android:textOff="@string/off" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:text="@string/collection_notification" />
+	        
+	        <View
+	            android:layout_width="0dp"
+	            android:layout_height="1dp"
+	            android:layout_weight="1" />
+	        
+	        <Switch 
+	            android:id="@+id/collectionNotification"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textOn="@string/on"
+	            android:textOff="@string/off" />
+	        
+	    </LinearLayout>
+	    
+	    <View
+	        android:layout_width="match_parent"
+	        android:layout_height="1px"
+	        android:background="@color/list_selector" />
+	    
+	    <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/language" />
+	    
+	    <RadioGroup 
+	        android:id="@+id/language"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:layout_marginBottom="10dp">
+	        
+	        <RadioButton 
+	            android:id="@+id/lang0"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/lang0" />
+	        
+	        <RadioButton
+	            android:id="@+id/lang1" 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/lang1" />
+	        
+	        <RadioButton 
+	            android:id="@+id/lang2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="@string/lang2" />
+	        
+	    </RadioGroup>
+	    
+	    <View
+	        android:layout_width="match_parent"
+	        android:layout_height="1px"
+	        android:background="@color/list_selector" />
+	    
+	    <Button
+	        android:id="@+id/aboutBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:gravity="center"
+	        android:text="@string/about" />
+	
+	</LinearLayout>
+	</ScrollView>
+	
+	<RelativeLayout 
+	    android:id="@+id/progress"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@color/progress_view_background"
+	    android:visibility="invisible">
+	    
+	    <ProgressBar 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        style="@android:style/Widget.ProgressBar" />
+	    
+	</RelativeLayout>
+	
+</FrameLayout>

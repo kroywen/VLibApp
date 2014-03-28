@@ -33,6 +33,19 @@
     <string name="location">Location</string>
     <string name="renew">Renew</string>
     <string name="reserve">Reserve</string>
+    <string name="font_size">Font Size</string>
+    <string name="pre_due_days_notification">Pre-due Days Notification</string>
+    <string name="due_date_notification">Due Date Notification</string>
+    <string name="overdue_date_notification">Overdue Date Notification</string>
+    <string name="collection_notification">Collection Notification</string>
+    <string name="language">Language</string>
+    <string name="about">About V-App</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="lang0">English</string>
+    <string name="lang1">Chinese</string>
+    <string name="lang2">Korean</string>
+    <string name="save">Save</string>
     
     <string-array name="main_menu">
         <item>Search</item>
@@ -55,6 +68,23 @@
         <item>author</item>
         <item>callNo</item>
         <item>pubYearD</item>
+    </string-array>
+    
+    <string-array name="font_size_items">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
+    </string-array>
+    
+    <string-array name="pre_due_days_notification_items">
+        <item>3 Days</item>
+        <item>7 Days</item>
+    </string-array>
+    
+    <string-array name="language_items">
+        <item>English</item>
+        <item>Chinese</item>
+        <item>Korean</item>
     </string-array>
 
 </resources>

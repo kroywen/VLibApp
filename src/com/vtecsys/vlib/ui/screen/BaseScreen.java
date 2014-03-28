@@ -22,7 +22,7 @@ import com.vtecsys.vlib.util.DialogUtils;
 public class BaseScreen extends Activity implements OnApiResponseListener {
 	
 	protected ApiResponseReceiver responseReceiver;
-	protected static String appTitle;
+	public static String appTitle;
 	protected Settings settings;
 	protected View mainContent;
 	protected View progress;

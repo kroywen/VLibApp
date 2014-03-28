@@ -1,8 +1,8 @@
 package com.vtecsys.vlib.parser;
 
-import com.vtecsys.vlib.api.ApiData;
-
 import android.text.TextUtils;
+
+import com.vtecsys.vlib.api.ApiData;
 
 public class ParserFactory {
 	
