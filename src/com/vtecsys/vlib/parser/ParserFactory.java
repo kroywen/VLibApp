@@ -17,6 +17,8 @@ public class ParserFactory {
 			return new CatalogueParser();
 		} else if (ApiData.COMMAND_BROWSE.equalsIgnoreCase(command)) {
 			return new BrowseParser();
+		} else if (ApiData.COMMAND_ABOUT.equalsIgnoreCase(command)) {
+			return new AboutParser();
 		} else {
 			return null;
 		}

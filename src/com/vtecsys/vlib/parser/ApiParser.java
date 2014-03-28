@@ -40,6 +40,7 @@ public abstract class ApiParser {
 	public static final String TAG_ONE_AUTH = "OneAuth";
 	public static final String TAG_AUTH_NO = "AuthNo";
 	public static final String TAG_AUTH_ENTRY = "AuthEntry";
+	public static final String TAG_ABOUT = "About";
 	
 	protected static final String namespace = null;
 	

@@ -46,6 +46,17 @@
     <string name="lang1">Chinese</string>
     <string name="lang2">Korean</string>
     <string name="save">Save</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="member_id">Member ID</string>
+    <string name="password">Password</string>
+    <string name="remember_password">Remember Password</string>
+    <string name="login">Login</string>
+    <string name="reset">Reset</string>
+    <string name="loan_activities">Loan Activities</string>
+    <string name="reservation_list">Reservation List</string>
+    <string name="change_password">Change Password</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="reenter_new_password">Re-enter New Password</string>
     
     <string-array name="main_menu">
         <item>Search</item>

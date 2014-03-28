@@ -21,6 +21,7 @@ import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.ui.screen.AboutScreen;
 import com.vtecsys.vlib.ui.screen.BaseScreen;
 import com.vtecsys.vlib.util.Utilities;
 
@@ -109,7 +110,8 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.aboutBtn) {
-			// TODO start about screen
+			Intent intent = new Intent(getActivity(), AboutScreen.class);
+			getActivity().startActivity(intent);
 		}
 	}
 	
@@ -130,9 +132,10 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 				requestSiteName();
 			} else {
 				settings.setInt(Settings.LANGUAGE, currentLang);
+				Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 			}
 		} else {
-			Toast.makeText(getActivity(), "Language not changed", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -153,6 +156,7 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 				getActivity().setTitle(BaseScreen.appTitle);
 				settings.setInt(Settings.LANGUAGE, getLanguage());
 				langChanged = false;
+				Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

@@ -24,16 +24,20 @@ public class BaseFragment extends Fragment implements OnApiResponseListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		settings = new Settings(getActivity());
-		
-		IntentFilter intentFilter = new IntentFilter(ApiService.ACTION_API_RESULT);
-		responseReceiver = new ApiResponseReceiver(this);
-		LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
-			responseReceiver, intentFilter);
 	}
 	
 	protected void initializeViews(View rootView) {
 		progress = rootView.findViewById(R.id.progress);
 		mainContent = rootView.findViewById(R.id.main_content);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		IntentFilter intentFilter = new IntentFilter(ApiService.ACTION_API_RESULT);
+		responseReceiver = new ApiResponseReceiver(this);
+		LocalBroadcastManager.getInstance(getActivity()).registerReceiver(
+			responseReceiver, intentFilter);
 	}
 	
 	@Override

@@ -1,12 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="TODO [My Account]" />
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:orientation="vertical"
+	    android:padding="15dp">
+	
+	    <Button
+	        android:id="@+id/loanActivitiesBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/loan_activities" />
+	    
+	    <Button
+	        android:id="@+id/reservationListBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/reservation_list" />
+	    
+	    <Button
+	        android:id="@+id/changePasswordBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:text="@string/change_password" />
+	
+	</LinearLayout>
 
-</RelativeLayout>
+	<RelativeLayout 
+	    android:id="@+id/progress"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@color/progress_view_background"
+	    android:visibility="invisible">
+	    
+	    <ProgressBar 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        style="@android:style/Widget.ProgressBar" />
+	    
+	</RelativeLayout>
+	
+</FrameLayout>
