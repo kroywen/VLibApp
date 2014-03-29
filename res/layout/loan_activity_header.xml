@@ -4,15 +4,9 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     android:background="@color/list_header_background">
-    
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:textSize="@dimen/list_small_text_size"
-        android:gravity="center"
-        android:text="@string/volume" />
     
     <TextView
         android:layout_width="0dp"
@@ -28,7 +22,7 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:text="@string/status" />
+        android:text="@string/call_number" />
     
     <TextView
         android:layout_width="0dp"
@@ -36,11 +30,12 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:text="@string/location" />
+        android:text="@string/due_date" />
     
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:gravity="center"
         android:text="@string/renew"
         android:visibility="invisible" />

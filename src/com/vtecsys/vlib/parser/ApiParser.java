@@ -146,6 +146,25 @@ public abstract class ApiParser {
 	    return result;
 	}
 	
+	protected void skip(XmlPullParser parser) 
+		throws XmlPullParserException, IOException 
+	{
+	    if (parser.getEventType() != XmlPullParser.START_TAG) {
+	        throw new IllegalStateException();
+	    }
+	    int depth = 1;
+	    while (depth != 0) {
+	        switch (parser.next()) {
+	        case XmlPullParser.END_TAG:
+	            depth--;
+	            break;
+	        case XmlPullParser.START_TAG:
+	            depth++;
+	            break;
+	        }
+	    }
+	 }
+	
 	public abstract Object readData(XmlPullParser parser)
 		throws XmlPullParserException, IOException;
 

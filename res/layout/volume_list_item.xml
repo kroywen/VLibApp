@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/volume_text_size"
+        android:textSize="@dimen/list_small_text_size"
         android:gravity="center" />
     
     <TextView
@@ -19,7 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/volume_text_size"
+        android:textSize="@dimen/list_small_text_size"
         android:gravity="center" />
     
     <TextView
@@ -27,7 +27,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/volume_text_size"
+        android:textSize="@dimen/list_small_text_size"
         android:gravity="center" />
     
     <TextView
@@ -35,7 +35,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="@dimen/volume_text_size"
+        android:textSize="@dimen/list_small_text_size"
         android:gravity="center" />
     
     <Button

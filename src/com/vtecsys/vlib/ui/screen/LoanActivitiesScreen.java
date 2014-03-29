@@ -1,18 +1,32 @@
 package com.vtecsys.vlib.ui.screen;
 
+import java.util.List;
+
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.adapter.LoanActivityAdapter;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
+import com.vtecsys.vlib.model.Loan;
+import com.vtecsys.vlib.model.Patron;
+import com.vtecsys.vlib.model.result.PatronAccountResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.Utilities;
 
 public class LoanActivitiesScreen extends BaseScreen {
+	
+	private TextView memberId;
+	private ListView listView;
+	private TextView emptyView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +49,9 @@ public class LoanActivitiesScreen extends BaseScreen {
 	@Override
 	protected void initializeViews() {
 		super.initializeViews();
-		// TODO
+		memberId = (TextView) findViewById(R.id.memberId);
+		listView = (ListView) findViewById(R.id.listView);
+		emptyView = (TextView) findViewById(R.id.emptyView);
 	}
 	
 	private void requestLoanActivities() {
@@ -75,7 +91,33 @@ public class LoanActivitiesScreen extends BaseScreen {
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				Toast.makeText(this, "Response OK", Toast.LENGTH_SHORT).show();
+				PatronAccountResult result = (PatronAccountResult)
+					apiResponse.getData();
+				Patron patron = result.getPatron();
+				
+				String id = null;
+				if (patron != null) {
+					id = getString(R.string.member_id_pattern, patron.getId());
+				} else {
+					id = settings.getString(Settings.MEMBER_ID);
+				}
+				memberId.setText(id);
+				
+				LayoutInflater inflater = (LayoutInflater) 
+					getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+				View headerView = inflater.inflate(R.layout.loan_activity_header, null);
+				listView.addHeaderView(headerView, null, false);
+				
+				List<Loan> loans = result.getLoans();
+				LoanActivityAdapter adapter = new LoanActivityAdapter(this, loans);
+				listView.setAdapter(adapter);
+				listView.setVisibility(View.VISIBLE);
+				emptyView.setVisibility(View.GONE);
+			} else {
+				listView.setVisibility(View.GONE);
+				listView.setAdapter(null);
+				emptyView.setVisibility(View.VISIBLE);
+				emptyView.setText(apiResponse.getMessage());
 			}
 		}
 	}

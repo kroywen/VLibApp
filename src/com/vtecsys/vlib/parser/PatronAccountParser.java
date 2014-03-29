@@ -87,6 +87,8 @@ public class PatronAccountParser extends ApiParser {
 			if (TAG_ONE_LOAN.equalsIgnoreCase(tagName)) {
 				Loan loan = readLoan(parser);
 				loans.add(loan);
+			} else {
+				skip(parser);
 			}
 		}
 		parser.require(XmlPullParser.END_TAG, namespace, TAG_LOANS);
@@ -163,9 +165,11 @@ public class PatronAccountParser extends ApiParser {
 	            continue;
 	        }
 			String tagName = parser.getName();
-			if (TAG_ONE_LOAN.equalsIgnoreCase(tagName)) {
+			if (TAG_ONE_RESERVATION.equalsIgnoreCase(tagName)) {
 				Reservation reservation = readReservation(parser);
 				reservations.add(reservation);
+			} else {
+				skip(parser);
 			}
 		}
 		parser.require(XmlPullParser.END_TAG, namespace, TAG_RESERVATIONS);
@@ -175,7 +179,7 @@ public class PatronAccountParser extends ApiParser {
 		throws XmlPullParserException, IOException
 	{
 		Reservation reservation = new Reservation();
-		parser.require(XmlPullParser.START_TAG, namespace, TAG_ONE_LOAN);
+		parser.require(XmlPullParser.START_TAG, namespace, TAG_ONE_RESERVATION);
 		while (parser.next() != XmlPullParser.END_TAG) {
 			if (parser.getEventType() != XmlPullParser.START_TAG) {
 	            continue;
@@ -222,7 +226,7 @@ public class PatronAccountParser extends ApiParser {
 				reservation.setCanCancel("Y".equalsIgnoreCase(canCancel));
 			}
 		}
-		parser.require(XmlPullParser.END_TAG, namespace, TAG_RESERVATIONS);
+		parser.require(XmlPullParser.END_TAG, namespace, TAG_ONE_RESERVATION);
 		return reservation;
 	}
 
