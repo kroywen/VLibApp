@@ -63,7 +63,10 @@
     <string name="due_date">Due Date</string>
     <string name="fill_all_fields">Fill all fields</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
-    <string name="password_successfuly_changed">Password successfuly changed</string>
+    <string name="cancel">Cancel</string>
+    <string name="reserve_date">Reserve Date</string>
+    <string name="ready_date">Ready Date</string>
+    <string name="volume_number">Vol No.</string>
     
     <string-array name="main_menu">
         <item>Search</item>

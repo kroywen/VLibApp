@@ -61,7 +61,7 @@ public class VolumeAdapter extends BaseAdapter {
 		location.setText(volume.getLocation());
 		
 		Button renewBtn = (Button) convertView.findViewById(R.id.renewBtn);
-		// TODO 
+		renewBtn.setEnabled(volume.canReserve());
 		
 		return convertView;
 	}

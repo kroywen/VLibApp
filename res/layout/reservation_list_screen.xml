@@ -6,9 +6,36 @@
     <LinearLayout 
         android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
         
+        <TextView
+            android:id="@+id/memberId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="15dp"
+            android:maxLength="20" />
         
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/list_selector" />
+        
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+        
+        <TextView 
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="15dp"
+            android:visibility="gone" />
         
     </LinearLayout>
     

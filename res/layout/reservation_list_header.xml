@@ -14,7 +14,7 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:text="@string/item_number" />
+        android:text="@string/reserve_date" />
     
     <TextView
         android:layout_width="0dp"
@@ -30,7 +30,15 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:text="@string/due_date" />
+        android:text="@string/volume_number" />
+    
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="@dimen/list_small_text_size"
+        android:gravity="center"
+        android:text="@string/ready_date" />
     
     <Button
         android:layout_width="wrap_content"

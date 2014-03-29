@@ -22,12 +22,12 @@
             android:orientation="horizontal">
             
             <TextView
-		        android:id="@+id/itemNumber"
+		        android:id="@+id/reserveDate"
 		        android:layout_width="0dp"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"
 		        android:textSize="@dimen/list_small_text_size"
-		        android:maxLength="20"
+		        android:maxLength="10"
 		        android:gravity="center" />
             
             <TextView
@@ -40,7 +40,16 @@
 		        android:gravity="center" />
             
             <TextView
-		        android:id="@+id/dueDate"
+		        android:id="@+id/volumeNumber"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:textSize="@dimen/list_small_text_size"
+		        android:maxLength="6"
+		        android:gravity="center" />
+            
+            <TextView
+		        android:id="@+id/readyDate"
 		        android:layout_width="0dp"
 		        android:layout_height="wrap_content"
 		        android:layout_weight="1"
@@ -63,9 +72,9 @@
     </LinearLayout>
     
     <Button
-        android:id="@+id/renewBtn"
+        android:id="@+id/cancelBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/renew" />
+        android:text="@string/cancel" />
 
 </LinearLayout>
