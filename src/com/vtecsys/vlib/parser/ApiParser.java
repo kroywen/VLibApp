@@ -13,6 +13,7 @@ import com.vtecsys.vlib.api.ApiResponse;
 public abstract class ApiParser {
 	
 	public static final String TAG_RESPONSE = "Response";
+	public static final String TAG_RESPOND = "Respond";
 	public static final String TAG_STATUS = "Status";
 	public static final String TAG_MESSAGE = "Message";
 	public static final String TAG_RESPONSE_DATA = "ResponseData";
@@ -68,7 +69,7 @@ public abstract class ApiParser {
 	
 	protected static final String namespace = null;
 	
-	private ApiResponse apiResponse;
+	protected ApiResponse apiResponse;
 	
 	public ApiParser() {
 		apiResponse = new ApiResponse();

@@ -21,6 +21,8 @@ public class ParserFactory {
 			return new AboutParser();
 		} else if (ApiData.COMMAND_PATR_ACCOUNT.equalsIgnoreCase(command)) {
 			return new PatronAccountParser();
+		} else if (ApiData.COMMAND_CHANGE_PASSWORD.equalsIgnoreCase(command)) { 
+			return new ChangePasswordParser();
 		} else {
 			return null;
 		}

@@ -61,6 +61,9 @@
     <string name="member_id_pattern">Member ID: %1$s</string>
     <string name="call_number">Call No.</string>
     <string name="due_date">Due Date</string>
+    <string name="fill_all_fields">Fill all fields</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="password_successfuly_changed">Password successfuly changed</string>
     
     <string-array name="main_menu">
         <item>Search</item>

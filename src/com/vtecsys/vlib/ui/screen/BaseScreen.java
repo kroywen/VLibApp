@@ -96,7 +96,7 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 	}
 	
 	protected void showConnectionErrorDialog() {
-		DialogUtils.showErrorDialog(this,
+		DialogUtils.showDialog(this,
 			R.string.connection_error_title, 
 			R.string.connection_error_message,
 			new DialogInterface.OnClickListener() {

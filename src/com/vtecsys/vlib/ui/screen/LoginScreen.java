@@ -128,7 +128,7 @@ public class LoginScreen extends BaseScreen implements OnClickListener, OnChecke
 				setResult(RESULT_OK);
 				finish();
 			} else {
-				DialogUtils.showErrorDialog(this, getString(R.string.error),
+				DialogUtils.showDialog(this, getString(R.string.error),
 					apiResponse.getMessage());
 			}
 		}

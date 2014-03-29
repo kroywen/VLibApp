@@ -6,7 +6,7 @@ import android.content.DialogInterface;
 
 public class DialogUtils {
 	
-	public static void showErrorDialog(Context context, 
+	public static void showDialog(Context context, 
 			String title, String message, 
 			DialogInterface.OnClickListener okListener, 
 			DialogInterface.OnCancelListener cancelListener)
@@ -20,21 +20,21 @@ public class DialogUtils {
 			.show();
 	}
 	
-	public static void showErrorDialog(Context context, int titleId, int messageId,
+	public static void showDialog(Context context, int titleId, int messageId,
 		DialogInterface.OnClickListener okListener, 
 		DialogInterface.OnCancelListener cancelListener)
 	{
-		showErrorDialog(context, context.getString(titleId), 
+		showDialog(context, context.getString(titleId), 
 			context.getString(messageId), okListener, cancelListener);
 	}
 	
-	public static void showErrorDialog(Context context, int titleId, int messageId) {
-		showErrorDialog(context, context.getString(titleId), 
+	public static void showDialog(Context context, int titleId, int messageId) {
+		showDialog(context, context.getString(titleId), 
 			context.getString(messageId), null, null);
 	}
 	
-	public static void showErrorDialog(Context context, String title, String message) {
-		showErrorDialog(context, title, message, null, null);
+	public static void showDialog(Context context, String title, String message) {
+		showDialog(context, title, message, null, null);
 	}
 
 }

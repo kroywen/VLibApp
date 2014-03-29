@@ -8,8 +8,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.api.ApiData;
+import com.vtecsys.vlib.api.ApiResponse;
+import com.vtecsys.vlib.api.ApiService;
+import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.DialogUtils;
+import com.vtecsys.vlib.util.Utilities;
 
 public class ChangePasswordScreen extends BaseScreen implements OnClickListener {
 	
@@ -43,10 +50,20 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 		if (v.getId() == R.id.changeBtn) {
 			String pass1 = password1.getText().toString();
 			String pass2 = password2.getText().toString();
-			if (!TextUtils.isEmpty(pass1) && !TextUtils.isEmpty(pass2) &&
-				pass1.equals(pass2)) 
-			{
-				// TODO change
+			if (TextUtils.isEmpty(pass1)) {
+				Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+				password1.requestFocus();				
+			} else if (TextUtils.isEmpty(pass2)) {
+				Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
+				password2.requestFocus();
+			} else if (!pass1.equals(pass2)) {
+				Toast.makeText(this, R.string.passwords_do_not_match, Toast.LENGTH_SHORT).show();
+			} else {
+				if (Utilities.isConnectionAvailable(this)) {
+					requestChangePassword();
+				} else {
+					showConnectionErrorDialog();
+				}
 			}
 		}
 	}
@@ -67,6 +84,32 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 		if (requestCode == REQUEST_LOGIN) {
 			if (resultCode == RESULT_CANCELED) {
 				finish();
+			}
+		}
+	}
+	
+	private void requestChangePassword() {
+		Intent intent = new Intent(this, ApiService.class);
+		intent.setAction(ApiData.COMMAND_CHANGE_PASSWORD);
+		intent.putExtra(ApiData.PARAM_ID, settings.getString(Settings.MEMBER_ID));
+		intent.putExtra(ApiData.PARAM_PASSWD, settings.getString(Settings.PASSWORD));
+		intent.putExtra(ApiData.PARAM_NEW_PWD, password1.getText().toString().trim());
+		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
+		startService(intent);
+		showProgress(false);
+	}
+	
+	@Override
+	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
+		hideProgress();
+		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+				settings.setString(Settings.PASSWORD, password1.getText().toString().trim());
+				Toast.makeText(this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+				finish();
+			} else {
+				DialogUtils.showDialog(this, getString(R.string.error),
+					apiResponse.getMessage());
 			}
 		}
 	}

@@ -144,6 +144,7 @@ public final class R {
         public static final int enter_keywords=0x7f060001;
         public static final int enter_new_password=0x7f060035;
         public static final int error=0x7f060037;
+        public static final int fill_all_fields=0x7f06003b;
         public static final int font_size=0x7f06001f;
         public static final int isbn=0x7f060007;
         public static final int isbn_caption=0x7f060014;
@@ -161,6 +162,8 @@ public final class R {
         public static final int on=0x7f060026;
         public static final int overdue_date_notification=0x7f060022;
         public static final int password=0x7f06002e;
+        public static final int password_successfuly_changed=0x7f06003d;
+        public static final int passwords_do_not_match=0x7f06003c;
         public static final int pre_due_days_notification=0x7f060020;
         public static final int publication_caption=0x7f060016;
         public static final int publisher_caption=0x7f060012;
