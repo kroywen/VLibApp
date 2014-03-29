@@ -6,8 +6,6 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
-import android.text.TextUtils;
-
 import com.vtecsys.vlib.model.Book;
 import com.vtecsys.vlib.model.Volume;
 import com.vtecsys.vlib.model.result.CatalogueResult;
@@ -124,8 +122,7 @@ public class CatalogueParser extends ApiParser {
 				volume.setLocation(location);
 			} else if (TAG_CAN_RESERVE.equalsIgnoreCase(tagName)) {
 				String canReserve = readString(parser, TAG_CAN_RESERVE);
-				volume.setCanReserve(!TextUtils.isEmpty(canReserve) &&
-					canReserve.equalsIgnoreCase("Y"));
+				volume.setCanReserve("Y".equalsIgnoreCase(canReserve));
 			}
 		}
 		parser.require(XmlPullParser.END_TAG, namespace, TAG_ONE_ITEM);
