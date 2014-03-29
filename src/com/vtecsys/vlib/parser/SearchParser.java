@@ -6,7 +6,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.vtecsys.vlib.model.Book;
-import com.vtecsys.vlib.model.SearchResult;
+import com.vtecsys.vlib.model.result.SearchResult;
 
 public class SearchParser extends ApiParser {
 

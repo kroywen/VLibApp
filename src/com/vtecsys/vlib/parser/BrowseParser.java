@@ -6,7 +6,7 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
 import com.vtecsys.vlib.model.Auth;
-import com.vtecsys.vlib.model.BrowseResult;
+import com.vtecsys.vlib.model.result.BrowseResult;
 
 public class BrowseParser extends ApiParser {
 

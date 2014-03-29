@@ -13,9 +13,12 @@ public class Settings {
 	public static final String OVERDUE_DATE_NOTIFICATION = "overdue_date_notification";
 	public static final String COLLECTION_NOTIFICATION = "collection_notification";
 	public static final String LANGUAGE = "language";
+	public static final String MEMBER_ID = "member_id";
+	public static final String PASSWORD = "password";
+	public static final String REMEMBER_PASSWORD = "remember_password";
 	
 	public static final int PRE_DUE_THREE_DAYS = 0;
-	public static final int PRE_DUE_SEVEN_DAYS = 0;
+	public static final int PRE_DUE_SEVEN_DAYS = 1;
 	
 	private SharedPreferences prefs;
 	

@@ -15,6 +15,10 @@ public class ApiData {
 	public static final String COMMAND_BROWSE = "Browse";
 	public static final String COMMAND_SEARCH = "Search";
 	public static final String COMMAND_CATALOGUE = "Catalogue";
+	public static final String COMMAND_PATR_ACCOUNT = "PatrAccount";
+	public static final String COMMAND_CHANGE_PASSWORD = "ChangePassword";
+	public static final String COMMAND_RENEW_LOAN = "RenewLoan";
+	public static final String COMMAND_CANCEL_RESERVATION = "CancelReservation";
 	
 	public static final String PARAM_LANG = "lang";
 	public static final String PARAM_TERM = "term";
@@ -23,6 +27,12 @@ public class ApiData {
 	public static final String PARAM_SORT_BY = "sortBy";
 	public static final String PARAM_SEARCH_BY = "searchBy";
 	public static final String PARAM_RID = "RID";
+	public static final String PARAM_ID = "id";
+	public static final String PARAM_PASSWD = "passwd";
+	public static final String PARAM_NEW_PWD = "newpwd";
+	public static final String PARAM_ITEM_NO = "item_no";
+	public static final String PARAM_ISSUE = "issue";
+	public static final String PARAM_VOLUME = "volume";
 	
 	public static final String TYPE_SEARCH = "search";
 	public static final String TYPE_BROWSE = "browse";

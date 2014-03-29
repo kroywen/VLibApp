@@ -41,6 +41,30 @@ public abstract class ApiParser {
 	public static final String TAG_AUTH_NO = "AuthNo";
 	public static final String TAG_AUTH_ENTRY = "AuthEntry";
 	public static final String TAG_ABOUT = "About";
+	public static final String TAG_PATRON = "Patron";
+	public static final String TAG_ID = "Id";
+	public static final String TAG_NAME = "Name";
+	public static final String TAG_SURNAME = "Surname";
+	public static final String TAG_LOANS = "Loans";
+	public static final String TAG_COUNT = "Count";
+	public static final String TAG_ONE_LOAN = "OneLoan";
+	public static final String TAG_ITEM_NUMBER = "ItemNumber";
+	public static final String TAG_LOAN_DATE = "LoanDate";
+	public static final String TAG_DUE_DATE = "DueDate";
+	public static final String TAG_COLLECTION = "Collection";
+	public static final String TAG_SUFFIX = "Suffix";
+	public static final String TAG_IS_OVERDUE = "IsOverdue";
+	public static final String TAG_CAN_RENEW = "CanRenew";
+	public static final String TAG_RENEWED = "Renewed";
+	public static final String TAG_RESERVATIONS = "Reservations";
+	public static final String TAG_ONE_RESERVATION = "OneReservation";
+	public static final String TAG_RESERVE_DATE = "ReserveDate";
+	public static final String TAG_IS_READY = "IsReady";
+	public static final String TAG_ITEM_READY = "ItemReady";
+	public static final String TAG_IS_BOOKING = "IsBooking";
+	public static final String TAG_TYPE = "Type";
+	public static final String TAG_ISSUE = "Issue";
+	public static final String TAG_CAN_CANCEL = "CanCancel";
 	
 	protected static final String namespace = null;
 	

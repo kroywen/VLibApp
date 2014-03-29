@@ -1,16 +1,27 @@
 package com.vtecsys.vlib.ui.screen;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.api.ApiData;
+import com.vtecsys.vlib.api.ApiResponse;
+import com.vtecsys.vlib.api.ApiService;
+import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.DialogUtils;
+import com.vtecsys.vlib.util.Utilities;
 
-public class LoginScreen extends BaseScreen implements OnClickListener {
+public class LoginScreen extends BaseScreen implements OnClickListener, OnCheckedChangeListener {
 	
 	private EditText memberId;
 	private EditText password;
@@ -23,6 +34,7 @@ public class LoginScreen extends BaseScreen implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.login_screen);
 		initializeViews();
+		updateViews();
 	}
 	
 	@Override
@@ -31,10 +43,20 @@ public class LoginScreen extends BaseScreen implements OnClickListener {
 		memberId = (EditText) findViewById(R.id.memberId);
 		password = (EditText) findViewById(R.id.password);
 		remember = (CheckBox) findViewById(R.id.remember);
+		remember.setOnCheckedChangeListener(this);
 		loginBtn = (Button) findViewById(R.id.loginBtn);
 		loginBtn.setOnClickListener(this);
 		resetBtn = (Button) findViewById(R.id.resetBtn);
 		resetBtn.setOnClickListener(this);		
+	}
+	
+	private void updateViews() {
+		memberId.setText(settings.getString(Settings.MEMBER_ID));
+		boolean rememberPassword = settings.getBoolean(Settings.REMEMBER_PASSWORD);
+		remember.setChecked(rememberPassword);
+		if (rememberPassword) {
+			password.setText(settings.getString(Settings.PASSWORD));
+		}
 	}
 	
 	@Override
@@ -52,7 +74,12 @@ public class LoginScreen extends BaseScreen implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.loginBtn:
-			// TODO login
+			hideSoftKeyboard();
+			if (Utilities.isConnectionAvailable(this)) {
+				login();
+			} else {
+				showConnectionErrorDialog();
+			}
 			break;
 		case R.id.resetBtn:
 			reset();
@@ -60,10 +87,51 @@ public class LoginScreen extends BaseScreen implements OnClickListener {
 		}
 	}
 	
+	private void hideSoftKeyboard() {
+		InputMethodManager imm = (InputMethodManager) 
+			getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(memberId.getWindowToken(), 0);
+		imm.hideSoftInputFromWindow(password.getWindowToken(), 0);
+	}
+	
+	private void login() {
+		Intent intent = new Intent(this, ApiService.class);
+		intent.setAction(ApiData.COMMAND_PATR_ACCOUNT);
+		intent.putExtra(ApiData.PARAM_ID, memberId.getText().toString().trim());
+		intent.putExtra(ApiData.PARAM_PASSWD, password.getText().toString().trim());
+		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
+		startService(intent);
+		showProgress(false);
+	}
+	
 	private void reset() {
 		memberId.setText(null);
 		password.setText(null);
 		remember.setChecked(false);
+	}
+
+	@Override
+	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		settings.setBoolean(Settings.REMEMBER_PASSWORD, isChecked);
+	}
+	
+	@Override
+	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
+		hideProgress();
+		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+				settings.setString(Settings.MEMBER_ID, 
+					memberId.getText().toString().trim());
+				settings.setString(Settings.PASSWORD, 
+					password.getText().toString().trim());
+				isLoggedIn = true;
+				setResult(RESULT_OK);
+				finish();
+			} else {
+				DialogUtils.showErrorDialog(this, getString(R.string.error),
+					apiResponse.getMessage());
+			}
+		}
 	}
 
 }

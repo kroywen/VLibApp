@@ -19,6 +19,8 @@ public class ParserFactory {
 			return new BrowseParser();
 		} else if (ApiData.COMMAND_ABOUT.equalsIgnoreCase(command)) {
 			return new AboutParser();
+		} else if (ApiData.COMMAND_PATR_ACCOUNT.equalsIgnoreCase(command)) {
+			return new PatronAccountParser();
 		} else {
 			return null;
 		}

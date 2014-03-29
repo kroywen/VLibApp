@@ -9,8 +9,8 @@ import org.xmlpull.v1.XmlPullParserException;
 import android.text.TextUtils;
 
 import com.vtecsys.vlib.model.Book;
-import com.vtecsys.vlib.model.CatalogueResult;
 import com.vtecsys.vlib.model.Volume;
+import com.vtecsys.vlib.model.result.CatalogueResult;
 
 public class CatalogueParser extends ApiParser {
 

@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.screen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -21,6 +22,11 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.change_password_screen);
 		initializeViews();
+		
+		if (!isLoggedIn) {
+			Intent intent = new Intent(this, LoginScreen.class);
+			startActivityForResult(intent, REQUEST_LOGIN);
+		}
 	}
 	
 	@Override
@@ -53,6 +59,15 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
+		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_LOGIN) {
+			if (resultCode == RESULT_CANCELED) {
+				finish();
+			}
 		}
 	}
 

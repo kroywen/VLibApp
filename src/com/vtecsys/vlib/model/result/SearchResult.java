@@ -1,7 +1,9 @@
-package com.vtecsys.vlib.model;
+package com.vtecsys.vlib.model.result;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.vtecsys.vlib.model.Book;
 
 public class SearchResult {
 	

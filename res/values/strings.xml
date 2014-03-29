@@ -57,6 +57,7 @@
     <string name="change_password">Change Password</string>
     <string name="enter_new_password">Enter New Password</string>
     <string name="reenter_new_password">Re-enter New Password</string>
+    <string name="error">Error</string>
     
     <string-array name="main_menu">
         <item>Search</item>

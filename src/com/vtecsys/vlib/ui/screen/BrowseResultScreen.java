@@ -17,7 +17,7 @@ import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.model.Auth;
-import com.vtecsys.vlib.model.BrowseResult;
+import com.vtecsys.vlib.model.result.BrowseResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.Utilities;
 

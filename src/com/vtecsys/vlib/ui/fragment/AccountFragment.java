@@ -10,12 +10,16 @@ import android.widget.Button;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.ui.screen.ChangePasswordScreen;
+import com.vtecsys.vlib.ui.screen.LoanActivitiesScreen;
+import com.vtecsys.vlib.ui.screen.ReservationListScreen;
 
 public class AccountFragment extends BaseFragment implements OnClickListener {
 	
 	private Button loanActivitiesBtn;
 	private Button reservationListBtn;
 	private Button changePasswordBtn;
+	
+	
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,13 +43,15 @@ public class AccountFragment extends BaseFragment implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.loanActivitiesBtn:
-			// TODO
+			Intent intent = new Intent(getActivity(), LoanActivitiesScreen.class);
+			getActivity().startActivity(intent);
 			break;
 		case R.id.reservationListBtn:
-			// TODO
+			intent = new Intent(getActivity(), ReservationListScreen.class);
+			getActivity().startActivity(intent);
 			break;
 		case R.id.changePasswordBtn:
-			Intent intent = new Intent(getActivity(), ChangePasswordScreen.class);
+			intent = new Intent(getActivity(), ChangePasswordScreen.class);
 			getActivity().startActivity(intent);
 			break;
 		}

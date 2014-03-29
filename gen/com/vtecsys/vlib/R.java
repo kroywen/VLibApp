@@ -100,16 +100,18 @@ public final class R {
         public static final int catalogue_screen=0x7f030004;
         public static final int change_password_screen=0x7f030005;
         public static final int drawer_list_item=0x7f030006;
-        public static final int login_screen=0x7f030007;
-        public static final int main_screen=0x7f030008;
-        public static final int search_fragment=0x7f030009;
-        public static final int search_result_list_item=0x7f03000a;
-        public static final int search_result_screen=0x7f03000b;
-        public static final int settings_fragment=0x7f03000c;
-        public static final int splash_screen=0x7f03000d;
-        public static final int volume_header=0x7f03000e;
-        public static final int volume_list_item=0x7f03000f;
-        public static final int web_opac_fragment=0x7f030010;
+        public static final int loan_activities_screen=0x7f030007;
+        public static final int login_screen=0x7f030008;
+        public static final int main_screen=0x7f030009;
+        public static final int reservation_list_screen=0x7f03000a;
+        public static final int search_fragment=0x7f03000b;
+        public static final int search_result_list_item=0x7f03000c;
+        public static final int search_result_screen=0x7f03000d;
+        public static final int settings_fragment=0x7f03000e;
+        public static final int splash_screen=0x7f03000f;
+        public static final int volume_header=0x7f030010;
+        public static final int volume_list_item=0x7f030011;
+        public static final int web_opac_fragment=0x7f030012;
     }
     public static final class menu {
         public static final int settings=0x7f090000;
@@ -134,6 +136,7 @@ public final class R {
         public static final int empty=0x7f06000d;
         public static final int enter_keywords=0x7f060001;
         public static final int enter_new_password=0x7f060035;
+        public static final int error=0x7f060037;
         public static final int font_size=0x7f06001f;
         public static final int isbn=0x7f060007;
         public static final int isbn_caption=0x7f060014;

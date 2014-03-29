@@ -52,6 +52,14 @@
             android:name="com.vtecsys.vlib.ui.screen.LoginScreen"
             android:label="@string/app_name" />
         
+        <activity 
+            android:name="com.vtecsys.vlib.ui.screen.LoanActivitiesScreen" 
+            android:label="@string/app_name" />
+        
+        <activity
+            android:name="com.vtecsys.vlib.ui.screen.ReservationListScreen"
+            android:label="@string/app_name" />
+                    
         <activity
             android:name="com.vtecsys.vlib.ui.screen.ChangePasswordScreen"
             android:label="@string/app_name" />

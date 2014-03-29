@@ -7,21 +7,34 @@ import android.content.DialogInterface;
 public class DialogUtils {
 	
 	public static void showErrorDialog(Context context, 
-			int titleId, int messageId, 
+			String title, String message, 
 			DialogInterface.OnClickListener okListener, 
 			DialogInterface.OnCancelListener cancelListener)
 	{
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-		builder.setTitle(titleId)
-			.setMessage(messageId)
+		builder.setTitle(title)
+			.setMessage(message)
 			.setPositiveButton(android.R.string.ok, okListener)
 			.setOnCancelListener(cancelListener)
 			.create()
 			.show();
 	}
 	
+	public static void showErrorDialog(Context context, int titleId, int messageId,
+		DialogInterface.OnClickListener okListener, 
+		DialogInterface.OnCancelListener cancelListener)
+	{
+		showErrorDialog(context, context.getString(titleId), 
+			context.getString(messageId), okListener, cancelListener);
+	}
+	
 	public static void showErrorDialog(Context context, int titleId, int messageId) {
-		showErrorDialog(context, titleId, messageId, null, null);
+		showErrorDialog(context, context.getString(titleId), 
+			context.getString(messageId), null, null);
+	}
+	
+	public static void showErrorDialog(Context context, String title, String message) {
+		showErrorDialog(context, title, message, null, null);
 	}
 
 }

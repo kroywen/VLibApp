@@ -21,8 +21,11 @@ import com.vtecsys.vlib.util.DialogUtils;
 
 public class BaseScreen extends Activity implements OnApiResponseListener {
 	
+	public static final int REQUEST_LOGIN = 0;
+	
 	protected ApiResponseReceiver responseReceiver;
 	public static String appTitle;
+	public static boolean isLoggedIn;
 	protected Settings settings;
 	protected View mainContent;
 	protected View progress;
@@ -38,11 +41,6 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 			actionBar.setDisplayHomeAsUpEnabled(true);
 		}
 		
-		IntentFilter intentFilter = new IntentFilter(ApiService.ACTION_API_RESULT);
-		responseReceiver = new ApiResponseReceiver(this);
-		LocalBroadcastManager.getInstance(this).registerReceiver(
-			responseReceiver, intentFilter);
-		
 		DisplayImageOptions options = new DisplayImageOptions.Builder()
 			.cacheInMemory(true)
 			.cacheOnDisc(true)
@@ -56,6 +54,15 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 	protected void initializeViews() {
 		progress = findViewById(R.id.progress);
 		mainContent = findViewById(R.id.main_content);
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		IntentFilter intentFilter = new IntentFilter(ApiService.ACTION_API_RESULT);
+		responseReceiver = new ApiResponseReceiver(this);
+		LocalBroadcastManager.getInstance(this).registerReceiver(
+			responseReceiver, intentFilter);
 	}
 	
 	@Override
