@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.fragment;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +15,12 @@ import android.widget.Spinner;
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.ui.screen.BrowseResultScreen;
+import com.vtecsys.vlib.ui.screen.ISBNScannerScreen;
 import com.vtecsys.vlib.ui.screen.SearchResultScreen;
 
 public class SearchFragment extends Fragment implements OnClickListener {
+	
+	public static final int REQUEST_SCAN = 0;
 	
 	private EditText searchView;
 	private Spinner sortByView;
@@ -68,10 +72,11 @@ public class SearchFragment extends Fragment implements OnClickListener {
 		case R.id.searchSubjectBtn:
 		case R.id.searchSeriesBtn:
 		case R.id.searchAllBtn:
-			showSearchScreen((String) v.getTag());
+			showSearchScreen(searchView.getText().toString(), 
+				(String) v.getTag());
 			break;
 		case R.id.searchIsbnBtn:
-			// TODO
+			showISBNScannerScreen();
 			break;
 		case R.id.browseAuthorBtn:
 		case R.id.browseSubjectBtn:
@@ -81,11 +86,11 @@ public class SearchFragment extends Fragment implements OnClickListener {
 		}
 	}
 	
-	private void showSearchScreen(String searchBy) {
+	private void showSearchScreen(String term, String searchBy) {
 		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
 		
 		intent.putExtra(ApiData.PARAM_TYPE, ApiData.TYPE_SEARCH);
-		intent.putExtra(ApiData.PARAM_TERM, searchView.getText().toString());
+		intent.putExtra(ApiData.PARAM_TERM, term);
 		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
 		
@@ -100,6 +105,21 @@ public class SearchFragment extends Fragment implements OnClickListener {
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
 		
 		getActivity().startActivity(intent);
+	}
+	
+	private void showISBNScannerScreen() {
+		Intent intent = new Intent(getActivity(), ISBNScannerScreen.class);
+		startActivityForResult(intent, REQUEST_SCAN);
+	}
+	
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_SCAN && resultCode == Activity.RESULT_OK) {
+			if (data != null) {
+				String isbn = data.getStringExtra("isbn");
+				showSearchScreen(isbn, "isbn");
+			}
+		}
 	}
 
 }
