@@ -10,23 +10,29 @@
 	    android:padding="15dp">
 	
 	    <Button
+	        style="@style/MyButton"
 	        android:id="@+id/loanActivitiesBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
+	        android:background="@drawable/btn_orange_background"
 	        android:text="@string/loan_activities" />
 	    
 	    <Button
+	        style="@style/MyButton"
 	        android:id="@+id/reservationListBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
+	        android:background="@drawable/btn_orange_background"
 	        android:text="@string/reservation_list" />
 	    
 	    <Button
+	        style="@style/MyButton"
 	        android:id="@+id/changePasswordBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
+	        android:background="@drawable/btn_orange_background"
 	        android:text="@string/change_password" />
 	
 	</LinearLayout>

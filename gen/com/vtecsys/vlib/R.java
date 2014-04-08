@@ -19,12 +19,25 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int actionbar_text=0x7f05000e;
+        public static final int app_main_color=0x7f05000b;
+        public static final int btn_blue_end=0x7f05001a;
+        public static final int btn_blue_start=0x7f050019;
+        public static final int btn_gray_end=0x7f050018;
+        public static final int btn_gray_start=0x7f050017;
+        public static final int btn_orange_end=0x7f050014;
+        public static final int btn_orange_start=0x7f050013;
+        public static final int btn_purple_end=0x7f050016;
+        public static final int btn_purple_start=0x7f050015;
         public static final int contents_text=0x7f050000;
+        public static final int drawer_background=0x7f05000c;
+        public static final int drawer_list_divider=0x7f05000d;
         public static final int encode_view=0x7f050001;
-        public static final int list_header_background=0x7f05000d;
-        public static final int list_selector=0x7f05000c;
+        public static final int list_header_background=0x7f050011;
+        public static final int list_selector=0x7f050010;
+        public static final int list_top_divider=0x7f050012;
         public static final int possible_result_points=0x7f050002;
-        public static final int progress_view_background=0x7f05000b;
+        public static final int progress_view_background=0x7f05000f;
         /**  Android standard ICS color 
          */
         public static final int result_minor_text=0x7f050003;
@@ -42,14 +55,23 @@ public final class R {
     }
     public static final class dimen {
         public static final int half_padding=0x7f060001;
+        public static final int list_btn_height=0x7f060003;
         public static final int list_small_text_size=0x7f060002;
         public static final int standard_padding=0x7f060000;
     }
     public static final class drawable {
-        public static final int ic_action_save=0x7f020000;
-        public static final int ic_drawer=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int ic_search=0x7f020003;
+        public static final int ab_solid=0x7f020000;
+        public static final int btn_blue_background=0x7f020001;
+        public static final int btn_gray_background=0x7f020002;
+        public static final int btn_orange_background=0x7f020003;
+        public static final int btn_purple_background=0x7f020004;
+        public static final int edittext_background=0x7f020005;
+        public static final int ic_action_save=0x7f020006;
+        public static final int ic_drawer=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int ic_search=0x7f020009;
+        public static final int main_background=0x7f02000a;
+        public static final int splash=0x7f02000b;
     }
     public static final class id {
         public static final int about=0x7f070008;
@@ -187,7 +209,7 @@ public final class R {
         public static final int button_ok=0x7f080002;
         public static final int call_number=0x7f08003b;
         public static final int callnumber_caption=0x7f080015;
-        public static final int cancel=0x7f08003f;
+        public static final int cancel=0x7f08003e;
         public static final int change_password=0x7f080036;
         public static final int collection_notification=0x7f080025;
         public static final int connection_error_message=0x7f08000e;
@@ -199,7 +221,6 @@ public final class R {
         public static final int enter_keywords=0x7f080003;
         public static final int enter_new_password=0x7f080037;
         public static final int error=0x7f080039;
-        public static final int fill_all_fields=0x7f08003d;
         public static final int font_size=0x7f080021;
         public static final int isbn=0x7f080009;
         public static final int isbn_caption=0x7f080016;
@@ -218,17 +239,17 @@ public final class R {
         public static final int on=0x7f080028;
         public static final int overdue_date_notification=0x7f080024;
         public static final int password=0x7f080030;
-        public static final int passwords_do_not_match=0x7f08003e;
+        public static final int passwords_do_not_match=0x7f08003d;
         public static final int pre_due_days_notification=0x7f080022;
         public static final int publication_caption=0x7f080018;
         public static final int publisher_caption=0x7f080014;
-        public static final int ready_date=0x7f080041;
+        public static final int ready_date=0x7f080040;
         public static final int reenter_new_password=0x7f080038;
         public static final int remember_password=0x7f080031;
         public static final int renew=0x7f08001f;
         public static final int reservation_list=0x7f080035;
         public static final int reserve=0x7f080020;
-        public static final int reserve_date=0x7f080040;
+        public static final int reserve_date=0x7f08003f;
         public static final int reset=0x7f080033;
         public static final int save=0x7f08002d;
         public static final int search_by_caption=0x7f08001a;
@@ -241,7 +262,7 @@ public final class R {
         public static final int title=0x7f080004;
         public static final int title_caption=0x7f080012;
         public static final int volume=0x7f08001b;
-        public static final int volume_number=0x7f080042;
+        public static final int volume_number=0x7f080041;
     }
     public static final class style {
         /** 
@@ -267,8 +288,13 @@ public final class R {
          */
         public static final int AppBaseTheme=0x7f0a0000;
         /**  Application theme. 
- All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0a0001;
+        public static final int MyActionBar=0x7f0a0002;
+        public static final int MyActionBarTitleText=0x7f0a0003;
+        public static final int MyButton=0x7f0a0006;
+        public static final int MyEditText=0x7f0a0007;
+        public static final int SpinnerItem=0x7f0a0004;
+        public static final int SpinnerItem_DropDownItem=0x7f0a0005;
     }
 }

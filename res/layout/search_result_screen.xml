@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:background="@drawable/main_background">
     
     <LinearLayout
         android:id="@+id/main_content"
@@ -13,12 +14,13 @@
             android:id="@+id/infoView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp" />
+            android:layout_margin="15dp"
+            android:textColor="@android:color/white" />
         
         <View 
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/list_selector" />
+            android:background="@color/list_top_divider" />
         
         <ListView
             android:id="@+id/listView"
@@ -33,6 +35,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="15dp"
+            android:textColor="@android:color/white"
             android:visibility="gone" />
         
     </LinearLayout>

@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -12,8 +13,9 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Reservation;
+import com.vtecsys.vlib.ui.screen.ReservationListScreen;
 
-public class ReservationListAdapter extends BaseAdapter {
+public class ReservationListAdapter extends BaseAdapter implements OnClickListener {
 	
 	private Context context;
 	private List<Reservation> reservations;
@@ -64,9 +66,18 @@ public class ReservationListAdapter extends BaseAdapter {
 		title.setText(reservation.getTitle());
 		
 		Button cancelBtn = (Button) convertView.findViewById(R.id.cancelBtn);
-		cancelBtn.setEnabled(reservation.canCancel());
+		cancelBtn.setTag(position);
+//		cancelBtn.setEnabled(reservation.canCancel());
+		cancelBtn.setOnClickListener(this);
 		
 		return convertView;
+	}
+
+	@Override
+	public void onClick(View v) {
+		int position = (Integer) v.getTag();
+		Reservation reservation = reservations.get(position);
+		((ReservationListScreen) context).requestCancelReservation(reservation);
 	}
 
 }

@@ -2,7 +2,6 @@ package com.vtecsys.vlib.ui.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -50,13 +49,7 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 		if (v.getId() == R.id.changeBtn) {
 			String pass1 = password1.getText().toString();
 			String pass2 = password2.getText().toString();
-			if (TextUtils.isEmpty(pass1)) {
-				Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
-				password1.requestFocus();				
-			} else if (TextUtils.isEmpty(pass2)) {
-				Toast.makeText(this, R.string.fill_all_fields, Toast.LENGTH_SHORT).show();
-				password2.requestFocus();
-			} else if (!pass1.equals(pass2)) {
+			if (!pass1.equals(pass2)) {
 				Toast.makeText(this, R.string.passwords_do_not_match, Toast.LENGTH_SHORT).show();
 			} else {
 				if (Utilities.isConnectionAvailable(this)) {

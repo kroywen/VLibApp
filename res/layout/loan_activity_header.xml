@@ -4,8 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:padding="5dp"
     android:background="@color/list_header_background">
     
     <TextView
@@ -14,6 +13,8 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:text="@string/item_number" />
     
     <TextView
@@ -22,6 +23,8 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:text="@string/call_number" />
     
     <TextView
@@ -30,14 +33,17 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
         android:text="@string/due_date" />
     
     <Button
+        style="@style/MyButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/list_btn_height"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:text="@string/renew"
-        android:visibility="invisible" />
+        android:text="@string/all"
+        android:background="@drawable/btn_orange_background" />
 
 </LinearLayout>

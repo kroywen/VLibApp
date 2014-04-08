@@ -24,6 +24,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@android:color/white"
 	            android:text="@string/font_size" />
 	        
 	        <Spinner
@@ -48,6 +49,7 @@
 	        android:layout_marginTop="10dp">
 	        
 	        <TextView 
+	            android:textColor="@android:color/white"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
@@ -70,6 +72,7 @@
 	        android:layout_marginTop="10dp">
 	        
 	        <TextView 
+	            android:textColor="@android:color/white"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
@@ -100,6 +103,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@android:color/white"
 	            android:text="@string/overdue_date_notification" />
 	        
 	        <View
@@ -128,6 +132,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@android:color/white"
 	            android:text="@string/collection_notification" />
 	        
 	        <View
@@ -153,6 +158,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
+	        android:textColor="@android:color/white"
 	        android:text="@string/language" />
 	    
 	    <RadioGroup 
@@ -166,18 +172,21 @@
 	            android:id="@+id/lang0"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+	            android:textColor="@android:color/white"
 	            android:text="@string/lang0" />
 	        
 	        <RadioButton
 	            android:id="@+id/lang1" 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+	            android:textColor="@android:color/white"
 	            android:text="@string/lang1" />
 	        
 	        <RadioButton 
 	            android:id="@+id/lang2"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
+	            android:textColor="@android:color/white"
 	            android:text="@string/lang2" />
 	        
 	    </RadioGroup>
@@ -188,11 +197,13 @@
 	        android:background="@color/list_selector" />
 	    
 	    <Button
+	        style="@style/MyButton"
 	        android:id="@+id/aboutBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
 	        android:gravity="center"
+	        android:background="@drawable/btn_orange_background"
 	        android:text="@string/about" />
 	
 	</LinearLayout>

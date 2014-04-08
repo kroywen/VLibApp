@@ -83,14 +83,17 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				BrowseResult result = (BrowseResult) apiResponse.getData();
-				List<Auth> authes = result.getAuthes();
-				BrowseResultAdapter adapter = new BrowseResultAdapter(this, authes);
-				listView.setAdapter(adapter);
-				listView.setVisibility(View.VISIBLE);
-				emptyView.setVisibility(View.GONE);
-				infoView.setText(getString(R.string.browse_result_pattern,
-					result.getLoaded()));
+				Object data = apiResponse.getData();
+				if (data != null && data instanceof BrowseResult) {
+					BrowseResult result = (BrowseResult) apiResponse.getData();
+					List<Auth> authes = result.getAuthes();
+					BrowseResultAdapter adapter = new BrowseResultAdapter(this, authes);
+					listView.setAdapter(adapter);
+					listView.setVisibility(View.VISIBLE);
+					emptyView.setVisibility(View.GONE);
+					infoView.setText(getString(R.string.browse_result_pattern,
+						result.getLoaded()));
+				}
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);

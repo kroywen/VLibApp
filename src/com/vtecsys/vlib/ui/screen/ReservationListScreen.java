@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.adapter.ReservationListAdapter;
@@ -121,6 +122,12 @@ public class ReservationListScreen extends BaseScreen {
 				emptyView.setText(apiResponse.getMessage());
 			}
 		}
+	}
+	
+	public void requestCancelReservation(Reservation reservation) {
+		// TODO
+		Toast.makeText(this, "Cancel reservation: " + reservation.getTitle(), 
+			Toast.LENGTH_SHORT).show();
 	}
 	
 }

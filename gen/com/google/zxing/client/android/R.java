@@ -33,11 +33,11 @@ public final class R {
 		public static final int status_text = 0x7f050007;
 		public static final int encode_view = 0x7f050001;
 		public static final int viewfinder_mask = 0x7f05000a;
-		public static final int result_points = 0x7f050004;
 		public static final int result_view = 0x7f050006;
-		public static final int result_minor_text = 0x7f050003;
+		public static final int result_points = 0x7f050004;
 		public static final int possible_result_points = 0x7f050002;
 		public static final int contents_text = 0x7f050000;
+		public static final int result_minor_text = 0x7f050003;
 		public static final int result_text = 0x7f050005;
 		public static final int viewfinder_laser = 0x7f050009;
 		public static final int transparent = 0x7f050008;

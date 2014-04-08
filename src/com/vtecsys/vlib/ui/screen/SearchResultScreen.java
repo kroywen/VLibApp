@@ -86,14 +86,17 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				SearchResult result = (SearchResult) apiResponse.getData();
-				List<Book> books = result.getBooks();
-				SearchResultAdapter adapter = new SearchResultAdapter(this, books);
-				listView.setAdapter(adapter);
-				listView.setVisibility(View.VISIBLE);
-				emptyView.setVisibility(View.GONE);
-				infoView.setText(getString(R.string.search_result_pattern, 
-						result.getHits(), result.getLoaded()));
+				Object data = apiResponse.getData();
+				if (data != null && data instanceof SearchResult) {
+					SearchResult result = (SearchResult) apiResponse.getData();
+					List<Book> books = result.getBooks();
+					SearchResultAdapter adapter = new SearchResultAdapter(this, books);
+					listView.setAdapter(adapter);
+					listView.setVisibility(View.VISIBLE);
+					emptyView.setVisibility(View.GONE);
+					infoView.setText(getString(R.string.search_result_pattern, 
+							result.getHits(), result.getLoaded()));
+				}
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);

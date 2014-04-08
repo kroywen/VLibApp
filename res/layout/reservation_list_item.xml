@@ -4,10 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal" 
     android:gravity="center_vertical"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp">
+    android:padding="5dp">
     
     <LinearLayout 
         android:layout_width="0dp"
@@ -28,7 +25,8 @@
 		        android:layout_weight="1"
 		        android:textSize="@dimen/list_small_text_size"
 		        android:maxLength="10"
-		        android:gravity="center" />
+		        android:gravity="center"
+		        android:textColor="@android:color/white" />
             
             <TextView
 		        android:id="@+id/callNumber"
@@ -37,7 +35,8 @@
 		        android:layout_weight="1"
 		        android:textSize="@dimen/list_small_text_size"
 		        android:maxLength="20"
-		        android:gravity="center" />
+		        android:gravity="center"
+		        android:textColor="@android:color/white" />
             
             <TextView
 		        android:id="@+id/volumeNumber"
@@ -46,7 +45,8 @@
 		        android:layout_weight="1"
 		        android:textSize="@dimen/list_small_text_size"
 		        android:maxLength="6"
-		        android:gravity="center" />
+		        android:gravity="center"
+		        android:textColor="@android:color/white" />
             
             <TextView
 		        android:id="@+id/readyDate"
@@ -55,7 +55,8 @@
 		        android:layout_weight="1"
 		        android:textSize="@dimen/list_small_text_size"
 		        android:maxLength="10"
-		        android:gravity="center" />
+		        android:gravity="center"
+		        android:textColor="@android:color/white" />
             
         </LinearLayout>
         
@@ -67,14 +68,17 @@
             android:textSize="@dimen/list_small_text_size"
             android:maxLength="60"
             android:maxLines="1"
-            android:ellipsize="end" />
+            android:ellipsize="end"
+            android:textColor="@android:color/white" />
         
     </LinearLayout>
     
     <Button
+        style="@style/MyButton"
         android:id="@+id/cancelBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/list_btn_height"
+        android:background="@drawable/btn_orange_background"
         android:text="@string/cancel" />
 
 </LinearLayout>

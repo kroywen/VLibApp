@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.screen;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -18,6 +19,11 @@ public class SplashScreen extends BaseScreen {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash_screen);
+		
+		ActionBar actionBar = getActionBar();
+		if (actionBar != null) {
+			actionBar.setDisplayHomeAsUpEnabled(false);
+		}
 		
 		if (Utilities.isConnectionAvailable(this)) {
 			requestSiteName();
@@ -38,6 +44,7 @@ public class SplashScreen extends BaseScreen {
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 				appTitle = (String) apiResponse.getData();
+				setTitle(appTitle);
 				
 				Intent intent = new Intent(this, MainScreen.class);
 				startActivity(intent);

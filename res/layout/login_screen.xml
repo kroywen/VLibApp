@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background">
     
 	<ScrollView 
 	    android:layout_width="match_parent"
@@ -15,12 +16,14 @@
 	        android:padding="15dp">
 	        
 	        <EditText
+	            style="@style/MyEditText"
 	            android:id="@+id/memberId"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content" 
 	            android:hint="@string/member_id" />
 	        
 	        <EditText
+	            style="@style/MyEditText"
 	            android:id="@+id/password"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
@@ -33,28 +36,33 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginTop="10dp"
+	            android:textColor="@android:color/white"
 	            android:text="@string/remember_password" />
 	        
 	        <LinearLayout 
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
 	            android:orientation="horizontal"
-	            android:layout_marginTop="10dp">
+	            android:layout_marginTop="20dp">
 	            
 	            <Button
+	                style="@style/MyButton"
 	                android:id="@+id/loginBtn"
 	                android:layout_width="0dp"
 	                android:layout_height="wrap_content"
 	                android:layout_weight="1"
 	                android:layout_marginRight="10dp"
+	                android:background="@drawable/btn_orange_background"
 	                android:text="@string/login" />
 	            
 	            <Button
+	                style="@style/MyButton"
 	                android:id="@+id/resetBtn"
 	                android:layout_width="0dp"
 	                android:layout_height="wrap_content"
 	                android:layout_weight="1"
 	                android:layout_marginLeft="10dp"
+	                android:background="@drawable/btn_orange_background"
 	                android:text="@string/reset" />
 	            
 	        </LinearLayout>

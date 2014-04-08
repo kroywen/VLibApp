@@ -16,6 +16,7 @@ public abstract class ApiParser {
 	public static final String TAG_RESPOND = "Respond";
 	public static final String TAG_STATUS = "Status";
 	public static final String TAG_MESSAGE = "Message";
+	public static final String TAG_REQUEST_NAME = "RequestName";
 	public static final String TAG_RESPONSE_DATA = "ResponseData";
 	public static final String TAG_SITE_NAME = "SiteName";
 	public static final String TAG_RESULTS = "Results";
@@ -103,6 +104,9 @@ public abstract class ApiParser {
 					} else if (tagName.equalsIgnoreCase(TAG_MESSAGE)) {
 						String message = readString(parser, TAG_MESSAGE);
 						apiResponse.setMessage(message);
+					} else if (tagName.equalsIgnoreCase(TAG_REQUEST_NAME)) {
+						String requestName = readString(parser, TAG_REQUEST_NAME);
+						apiResponse.setRequestName(requestName);
 					} else if (tagName.equalsIgnoreCase(TAG_RESPONSE_DATA)) {
 						Object data = readData(parser);
 						apiResponse.setData(data);

@@ -6,22 +6,14 @@ public class ApiResponse implements Serializable {
 	
 	private static final long serialVersionUID = 2298834586169426687L;
 	
-	public static final int STATUS_UNDEFINED = -1;
 	public static final int STATUS_OK = 0;
 
 	private int status;
 	private String message;
+	private String requestName;
 	private Object data;
 	
-	public ApiResponse() {
-		this(STATUS_UNDEFINED, null ,null);
-	}
-	
-	public ApiResponse(int status, String message, Object data) {
-		this.status = status;
-		this.message = message;
-		this.data = data;
-	}
+	public ApiResponse() {}
 	
 	public int getStatus() {
 		return status;
@@ -37,6 +29,14 @@ public class ApiResponse implements Serializable {
 	
 	public void setMessage(String message) {
 		this.message = message;
+	}
+	
+	public String getRequestName() {
+		return requestName;
+	}
+	
+	public void setRequestName(String requestName) {
+		this.requestName = requestName;
 	}
 	
 	public Object getData() {
