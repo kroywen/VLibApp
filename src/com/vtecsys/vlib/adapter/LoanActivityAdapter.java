@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -13,8 +14,9 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Loan;
+import com.vtecsys.vlib.ui.screen.LoanActivitiesScreen;
 
-public class LoanActivityAdapter extends BaseAdapter {
+public class LoanActivityAdapter extends BaseAdapter implements OnClickListener {
 	
 	private Context context;
 	private List<Loan> loans;
@@ -62,11 +64,19 @@ public class LoanActivityAdapter extends BaseAdapter {
 		TextView title = (TextView) convertView.findViewById(R.id.title);
 		title.setText(loan.getTitle());
 		
-		Button renew = (Button) convertView.findViewById(R.id.renewBtn);
-		renew.setEnabled(loan.canRenew());
-		// TODO
+		Button renewBtn = (Button) convertView.findViewById(R.id.renewBtn);
+		renewBtn.setTag(Integer.valueOf(position));
+		renewBtn.setOnClickListener(this);
+		renewBtn.setEnabled(loan.canRenew());
 		
 		return convertView;
+	}
+
+	@Override
+	public void onClick(View v) {
+		int position = (Integer) v.getTag();
+		Loan loan = loans.get(position);
+		((LoanActivitiesScreen) context).tryRenewLoan(loan);
 	}
 
 }

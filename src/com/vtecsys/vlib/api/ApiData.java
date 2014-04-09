@@ -41,6 +41,7 @@ public class ApiData {
 	public static final String PARAM_N_OD = "n_od";
 	public static final String PARAM_N_COLL = "n_coll";
 	public static final String PARAM_PREDUE = "predue";
+	public static final String PARAM_ITEMNO = "itemNo";
 	
 	public static final String TYPE_SEARCH = "search";
 	public static final String TYPE_BROWSE = "browse";

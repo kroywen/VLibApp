@@ -5,6 +5,7 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -12,8 +13,9 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Volume;
+import com.vtecsys.vlib.ui.screen.CatalogueScreen;
 
-public class VolumeAdapter extends BaseAdapter {
+public class VolumeAdapter extends BaseAdapter implements OnClickListener {
 	
 	private Context context;
 	private List<Volume> volumes;
@@ -61,9 +63,18 @@ public class VolumeAdapter extends BaseAdapter {
 		location.setText(volume.getLocation());
 		
 		Button reserveBtn = (Button) convertView.findViewById(R.id.reserveBtn);
+		reserveBtn.setTag(Integer.valueOf(position));
+		reserveBtn.setOnClickListener(this);
 		reserveBtn.setEnabled(volume.canReserve());
 		
 		return convertView;
+	}
+
+	@Override
+	public void onClick(View v) {
+		int position = (Integer) v.getTag();
+		Volume volume = volumes.get(position);
+		((CatalogueScreen) context).tryReserveVolume(volume);
 	}
 
 }

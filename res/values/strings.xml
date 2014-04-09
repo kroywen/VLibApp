@@ -29,6 +29,8 @@
     <string name="search_by_caption">Search By:&#160;</string>
     <string name="volume_caption">Call No. / Issue / Vol.</string>
     <string name="item_number">Item No.</string>
+    <string name="item_no_caption">Item No.:&#160;</string>
+    <string name="due_date_caption">Due Date:&#160;</string>
     <string name="status">Status</string>
     <string name="location">Location</string>
     <string name="renew">Renew</string>
@@ -66,6 +68,16 @@
     <string name="ready_date">Ready Date</string>
     <string name="volume_number">Vol No.</string>
     <string name="browse_by_pattern">Browse By %1$s</string>
+    <string name="confirm_reservation_title">Confirm to reserve this book title?</string>
+    <string name="reservation_success_title">The book title is reserved by</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">Ok</string>
+    <string name="member_id_caption">Member ID:&#160;</string>
+    <string name="member_name_caption">Member Name:&#160;</string>
+    <string name="confirm_cancel_reservation_title">Confirm cancel reservation?</string>
+    <string name="confirm_renew_title">Confirm to renew this book title?</string>
+    <string name="renew_success_title">The book title is renewed</string>
     
     <string-array name="main_menu">
         <item>Search</item>

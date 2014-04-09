@@ -1,5 +1,7 @@
 package com.vtecsys.vlib.model;
 
+import android.text.TextUtils;
+
 public class Loan {
 	
 	private String itemNumber;
@@ -7,7 +9,7 @@ public class Loan {
 	private String dueDate;
 	private String title;
 	private String author;
-	private String pubication;
+	private String publication;
 	private String location;
 	private String collection;
 	private String callNumber;
@@ -60,11 +62,19 @@ public class Loan {
 	}
 	
 	public String getPublication() {
-		return pubication;
+		return publication;
 	}
 	
 	public void setPublication(String publication) {
-		this.pubication = publication;
+		this.publication = publication;
+	}
+	
+	public String getPublisher() {
+		if (TextUtils.isEmpty(publication)) {
+			return null;
+		}
+		String[] items = publication.split("[:,]");
+		return (items.length > 1) ? items[1].trim() : items[0];
 	}
 	
 	public String getLocation() {

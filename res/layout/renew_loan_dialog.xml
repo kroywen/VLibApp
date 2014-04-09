@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@drawable/dialog_background"
+    android:padding="15dp">
+    
+    <TextView 
+        android:id="@+id/dialogTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:textColor="@color/app_main_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <LinearLayout 
+        android:id="@+id/itemNoContainer"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="10dp"
+	    android:orientation="horizontal">
+	    
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:text="@string/item_no_caption"
+			android:textColor="@color/app_main_color" />
+	    
+	    <TextView 
+	        android:id="@+id/itemNo"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:maxLength="30"
+	        android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+	    
+	</LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/dueDateContainer"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="10dp"
+	    android:orientation="horizontal">
+	    
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:text="@string/due_date_caption"
+			android:textColor="@color/app_main_color" />
+	    
+	    <TextView 
+	        android:id="@+id/dueDate"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:maxLength="30"
+	        android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+	    
+	</LinearLayout>
+    
+    <LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="10dp"
+	    android:orientation="horizontal">
+	    
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:text="@string/title_caption"
+			android:textColor="@color/app_main_color" />
+	    
+	    <TextView 
+	        android:id="@+id/title"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:maxLength="30"
+	        android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+	    
+	</LinearLayout>
+    
+    <LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_marginBottom="10dp"
+	    android:orientation="horizontal">
+	    
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:text="@string/author_caption"
+			android:textColor="@color/app_main_color" />
+	    
+	    <TextView 
+	        android:id="@+id/author"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:maxLength="30"
+	        android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+	    
+	</LinearLayout>
+	
+    <LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_marginBottom="25dp">
+	    
+	    <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textStyle="bold"
+			android:text="@string/publisher_caption"
+			android:textColor="@color/app_main_color" />
+	    
+	    <TextView 
+	        android:id="@+id/publisher"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="10dp"
+	        android:maxLength="30"
+	        android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+	    
+	</LinearLayout>
+	
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+        
+        <Button
+	        style="@style/MyButton"
+	        android:id="@+id/yesBtn"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:layout_marginRight="10dp"
+	        android:background="@drawable/btn_orange"
+	        android:text="@string/yes" />
+        
+        <Button
+	        style="@style/MyButton"
+	        android:id="@+id/okBtn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/btn_orange"
+	        android:text="@string/ok" />
+        
+        <Button
+	        style="@style/MyButton"
+	        android:id="@+id/noBtn"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:layout_weight="1"
+	        android:layout_marginLeft="10dp"
+	        android:background="@drawable/btn_orange"
+	        android:text="@string/no" />
+        
+    </LinearLayout>
+
+</LinearLayout>

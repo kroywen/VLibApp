@@ -66,9 +66,9 @@ public class ReservationListAdapter extends BaseAdapter implements OnClickListen
 		title.setText(reservation.getTitle());
 		
 		Button cancelBtn = (Button) convertView.findViewById(R.id.cancelBtn);
-		cancelBtn.setTag(position);
-//		cancelBtn.setEnabled(reservation.canCancel());
+		cancelBtn.setTag(Integer.valueOf(position));
 		cancelBtn.setOnClickListener(this);
+		cancelBtn.setEnabled(reservation.canCancel());
 		
 		return convertView;
 	}
@@ -77,7 +77,7 @@ public class ReservationListAdapter extends BaseAdapter implements OnClickListen
 	public void onClick(View v) {
 		int position = (Integer) v.getTag();
 		Reservation reservation = reservations.get(position);
-		((ReservationListScreen) context).requestCancelReservation(reservation);
+		((ReservationListScreen) context).tryCancelReservation(reservation);
 	}
 
 }

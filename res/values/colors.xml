@@ -34,5 +34,6 @@
     <color name="btn_blue_normal_end">#ff0249bd</color>
     <color name="btn_blue_pressed_end">#cc0249bd</color>
     <color name="btn_blue_disabled_end">#660249bd</color>
+    <color name="dialog_border">#08ee02</color>
     
 </resources>

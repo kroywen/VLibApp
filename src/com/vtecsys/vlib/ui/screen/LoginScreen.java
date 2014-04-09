@@ -17,6 +17,8 @@ import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
+import com.vtecsys.vlib.model.Patron;
+import com.vtecsys.vlib.model.result.PatronAccountResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.Utilities;
@@ -120,10 +122,13 @@ public class LoginScreen extends BaseScreen implements OnClickListener, OnChecke
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+				PatronAccountResult result = (PatronAccountResult) apiResponse.getData();
+				Patron patron = result.getPatron();
 				settings.setString(Settings.MEMBER_ID, 
 					memberId.getText().toString().trim());
 				settings.setString(Settings.PASSWORD, 
 					password.getText().toString().trim());
+				settings.setString(Settings.MEMBER_NAME, patron.getSurname());
 				isLoggedIn = true;
 				setResult(RESULT_OK);
 				finish();

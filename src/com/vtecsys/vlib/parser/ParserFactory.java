@@ -25,6 +25,12 @@ public class ParserFactory {
 			return new ChangePasswordParser();
 		} else if (ApiData.COMMAND_CHECK_ALERTS.equalsIgnoreCase(command)) {
 			return new AlertParser();
+		} else if (ApiData.COMMAND_RESERVATION.equalsIgnoreCase(command)) {
+			return new SimpleParser();
+		} else if (ApiData.COMMAND_CANCEL_RESERVATION.equalsIgnoreCase(command)) {
+			return new SimpleParser();
+		} else if (ApiData.COMMAND_RENEW_LOAN.equalsIgnoreCase(command)) {
+			return new SimpleParser();
 		} else {
 			return null;
 		}

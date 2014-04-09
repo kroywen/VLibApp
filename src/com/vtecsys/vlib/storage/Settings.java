@@ -16,6 +16,7 @@ public class Settings {
 	public static final String MEMBER_ID = "member_id";
 	public static final String PASSWORD = "password";
 	public static final String REMEMBER_PASSWORD = "remember_password";
+	public static final String MEMBER_NAME = "member_name";
 	
 	public static final int PRE_DUE_THREE_DAYS = 0;
 	public static final int PRE_DUE_SEVEN_DAYS = 1;
