@@ -54,6 +54,6 @@
         android:gravity="center"
         android:text="@string/all"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:background="@drawable/btn_orange_background" />
+        android:background="@drawable/btn_orange" />
 
 </LinearLayout>

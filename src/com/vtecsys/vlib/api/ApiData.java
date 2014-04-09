@@ -19,6 +19,9 @@ public class ApiData {
 	public static final String COMMAND_CHANGE_PASSWORD = "ChangePassword";
 	public static final String COMMAND_RENEW_LOAN = "RenewLoan";
 	public static final String COMMAND_CANCEL_RESERVATION = "CancelReservation";
+	public static final String COMMAND_CHECK_ALERTS = "CheckAlerts";
+	public static final String COMMAND_RESERVATION = "Reservation";
+	public static final String COMMAND_BIB_DETAIL = "BibDetail";
 	
 	public static final String PARAM_LANG = "lang";
 	public static final String PARAM_TERM = "term";
@@ -33,6 +36,11 @@ public class ApiData {
 	public static final String PARAM_ITEM_NO = "item_no";
 	public static final String PARAM_ISSUE = "issue";
 	public static final String PARAM_VOLUME = "volume";
+	public static final String PARAM_N_PD = "n_pd";
+	public static final String PARAM_N_D = "n_d";
+	public static final String PARAM_N_OD = "n_od";
+	public static final String PARAM_N_COLL = "n_coll";
+	public static final String PARAM_PREDUE = "predue";
 	
 	public static final String TYPE_SEARCH = "search";
 	public static final String TYPE_BROWSE = "browse";

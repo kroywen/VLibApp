@@ -43,7 +43,7 @@
         android:layout_height="@dimen/list_btn_height"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:background="@drawable/btn_orange_background"
+        android:background="@drawable/btn_orange"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/all" />
 

@@ -52,7 +52,7 @@
 	                android:layout_height="wrap_content"
 	                android:layout_weight="1"
 	                android:layout_marginRight="10dp"
-	                android:background="@drawable/btn_orange_background"
+	                android:background="@drawable/btn_orange"
 	                android:text="@string/login" />
 	            
 	            <Button
@@ -62,7 +62,7 @@
 	                android:layout_height="wrap_content"
 	                android:layout_weight="1"
 	                android:layout_marginLeft="10dp"
-	                android:background="@drawable/btn_orange_background"
+	                android:background="@drawable/btn_orange"
 	                android:text="@string/reset" />
 	            
 	        </LinearLayout>

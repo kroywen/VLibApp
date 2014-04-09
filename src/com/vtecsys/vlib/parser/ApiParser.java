@@ -67,6 +67,10 @@ public abstract class ApiParser {
 	public static final String TAG_TYPE = "Type";
 	public static final String TAG_ISSUE = "Issue";
 	public static final String TAG_CAN_CANCEL = "CanCancel";
+	public static final String TAG_NOTICES = "Notices";
+	public static final String TAG_PRE_DUE = "PreDue";
+	public static final String TAG_DUE = "Due";
+	public static final String TAG_OVER_DUE = "OverDue";
 	
 	protected static final String namespace = null;
 	

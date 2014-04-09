@@ -23,6 +23,8 @@ public class ParserFactory {
 			return new PatronAccountParser();
 		} else if (ApiData.COMMAND_CHANGE_PASSWORD.equalsIgnoreCase(command)) { 
 			return new ChangePasswordParser();
+		} else if (ApiData.COMMAND_CHECK_ALERTS.equalsIgnoreCase(command)) {
+			return new AlertParser();
 		} else {
 			return null;
 		}

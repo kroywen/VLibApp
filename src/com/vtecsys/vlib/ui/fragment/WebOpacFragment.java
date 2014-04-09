@@ -14,7 +14,7 @@ import com.vtecsys.vlib.R;
 
 public class WebOpacFragment extends Fragment {
 	
-	public static final String WEB_OPAC_URL = "http://www.vtecsys.com/";
+	public static final String WEB_OPAC_URL = "http://demo.vlibonline.com/";
 	
 	private WebView webView;
 	private ProgressBar progressView;
