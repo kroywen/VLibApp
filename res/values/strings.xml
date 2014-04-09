@@ -27,7 +27,7 @@
     <string name="publication_caption">Publication:&#160;</string>
     <string name="sort_by_caption">Sort By:&#160;</string>
     <string name="search_by_caption">Search By:&#160;</string>
-    <string name="volume">Volume</string>
+    <string name="volume_caption">Call No. / Issue / Vol.</string>
     <string name="item_number">Item No.</string>
     <string name="status">Status</string>
     <string name="location">Location</string>
@@ -39,7 +39,6 @@
     <string name="overdue_date_notification">Overdue Date Notification</string>
     <string name="collection_notification">Collection Notification</string>
     <string name="language">Language</string>
-    <string name="about">About V-App</string>
     <string name="on">On</string>
     <string name="off">Off</string>
     <string name="lang0">English</string>
@@ -66,12 +65,14 @@
     <string name="reserve_date">Reserve Date</string>
     <string name="ready_date">Ready Date</string>
     <string name="volume_number">Vol No.</string>
+    <string name="browse_by_pattern">Browse By %1$s</string>
     
     <string-array name="main_menu">
         <item>Search</item>
         <item>My Account</item>
         <item>Settings</item>
         <item>WebOpac</item>
+        <item>About V-App</item>
     </string-array>
     
     <string-array name="sort_by_items">

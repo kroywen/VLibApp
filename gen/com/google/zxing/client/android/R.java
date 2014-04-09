@@ -15,19 +15,19 @@ public final class R {
 		public static final int return_scan_result = 0x7f070006;
 		public static final int bookmark_url = 0x7f07000e;
 		public static final int restart_preview = 0x7f070005;
-		public static final int preview_view = 0x7f070020;
+		public static final int preview_view = 0x7f07001f;
 		public static final int quit = 0x7f070004;
-		public static final int image_view = 0x7f07001e;
-		public static final int viewfinder_view = 0x7f070021;
+		public static final int image_view = 0x7f07001d;
+		public static final int viewfinder_view = 0x7f070020;
 		public static final int launch_product_query = 0x7f070003;
 		public static final int decode = 0x7f070000;
-		public static final int snippet_view = 0x7f070036;
-		public static final int history_title = 0x7f070022;
-		public static final int contents_text_view = 0x7f07001f;
-		public static final int history_detail = 0x7f070023;
+		public static final int snippet_view = 0x7f070035;
+		public static final int history_title = 0x7f070021;
+		public static final int contents_text_view = 0x7f07001e;
+		public static final int history_detail = 0x7f070022;
 		public static final int decode_failed = 0x7f070001;
 		public static final int bookmark_title = 0x7f07000d;
-		public static final int page_number_view = 0x7f070035;
+		public static final int page_number_view = 0x7f070034;
 	}
 	public static final class color {
 		public static final int status_text = 0x7f050007;

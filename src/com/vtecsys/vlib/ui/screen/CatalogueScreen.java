@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,10 +21,9 @@ import com.vtecsys.vlib.model.result.CatalogueResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.Utilities;
 
-public class CatalogueScreen extends BaseScreen implements OnClickListener {
+public class CatalogueScreen extends BaseScreen {
 	
 	private ImageView bookCover;
-	private Button reserveBtn;
 	private ListView listView;
 	private TextView isbn;
 	private TextView callNumber;
@@ -62,8 +59,6 @@ public class CatalogueScreen extends BaseScreen implements OnClickListener {
 		
 		bookCover = (ImageView) findViewById(R.id.bookCover); 
 		listView = (ListView) findViewById(R.id.listView);
-		reserveBtn = (Button) findViewById(R.id.reserveBtn);
-		reserveBtn.setOnClickListener(this);
 		
 		isbn = (TextView) findViewById(R.id.isbn);
 		callNumber = (TextView) findViewById(R.id.callnumber);
@@ -124,12 +119,6 @@ public class CatalogueScreen extends BaseScreen implements OnClickListener {
 		default:
 			return super.onOptionsItemSelected(item);
 		}
-	}
-	
-	@Override
-	public void onClick(View v) {
-		Intent intent = new Intent(this, LoginScreen.class);
-		startActivity(intent);
 	}
 
 }

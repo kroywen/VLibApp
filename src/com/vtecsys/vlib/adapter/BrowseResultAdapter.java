@@ -48,7 +48,7 @@ public class BrowseResultAdapter extends BaseAdapter {
 		Auth auth = getItem(position);
 		
 		TextView authEntry = (TextView) convertView.findViewById(R.id.text);
-		authEntry.setText(auth.getAuthEntry());
+		authEntry.setText((position + 1) + ". " + auth.getAuthEntry());
 		
 		return convertView;
 	}

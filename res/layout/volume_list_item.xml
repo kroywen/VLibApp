@@ -44,11 +44,12 @@
     
     <Button
         style="@style/MyButton"
-        android:id="@+id/renewBtn"
+        android:id="@+id/reserveBtn"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/list_btn_height"
         android:gravity="center"
         android:background="@drawable/btn_orange_background"
-        android:text="@string/renew" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/reserve" />
 
 </LinearLayout>

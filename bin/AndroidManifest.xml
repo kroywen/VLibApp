@@ -49,10 +49,6 @@
             android:label="@string/app_name" />
         
         <activity
-            android:name="com.vtecsys.vlib.ui.screen.AboutScreen"
-            android:label="@string/app_name" />
-        
-        <activity
             android:name="com.vtecsys.vlib.ui.screen.LoginScreen"
             android:label="@string/app_name" />
         

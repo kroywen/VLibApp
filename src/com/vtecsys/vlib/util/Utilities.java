@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
@@ -60,5 +61,11 @@ public class Utilities {
         params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
         listView.setLayoutParams(params);
     }
+	
+	public static String uppercase(String word) {
+		return TextUtils.isEmpty(word) ? word :
+			word.length() == 1 ? String.valueOf(Character.toUpperCase(word.charAt(0))) : 
+			Character.toUpperCase(word.charAt(0)) + word.substring(1);
+	}
 
 }

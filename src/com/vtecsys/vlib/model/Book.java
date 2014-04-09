@@ -52,7 +52,7 @@ public class Book {
 			return null;
 		}
 		String[] items = publication.split("[:,]");
-		return items[1].trim();
+		return (items.length > 1) ? items[1].trim() : items[0];
 	}
 	
 	public String getCallNumber() {

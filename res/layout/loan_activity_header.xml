@@ -5,7 +5,7 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:padding="5dp"
-    android:background="@color/list_header_background">
+    android:background="@color/list_header_background_2">
     
     <TextView
         android:layout_width="0dp"
@@ -43,7 +43,8 @@
         android:layout_height="@dimen/list_btn_height"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:text="@string/all"
-        android:background="@drawable/btn_orange_background" />
+        android:background="@drawable/btn_orange_background"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/all" />
 
 </LinearLayout>

@@ -47,6 +47,10 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		sortBy = sortByParams[intent.getIntExtra(ApiData.PARAM_SORT_BY, 0)];
 		browseBy = intent.getStringExtra(ApiData.PARAM_BROWSE_BY);
 		
+		String screenTitle = getString(R.string.browse_by_pattern, 
+			Utilities.uppercase(browseBy));
+		setTitle(screenTitle);
+		
 		if (Utilities.isConnectionAvailable(this)) {
 			requestBrowse();
 		} else {

@@ -15,7 +15,7 @@
         android:gravity="center"
         android:textColor="@android:color/white"
         android:textStyle="bold"
-        android:text="@string/volume" />
+        android:text="@string/volume_caption" />
     
     <TextView
         android:layout_width="0dp"
@@ -53,6 +53,7 @@
         android:layout_height="@dimen/list_btn_height"
         android:gravity="center"
         android:text="@string/all"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:background="@drawable/btn_orange_background" />
 
 </LinearLayout>

@@ -64,6 +64,9 @@ public class SearchResultAdapter extends BaseAdapter {
 		TextView callNumber = (TextView) convertView.findViewById(R.id.callnumber);
 		callNumber.setText(book.getCallNumber());
 		
+		TextView number = (TextView) convertView.findViewById(R.id.number);
+		number.setText(String.valueOf(position + 1));
+		
 		return convertView;
 	}
 

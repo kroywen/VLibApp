@@ -8,6 +8,7 @@
     <color name="progress_view_background">#88000000</color>
     <color name="list_selector">#cccccc</color>
     <color name="list_header_background">#33000000</color>
+    <color name="list_header_background_2">#fa931d</color>
     <color name="list_top_divider">#08ee02</color>
     <color name="btn_orange_start">#d57f4f</color>
     <color name="btn_orange_end">#be4200</color>

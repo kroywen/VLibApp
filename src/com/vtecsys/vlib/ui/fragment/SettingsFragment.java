@@ -7,9 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
@@ -21,11 +19,10 @@ import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.storage.Settings;
-import com.vtecsys.vlib.ui.screen.AboutScreen;
 import com.vtecsys.vlib.ui.screen.BaseScreen;
 import com.vtecsys.vlib.util.Utilities;
 
-public class SettingsFragment extends BaseFragment implements OnClickListener {
+public class SettingsFragment extends BaseFragment {
 	
 	private Spinner fontSize;
 	private Spinner preDueDaysNotification;
@@ -33,7 +30,6 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 	private Switch overdueDateNotification;
 	private Switch collectionNotification;
 	private RadioGroup language;
-	private Button aboutBtn;
 	
 	private int[] languages = new int[] { R.id.lang0, R.id.lang1, R.id.lang2 };
 	private boolean langChanged;
@@ -90,8 +86,6 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 				}
 			}
 		});
-		aboutBtn = (Button) rootView.findViewById(R.id.aboutBtn);
-		aboutBtn.setOnClickListener(this);
 	}
 	
 	private void updateViews() {
@@ -105,14 +99,6 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 		collectionNotification.setChecked(
 			settings.getBoolean(Settings.COLLECTION_NOTIFICATION));
 		language.check(languages[settings.getInt(Settings.LANGUAGE)]);
-	}
-
-	@Override
-	public void onClick(View v) {
-		if (v.getId() == R.id.aboutBtn) {
-			Intent intent = new Intent(getActivity(), AboutScreen.class);
-			getActivity().startActivity(intent);
-		}
 	}
 	
 	private void saveSettings() {

@@ -195,16 +195,6 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="1px"
 	        android:background="@color/list_selector" />
-	    
-	    <Button
-	        style="@style/MyButton"
-	        android:id="@+id/aboutBtn"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="10dp"
-	        android:gravity="center"
-	        android:background="@drawable/btn_orange_background"
-	        android:text="@string/about" />
 	
 	</LinearLayout>
 	</ScrollView>
