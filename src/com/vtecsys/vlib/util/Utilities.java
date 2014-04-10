@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.List;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -46,7 +47,6 @@ public class Utilities {
 	public static void setListViewHeightBasedOnChildren(ListView listView) {
         ListAdapter listAdapter = listView.getAdapter(); 
         if (listAdapter == null) {
-            // pre-condition
             return;
         }
 
@@ -66,6 +66,10 @@ public class Utilities {
 		return TextUtils.isEmpty(word) ? word :
 			word.length() == 1 ? String.valueOf(Character.toUpperCase(word.charAt(0))) : 
 			Character.toUpperCase(word.charAt(0)) + word.substring(1);
+	}
+	
+	public static boolean isEmpty(List<?> list) {
+		return list == null || list.isEmpty();
 	}
 
 }

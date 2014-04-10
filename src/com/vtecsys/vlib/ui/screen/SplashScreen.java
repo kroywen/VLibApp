@@ -3,6 +3,7 @@ package com.vtecsys.vlib.ui.screen;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.vtecsys.vlib.R;
@@ -47,12 +48,29 @@ public class SplashScreen extends BaseScreen {
 		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
 		intent.putExtra(ApiData.PARAM_ID, settings.getString(Settings.MEMBER_ID));
 		intent.putExtra(ApiData.PARAM_PASSWD, settings.getString(Settings.PASSWORD));
-		intent.putExtra(ApiData.PARAM_PREDUE, settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
+		String predue = getPreDueDaysNotificationParam(
+			settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
+		if (!TextUtils.isEmpty(predue)) {
+			intent.putExtra(ApiData.PARAM_PREDUE, settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
+		}
 		intent.putExtra(ApiData.PARAM_N_PD, "y");
 		intent.putExtra(ApiData.PARAM_N_D, settings.getBoolean(Settings.DUE_DATE_NOTIFICATION) ? "y" : "n");
 		intent.putExtra(ApiData.PARAM_N_OD, settings.getBoolean(Settings.OVERDUE_DATE_NOTIFICATION) ? "y" : "n");
 		intent.putExtra(ApiData.PARAM_N_COLL, settings.getBoolean(Settings.COLLECTION_NOTIFICATION) ? "y" : "n");
 		startService(intent);
+	}
+	
+	private String getPreDueDaysNotificationParam(int position) {
+		switch (position) {
+		case 0:
+			return "none";
+		case 1:
+			return "3";
+		case 2:
+			return "7";
+		default:
+			return null;
+		}
 	}
 
 	@Override

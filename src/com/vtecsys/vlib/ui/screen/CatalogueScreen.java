@@ -208,11 +208,11 @@ public class CatalogueScreen extends BaseScreen implements OnReservationClickLis
 
 	@Override
 	public void onReservationOkClick(DialogFragment dialog) {
-		if (Utilities.isConnectionAvailable(this)) {
-			requestCatalogue(false);
-		} else {
-			showConnectionErrorDialog();
-		}
+//		if (Utilities.isConnectionAvailable(this)) {
+//			requestCatalogue(false);
+//		} else {
+//			showConnectionErrorDialog();
+//		}
 	}
 
 }

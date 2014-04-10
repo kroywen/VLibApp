@@ -23,6 +23,7 @@ import com.vtecsys.vlib.util.Utilities;
 
 public class BrowseResultScreen extends BaseScreen implements OnItemClickListener {
 	
+	private TextView headerView;
 	private TextView infoView;
 	private ListView listView;
 	private TextView emptyView;
@@ -47,9 +48,9 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		sortBy = sortByParams[intent.getIntExtra(ApiData.PARAM_SORT_BY, 0)];
 		browseBy = intent.getStringExtra(ApiData.PARAM_BROWSE_BY);
 		
-		String screenTitle = getString(R.string.browse_by_pattern, 
+		String headerTitle = getString(R.string.browse_by_pattern, 
 			Utilities.uppercase(browseBy));
-		setTitle(screenTitle);
+		headerView.setText(headerTitle);
 		
 		if (Utilities.isConnectionAvailable(this)) {
 			requestBrowse();
@@ -61,6 +62,8 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 	@Override
 	protected void initializeViews() {
 		super.initializeViews();
+		
+		headerView = (TextView) findViewById(R.id.headerView);
 		
 		infoView = (TextView) findViewById(R.id.infoView);
 		infoView.setText(getString(R.string.browse_result_pattern, 0));

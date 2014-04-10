@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.screen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.DialogFragment;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,18 +24,28 @@ import com.vtecsys.vlib.model.Patron;
 import com.vtecsys.vlib.model.Reservation;
 import com.vtecsys.vlib.model.result.PatronAccountResult;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.ui.dialog.CancelAllReservationDialog;
+import com.vtecsys.vlib.ui.dialog.CancelAllReservationDialog.OnCancelAllReservationClickListener;
 import com.vtecsys.vlib.ui.dialog.CancelReservationDialog;
 import com.vtecsys.vlib.ui.dialog.CancelReservationDialog.OnCancelReservationClickListener;
 import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.Utilities;
 
-public class ReservationListScreen extends BaseScreen implements OnCancelReservationClickListener {
+public class ReservationListScreen extends BaseScreen 
+	implements OnCancelReservationClickListener, 
+	OnCancelAllReservationClickListener, OnClickListener 
+{
 	
 	private TextView memberId;
 	private ListView listView;
 	private TextView emptyView;
+	private View listHeaderView;
+	private Button allBtn;
 	
 	private Reservation requestedReservation;
+	private List<Reservation> reservations;
+	private List<Reservation> requestedReservationList;
+	private boolean cancelAll;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,13 @@ public class ReservationListScreen extends BaseScreen implements OnCancelReserva
 		memberId = (TextView) findViewById(R.id.memberId);
 		listView = (ListView) findViewById(R.id.listView);
 		emptyView = (TextView) findViewById(R.id.emptyView);
+		
+		LayoutInflater inflater = (LayoutInflater) 
+			getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		listHeaderView = inflater.inflate(R.layout.reservation_list_header, null);
+		
+		allBtn = (Button) listHeaderView.findViewById(R.id.allBtn);
+		allBtn.setOnClickListener(this);
 	}
 	
 	private void requestReservationList(boolean hideContent) {
@@ -111,18 +131,18 @@ public class ReservationListScreen extends BaseScreen implements OnCancelReserva
 					memberId.setText(id);
 					
 					if (listView.getHeaderViewsCount() == 0) {
-						LayoutInflater inflater = (LayoutInflater) 
-							getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-						View headerView = inflater.inflate(R.layout.reservation_list_header, null);
-						listView.addHeaderView(headerView, null, false);
+						listView.addHeaderView(listHeaderView, null, false);
 					}
 					
-					List<Reservation> reservations = result.getReservations();
+					reservations = result.getReservations();
 					ReservationListAdapter adapter = 
 						new ReservationListAdapter(this, reservations);
 					listView.setAdapter(adapter);
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
+					
+					boolean canCancelAll = canCancellAll();
+					allBtn.setEnabled(canCancelAll);
 				} else {
 					listView.setVisibility(View.GONE);
 					listView.setAdapter(null);
@@ -133,7 +153,18 @@ public class ReservationListScreen extends BaseScreen implements OnCancelReserva
 		} else if (ApiData.COMMAND_CANCEL_RESERVATION.equalsIgnoreCase(apiResponse.getRequestName())) {
 			if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-					requestReservationList(false);
+					if (cancelAll) {
+						int currentIndex = requestedReservationList.indexOf(requestedReservation);
+						if (currentIndex < requestedReservationList.size()-1) {
+							currentIndex++;
+							requestedReservation = requestedReservationList.get(currentIndex);
+							requestCancelReservation();
+						} else {
+							requestReservationList(false);
+						}
+					} else {
+						requestReservationList(false);
+					}
 				} else {
 					DialogUtils.showDialog(this, getString(R.string.error),
 						apiResponse.getMessage());
@@ -141,6 +172,25 @@ public class ReservationListScreen extends BaseScreen implements OnCancelReserva
 			}
 		}
 	}
+	
+	private boolean canCancellAll() {
+		if (reservations == null) {
+			return false;
+		}
+		if (Utilities.isEmpty(reservations)) {
+			return false;
+		}
+		
+		for (Reservation reservation : reservations) {
+			if (reservation.canCancel()) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	
 	
 	public void tryCancelReservation(Reservation reservation) {
 		requestedReservation = reservation;
@@ -178,10 +228,64 @@ public class ReservationListScreen extends BaseScreen implements OnCancelReserva
 
 	@Override
 	public void onCancelReservationYesClick(DialogFragment dialog, Reservation reservation) {
+		cancelAll = false;
 		requestCancelReservation();
 	}
 
 	@Override
 	public void onCancelReservationNoClick(DialogFragment dialog) {}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.allBtn:
+			boolean canCancelAll = canCancellAll();
+			if (canCancelAll) {
+				tryCancelAllReservations();
+			}
+			break;
+		}
+	}
+	
+	private void tryCancelAllReservations() {
+		requestedReservationList = getReservationListForCancel();
+		requestedReservation = requestedReservationList.get(0);
+		if (Utilities.isConnectionAvailable(this)) {
+			showRequestCancelAllReservationDialog();
+		} else {
+			showConnectionErrorDialog();
+		}
+	}
+	
+	private List<Reservation> getReservationListForCancel() {
+		if (Utilities.isEmpty(reservations)) {
+			return null;
+		}
+		List<Reservation> result = new ArrayList<Reservation>();
+		for (Reservation reservation : reservations) {
+			if (reservation.canCancel()) {
+				result.add(reservation);
+			}
+		}
+		return result;
+	}
+	
+	private void showRequestCancelAllReservationDialog() {
+		CancelAllReservationDialog dialog = new CancelAllReservationDialog();
+		dialog.setRetainInstance(true);
+		dialog.setReservations(requestedReservationList);
+		dialog.show(getFragmentManager(), "cancelAllReservation");
+	}
+
+	@Override
+	public void onCancelAllReservationYesClick(DialogFragment dialog, 
+		List<Reservation> reservations) 
+	{
+		cancelAll = true;
+		requestCancelReservation();
+	}
+
+	@Override
+	public void onCancelAllReservationNoClick(DialogFragment dialog) {}
 	
 }
