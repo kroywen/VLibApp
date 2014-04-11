@@ -196,6 +196,7 @@ public class ReservationListScreen extends BaseScreen
 	
 	public void tryCancelReservation(Reservation reservation) {
 		requestedReservation = reservation;
+		cancelAll = false;
 		if (reservation == null) {
 			return;
 		}

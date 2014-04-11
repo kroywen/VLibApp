@@ -192,6 +192,7 @@ public class LoanActivitiesScreen extends BaseScreen
 	
 	public void tryRenewLoan(Loan loan) {
 		requestedLoan = loan;
+		renewAll = false;
 		if (loan == null) {
 			return;
 		}
