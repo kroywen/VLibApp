@@ -141,7 +141,7 @@ public class ReservationListScreen extends BaseScreen
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
 					
-					boolean canCancelAll = canCancellAll();
+					boolean canCancelAll = canCancelAll();
 					allBtn.setEnabled(canCancelAll);
 				} else {
 					listView.setVisibility(View.GONE);
@@ -152,31 +152,33 @@ public class ReservationListScreen extends BaseScreen
 			}
 		} else if (ApiData.COMMAND_CANCEL_RESERVATION.equalsIgnoreCase(apiResponse.getRequestName())) {
 			if (apiStatus == ApiService.API_STATUS_SUCCESS) {
-				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-					if (cancelAll) {
-						int currentIndex = requestedReservationList.indexOf(requestedReservation);
-						if (currentIndex < requestedReservationList.size()-1) {
-							currentIndex++;
-							requestedReservation = requestedReservationList.get(currentIndex);
-							requestCancelReservation();
-						} else {
-							requestReservationList(false);
-						}
+				if (cancelAll) {
+					if (apiResponse.getStatus() != ApiResponse.STATUS_OK) {
+						DialogUtils.showDialog(this, getString(R.string.error),
+							apiResponse.getMessage());
+					}
+					int currentIndex = requestedReservationList.indexOf(requestedReservation);
+					if (currentIndex < requestedReservationList.size()-1) {
+						currentIndex++;
+						requestedReservation = requestedReservationList.get(currentIndex);
+						requestCancelReservation();
 					} else {
+						cancelAll = false;
 						requestReservationList(false);
 					}
 				} else {
-					DialogUtils.showDialog(this, getString(R.string.error),
-						apiResponse.getMessage());
+					if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+						requestReservationList(false);
+					} else {
+						DialogUtils.showDialog(this, getString(R.string.error),
+							apiResponse.getMessage());
+					}
 				}
 			}
 		}
 	}
 	
-	private boolean canCancellAll() {
-		if (reservations == null) {
-			return false;
-		}
+	private boolean canCancelAll() {
 		if (Utilities.isEmpty(reservations)) {
 			return false;
 		}
@@ -239,7 +241,7 @@ public class ReservationListScreen extends BaseScreen
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.allBtn:
-			boolean canCancelAll = canCancellAll();
+			boolean canCancelAll = canCancelAll();
 			if (canCancelAll) {
 				tryCancelAllReservations();
 			}

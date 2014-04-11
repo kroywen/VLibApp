@@ -4,7 +4,6 @@ import java.io.InputStream;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 
 import android.app.IntentService;
@@ -28,8 +27,6 @@ public class ApiService extends IntentService {
 	public static final int API_STATUS_SUCCESS = 0;
 	public static final int API_STATUS_ERROR = 1;
 	
-	private HttpClient client;
-	
 	public ApiService() {
 		this(ApiService.class.getSimpleName());
 	}
@@ -43,7 +40,7 @@ public class ApiService extends IntentService {
 		String command = intent.getAction();
 		String url = ApiData.createURL(command, intent.getExtras());
 		Log.d(TAG, "URL: " + url);
-		client = AndroidHttpClient.newInstance(
+		AndroidHttpClient client = AndroidHttpClient.newInstance(
 			System.getProperty("http.agent"), this);
 		HttpGet request = new HttpGet(url);
 		
@@ -65,6 +62,8 @@ public class ApiService extends IntentService {
 		} catch (Exception e) {
 			e.printStackTrace();
 			sendResult(API_STATUS_ERROR, null);
+		} finally {
+			client.close();
 		}
 	}
 	

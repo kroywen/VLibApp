@@ -51,9 +51,9 @@ public final class R {
 		public static final int bookmark_picker_list_item = 0x7f030002;
 		public static final int fragment_capture = 0x7f03000c;
 		public static final int encode = 0x7f03000b;
-		public static final int search_book_contents_list_item = 0x7f03001a;
+		public static final int search_book_contents_list_item = 0x7f03001c;
 		public static final int history_list_item = 0x7f03000d;
-		public static final int search_book_contents_header = 0x7f030019;
+		public static final int search_book_contents_header = 0x7f03001b;
 	}
 	public static final class dimen {
 		public static final int half_padding = 0x7f060001;

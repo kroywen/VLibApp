@@ -51,9 +51,8 @@ public class SplashScreen extends BaseScreen {
 		String predue = getPreDueDaysNotificationParam(
 			settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
 		if (!TextUtils.isEmpty(predue)) {
-			intent.putExtra(ApiData.PARAM_PREDUE, settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
+			intent.putExtra(ApiData.PARAM_PREDUE, predue);
 		}
-		intent.putExtra(ApiData.PARAM_N_PD, "y");
 		intent.putExtra(ApiData.PARAM_N_D, settings.getBoolean(Settings.DUE_DATE_NOTIFICATION) ? "y" : "n");
 		intent.putExtra(ApiData.PARAM_N_OD, settings.getBoolean(Settings.OVERDUE_DATE_NOTIFICATION) ? "y" : "n");
 		intent.putExtra(ApiData.PARAM_N_COLL, settings.getBoolean(Settings.COLLECTION_NOTIFICATION) ? "y" : "n");

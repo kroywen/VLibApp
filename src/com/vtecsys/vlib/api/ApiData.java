@@ -36,7 +36,6 @@ public class ApiData {
 	public static final String PARAM_ITEM_NO = "item_no";
 	public static final String PARAM_ISSUE = "issue";
 	public static final String PARAM_VOLUME = "volume";
-	public static final String PARAM_N_PD = "n_pd";
 	public static final String PARAM_N_D = "n_d";
 	public static final String PARAM_N_OD = "n_od";
 	public static final String PARAM_N_COLL = "n_coll";

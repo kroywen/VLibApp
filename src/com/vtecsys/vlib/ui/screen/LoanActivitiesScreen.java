@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.screen;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.DialogFragment;
@@ -9,6 +10,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -21,18 +24,28 @@ import com.vtecsys.vlib.model.Loan;
 import com.vtecsys.vlib.model.Patron;
 import com.vtecsys.vlib.model.result.PatronAccountResult;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.ui.dialog.RenewAllLoanDialog;
+import com.vtecsys.vlib.ui.dialog.RenewAllLoanDialog.OnRenewAllClickListener;
 import com.vtecsys.vlib.ui.dialog.RenewLoanDialog;
 import com.vtecsys.vlib.ui.dialog.RenewLoanDialog.OnRenewClickListener;
 import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.Utilities;
 
-public class LoanActivitiesScreen extends BaseScreen implements OnRenewClickListener {
+public class LoanActivitiesScreen extends BaseScreen 
+	implements OnRenewClickListener, OnRenewAllClickListener,
+	OnClickListener 
+{
 	
 	private TextView memberId;
 	private ListView listView;
 	private TextView emptyView;
+	private View listHeaderView;
+	private Button allBtn;
 	
 	private Loan requestedLoan;
+	private List<Loan> loans;
+	private List<Loan> requestedLoanList;
+	private boolean renewAll;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,13 @@ public class LoanActivitiesScreen extends BaseScreen implements OnRenewClickList
 		memberId = (TextView) findViewById(R.id.memberId);
 		listView = (ListView) findViewById(R.id.listView);
 		emptyView = (TextView) findViewById(R.id.emptyView);
+		
+		LayoutInflater inflater = (LayoutInflater) 
+			getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		listHeaderView = inflater.inflate(R.layout.loan_activity_header, null);
+		
+		allBtn = (Button) listHeaderView.findViewById(R.id.allBtn);
+		allBtn.setOnClickListener(this);
 	}
 	
 	private void requestLoanActivities(boolean hideContent) {
@@ -110,16 +130,18 @@ public class LoanActivitiesScreen extends BaseScreen implements OnRenewClickList
 					}
 					memberId.setText(id);
 					
-					LayoutInflater inflater = (LayoutInflater) 
-						getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-					View headerView = inflater.inflate(R.layout.loan_activity_header, null);
-					listView.addHeaderView(headerView, null, false);
+					if (listView.getHeaderViewsCount() == 0) {
+						listView.addHeaderView(listHeaderView, null, false);
+					}
 					
-					List<Loan> loans = result.getLoans();
+					loans = result.getLoans();
 					LoanActivityAdapter adapter = new LoanActivityAdapter(this, loans);
 					listView.setAdapter(adapter);
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
+					
+					boolean canRenewAll = canRenewAll();
+					allBtn.setEnabled(canRenewAll);
 				} else {
 					listView.setVisibility(View.GONE);
 					listView.setAdapter(null);
@@ -128,8 +150,23 @@ public class LoanActivitiesScreen extends BaseScreen implements OnRenewClickList
 				}
 			}
 		} else if (ApiData.COMMAND_RENEW_LOAN.equalsIgnoreCase(apiResponse.getRequestName())) {
-			if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+			if (renewAll) {
+				if (apiResponse.getStatus() != ApiResponse.STATUS_OK) {
+					DialogUtils.showDialog(this, getString(R.string.error),
+						apiResponse.getMessage());
+				}
+				int currentIndex = requestedLoanList.indexOf(requestedLoan);
+				if (currentIndex < requestedLoanList.size()-1) {
+					currentIndex++;
+					requestedLoan = requestedLoanList.get(currentIndex);
+					requestRenewLoan();
+				} else {
+					requestLoanActivities(false);
+				}
+			} else {
 				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+					String newDueDate = Utilities.extractDate(apiResponse.getMessage());
+					requestedLoan.setDueDate(newDueDate);
 					showRenewLoanSuccessDialog();
 				} else {
 					DialogUtils.showDialog(this, getString(R.string.error),
@@ -137,6 +174,20 @@ public class LoanActivitiesScreen extends BaseScreen implements OnRenewClickList
 				}
 			}
 		}
+	}
+	
+	private boolean canRenewAll() {
+		if (Utilities.isEmpty(loans)) {
+			return false;
+		}
+		
+		for (Loan loan : loans) {
+			if (loan.canRenew()) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 	public void tryRenewLoan(Loan loan) {
@@ -189,8 +240,58 @@ public class LoanActivitiesScreen extends BaseScreen implements OnRenewClickList
 
 	@Override
 	public void onRenewOkClick(DialogFragment dialog) {
-		// TODO Auto-generated method stub
-		
+		requestLoanActivities(false);
 	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.allBtn:
+			boolean canRenewAll = canRenewAll();
+			if (canRenewAll) {
+				tryRenewAllLoans();
+			}
+			break;
+		}
+	}
+	
+	private void tryRenewAllLoans() {
+		requestedLoanList = getLoanListForRenew();
+		requestedLoan = requestedLoanList.get(0);
+		if (Utilities.isConnectionAvailable(this)) {
+			showRequestRenewAllLoanDialog();
+		} else {
+			showConnectionErrorDialog();
+		}
+	}
+	
+	private List<Loan> getLoanListForRenew() {
+		if (Utilities.isEmpty(loans)) {
+			return null;
+		}
+		List<Loan> result = new ArrayList<Loan>();
+		for (Loan loan : loans) {
+			if (loan.canRenew()) {
+				result.add(loan);
+			}
+		}
+		return result;
+	}
+	
+	private void showRequestRenewAllLoanDialog() {
+		RenewAllLoanDialog dialog = new RenewAllLoanDialog();
+		dialog.setRetainInstance(true);
+		dialog.setLoans(requestedLoanList);
+		dialog.show(getFragmentManager(), "renewAllLoan");
+	}
+
+	@Override
+	public void onRenewAllYesClick(DialogFragment dialog, List<Loan> loans) {
+		renewAll = true;
+		requestRenewLoan();
+	}
+
+	@Override
+	public void onRenewAllNoClick(DialogFragment dialog) {}
 
 }

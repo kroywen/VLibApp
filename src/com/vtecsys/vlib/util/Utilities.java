@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -70,6 +72,15 @@ public class Utilities {
 	
 	public static boolean isEmpty(List<?> list) {
 		return list == null || list.isEmpty();
+	}
+	
+	public static String extractDate(String str) {
+		if (TextUtils.isEmpty(str)) {
+			return null;
+		}
+		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+		Matcher matcher = pattern.matcher(str);
+		return matcher.find() ? matcher.group() : null;
 	}
 
 }
