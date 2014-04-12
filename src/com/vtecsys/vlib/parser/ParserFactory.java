@@ -31,6 +31,8 @@ public class ParserFactory {
 			return new SimpleParser();
 		} else if (ApiData.COMMAND_RENEW_LOAN.equalsIgnoreCase(command)) {
 			return new SimpleParser();
+		} else if (ApiData.COMMAND_BIB_DETAIL.equalsIgnoreCase(command)) {
+			return new BibDetailParser();
 		} else {
 			return null;
 		}

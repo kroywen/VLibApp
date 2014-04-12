@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,7 +27,8 @@ import com.vtecsys.vlib.ui.dialog.ReservationDialog.OnReservationClickListener;
 import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.Utilities;
 
-public class CatalogueScreen extends BaseScreen implements OnReservationClickListener {
+public class CatalogueScreen extends BaseScreen 
+	implements OnReservationClickListener, OnClickListener {
 	
 	private ImageView bookCover;
 	private ListView listView;
@@ -64,7 +66,8 @@ public class CatalogueScreen extends BaseScreen implements OnReservationClickLis
 	protected void initializeViews() {
 		super.initializeViews();
 		
-		bookCover = (ImageView) findViewById(R.id.bookCover); 
+		bookCover = (ImageView) findViewById(R.id.bookCover);
+		bookCover.setOnClickListener(this);
 		listView = (ListView) findViewById(R.id.listView);
 		
 		isbn = (TextView) findViewById(R.id.isbn);
@@ -207,12 +210,17 @@ public class CatalogueScreen extends BaseScreen implements OnReservationClickLis
 	public void onReservationNoClick(DialogFragment dialog) {}
 
 	@Override
-	public void onReservationOkClick(DialogFragment dialog) {
-//		if (Utilities.isConnectionAvailable(this)) {
-//			requestCatalogue(false);
-//		} else {
-//			showConnectionErrorDialog();
-//		}
+	public void onReservationOkClick(DialogFragment dialog) {}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bookCover:
+			Intent intent = new Intent(this, BibDetailScreen.class);
+			intent.putExtra(ApiData.PARAM_RID, rid);
+			startActivity(intent);
+			break;
+		}
 	}
 
 }

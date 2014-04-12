@@ -3,50 +3,62 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical" 
-    android:background="@drawable/dialog_background"
-    android:padding="15dp">
+    android:background="@drawable/dialog_background">
     
     <TextView 
         android:id="@+id/dialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:padding="15dp"
         android:textColor="@color/app_main_color"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
-    <LinearLayout 
-        android:id="@+id/titleContainer"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginBottom="25dp"
-	    android:orientation="vertical" />
-	
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/list_top_divider" />
+    
     <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-        
-        <Button
-	        style="@style/MyButton"
-	        android:id="@+id/yesBtn"
-	        android:layout_width="0dp"
+        android:padding="15dp"
+        android:orientation="vertical">
+    
+	    <LinearLayout 
+	        android:id="@+id/titleContainer"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="25dp"
+		    android:orientation="vertical" />
+		
+	    <LinearLayout 
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:layout_marginRight="10dp"
-	        android:background="@drawable/btn_orange"
-	        android:text="@string/yes" />
-        
-        <Button
-	        style="@style/MyButton"
-	        android:id="@+id/noBtn"
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:layout_marginLeft="10dp"
-	        android:background="@drawable/btn_orange"
-	        android:text="@string/no" />
-        
-    </LinearLayout>
+	        android:orientation="horizontal"
+	        android:gravity="center_horizontal">
+	        
+	        <Button
+		        style="@style/MyButton"
+		        android:id="@+id/yesBtn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_marginRight="10dp"
+		        android:background="@drawable/btn_orange"
+		        android:text="@string/yes" />
+	        
+	        <Button
+		        style="@style/MyButton"
+		        android:id="@+id/noBtn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_marginLeft="10dp"
+		        android:background="@drawable/btn_orange"
+		        android:text="@string/no" />
+	        
+	    </LinearLayout>
+	
+	</LinearLayout>
 
 </LinearLayout>

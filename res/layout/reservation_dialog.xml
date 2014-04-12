@@ -3,178 +3,190 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical" 
-    android:background="@drawable/dialog_background"
-    android:padding="15dp">
+    android:background="@drawable/dialog_background">
     
     <TextView 
         android:id="@+id/dialogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:padding="15dp"
         android:textColor="@color/app_main_color"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
-    <LinearLayout 
-        android:id="@+id/memberIdContainer"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginBottom="10dp"
-	    android:orientation="horizontal">
-	    
-	    <TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="bold"
-			android:text="@string/member_id_caption"
-			android:textColor="@color/app_main_color" />
-	    
-	    <TextView 
-	        android:id="@+id/memberId"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:maxLength="30"
-	        android:maxLines="1"
-			android:ellipsize="end"
-			android:textColor="@color/app_main_color" />
-	    
-	</LinearLayout>
-    
-    <LinearLayout 
-        android:id="@+id/memberNameContainer"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginBottom="10dp"
-	    android:orientation="horizontal">
-	    
-	    <TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="bold"
-			android:text="@string/member_name_caption"
-			android:textColor="@color/app_main_color" />
-	    
-	    <TextView 
-	        android:id="@+id/memberName"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:maxLength="30"
-	        android:maxLines="1"
-			android:ellipsize="end"
-			android:textColor="@color/app_main_color" />
-	    
-	</LinearLayout>
-    
-    <LinearLayout 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginBottom="10dp"
-	    android:orientation="horizontal">
-	    
-	    <TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="bold"
-			android:text="@string/title_caption"
-			android:textColor="@color/app_main_color" />
-	    
-	    <TextView 
-	        android:id="@+id/title"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:maxLength="30"
-	        android:maxLines="1"
-			android:ellipsize="end"
-			android:textColor="@color/app_main_color" />
-	    
-	</LinearLayout>
-    
-    <LinearLayout 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_marginBottom="10dp"
-	    android:orientation="horizontal">
-	    
-	    <TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="bold"
-			android:text="@string/author_caption"
-			android:textColor="@color/app_main_color" />
-	    
-	    <TextView 
-	        android:id="@+id/author"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:maxLength="30"
-	        android:maxLines="1"
-			android:ellipsize="end"
-			android:textColor="@color/app_main_color" />
-	    
-	</LinearLayout>
-	
-    <LinearLayout 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:orientation="horizontal"
-	    android:layout_marginBottom="25dp">
-	    
-	    <TextView
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:textStyle="bold"
-			android:text="@string/publisher_caption"
-			android:textColor="@color/app_main_color" />
-	    
-	    <TextView 
-	        android:id="@+id/publisher"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="10dp"
-	        android:maxLength="30"
-	        android:maxLines="1"
-			android:ellipsize="end"
-			android:textColor="@color/app_main_color" />
-	    
-	</LinearLayout>
-	
-    <LinearLayout 
+    <View 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
-        
-        <Button
-	        style="@style/MyButton"
-	        android:id="@+id/yesBtn"
-	        android:layout_width="0dp"
+        android:layout_height="1px"
+        android:background="@color/list_top_divider" />
+    
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:padding="15dp"
+	    android:orientation="vertical">
+    
+	    <LinearLayout 
+	        android:id="@+id/memberIdContainer"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="10dp"
+		    android:orientation="horizontal">
+		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:text="@string/member_id_caption"
+				android:textColor="@color/app_main_color" />
+		    
+		    <TextView 
+		        android:id="@+id/memberId"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:maxLength="30"
+		        android:maxLines="1"
+				android:ellipsize="end"
+				android:textColor="@color/app_main_color" />
+		    
+		</LinearLayout>
+	    
+	    <LinearLayout 
+	        android:id="@+id/memberNameContainer"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="10dp"
+		    android:orientation="horizontal">
+		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:text="@string/member_name_caption"
+				android:textColor="@color/app_main_color" />
+		    
+		    <TextView 
+		        android:id="@+id/memberName"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:maxLength="30"
+		        android:maxLines="1"
+				android:ellipsize="end"
+				android:textColor="@color/app_main_color" />
+		    
+		</LinearLayout>
+	    
+	    <LinearLayout 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="10dp"
+		    android:orientation="horizontal">
+		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:text="@string/title_caption"
+				android:textColor="@color/app_main_color" />
+		    
+		    <TextView 
+		        android:id="@+id/title"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:maxLength="30"
+		        android:maxLines="1"
+				android:ellipsize="end"
+				android:textColor="@color/app_main_color" />
+		    
+		</LinearLayout>
+	    
+	    <LinearLayout 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginBottom="10dp"
+		    android:orientation="horizontal">
+		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:text="@string/author_caption"
+				android:textColor="@color/app_main_color" />
+		    
+		    <TextView 
+		        android:id="@+id/author"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:maxLength="30"
+		        android:maxLines="1"
+				android:ellipsize="end"
+				android:textColor="@color/app_main_color" />
+		    
+		</LinearLayout>
+		
+	    <LinearLayout 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal"
+		    android:layout_marginBottom="25dp">
+		    
+		    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textStyle="bold"
+				android:text="@string/publisher_caption"
+				android:textColor="@color/app_main_color" />
+		    
+		    <TextView 
+		        android:id="@+id/publisher"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:maxLength="30"
+		        android:maxLines="1"
+				android:ellipsize="end"
+				android:textColor="@color/app_main_color" />
+		    
+		</LinearLayout>
+		
+	    <LinearLayout 
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:layout_marginRight="10dp"
-	        android:background="@drawable/btn_orange"
-	        android:text="@string/yes" />
-        
-        <Button
-	        style="@style/MyButton"
-	        android:id="@+id/okBtn"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:background="@drawable/btn_orange"
-	        android:text="@string/ok" />
-        
-        <Button
-	        style="@style/MyButton"
-	        android:id="@+id/noBtn"
-	        android:layout_width="0dp"
-	        android:layout_height="wrap_content"
-	        android:layout_weight="1"
-	        android:layout_marginLeft="10dp"
-	        android:background="@drawable/btn_orange"
-	        android:text="@string/no" />
-        
-    </LinearLayout>
+	        android:orientation="horizontal"
+	        android:gravity="center_horizontal">
+	        
+	        <Button
+		        style="@style/MyButton"
+		        android:id="@+id/yesBtn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_marginRight="10dp"
+		        android:background="@drawable/btn_orange"
+		        android:text="@string/yes" />
+	        
+	        <Button
+		        style="@style/MyButton"
+		        android:id="@+id/okBtn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/btn_orange"
+		        android:text="@string/ok" />
+	        
+	        <Button
+		        style="@style/MyButton"
+		        android:id="@+id/noBtn"
+		        android:layout_width="0dp"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:layout_marginLeft="10dp"
+		        android:background="@drawable/btn_orange"
+		        android:text="@string/no" />
+	        
+	    </LinearLayout>
+	    
+	</LinearLayout>
 
 </LinearLayout>

@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Loan;
+import com.vtecsys.vlib.util.Utilities;
 
 public class RenewLoanDialog extends DialogFragment implements OnClickListener {
 	
@@ -63,7 +64,7 @@ public class RenewLoanDialog extends DialogFragment implements OnClickListener {
 			View.VISIBLE : View.GONE);
 		
 		dueDate = (TextView) view.findViewById(R.id.dueDate);
-		dueDate.setText(loan.getDueDate());
+		dueDate.setText(Utilities.convertDate(loan.getDueDate()));
 		
 		dueDateContainer = view.findViewById(R.id.dueDateContainer);
 		dueDateContainer.setVisibility(mode == MODE_AFTER_RENEW ? 

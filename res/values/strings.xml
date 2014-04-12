@@ -78,6 +78,7 @@
     <string name="confirm_cancel_reservation_title">Confirm cancel reservation?</string>
     <string name="confirm_renew_title">Confirm to renew this book title?</string>
     <string name="renew_success_title">The book title is renewed</string>
+    <string name="catalogue_details">Catalogue Details</string>
     
     <string-array name="main_menu">
         <item>Search</item>

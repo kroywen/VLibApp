@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Loan;
 import com.vtecsys.vlib.ui.screen.LoanActivitiesScreen;
+import com.vtecsys.vlib.util.Utilities;
 
 public class LoanActivityAdapter extends BaseAdapter implements OnClickListener {
 	
@@ -58,7 +59,7 @@ public class LoanActivityAdapter extends BaseAdapter implements OnClickListener 
 		callNumber.setText(loan.getCallNumber());
 		
 		TextView dueDate = (TextView) convertView.findViewById(R.id.dueDate);
-		dueDate.setText(loan.getDueDate());
+		dueDate.setText(Utilities.convertDate(loan.getDueDate()));
 		dueDate.setTextColor(loan.isOverdue() ? Color.RED : Color.BLUE);
 		
 		TextView title = (TextView) convertView.findViewById(R.id.title);

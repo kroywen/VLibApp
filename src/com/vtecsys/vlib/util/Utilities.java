@@ -4,7 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -81,6 +85,22 @@ public class Utilities {
 		Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
 		Matcher matcher = pattern.matcher(str);
 		return matcher.find() ? matcher.group() : null;
+	}
+	
+	public static String convertDate(String date, String fromPattern, String toPattern) {
+		DateFormat originalFormat = new SimpleDateFormat(fromPattern, Locale.ENGLISH);
+		DateFormat targetFormat = new SimpleDateFormat(toPattern, Locale.ENGLISH);
+		try {
+			Date d = originalFormat.parse(date);
+			return targetFormat.format(d); 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return date;
+		}		
+	}
+	
+	public static String convertDate(String date) {
+		return convertDate(date, "yyyy-MM-dd", "dd/MM/yyyy");
 	}
 
 }

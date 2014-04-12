@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background">
+    
+	<ScrollView 
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent">
+	    
+	    <LinearLayout 
+	        android:id="@+id/main_content"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical">
+	        
+	        <TextView
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_margin="15dp"
+	            android:textColor="@android:color/white"
+	            android:textAppearance="?android:attr/textAppearanceMedium"
+	            android:text="@string/catalogue_details" />
+	        
+	        <View 
+	            android:layout_width="match_parent"
+	            android:layout_height="1px"
+	            android:background="@color/list_top_divider" />
+	        
+	        <LinearLayout 
+	            android:id="@+id/tagContainer"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical"
+	        	android:padding="15dp" />
+	        
+	    </LinearLayout>
+	    
+	</ScrollView>
+	
+	<RelativeLayout 
+	    android:id="@+id/progress"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:background="@color/progress_view_background"
+	    android:visibility="invisible">
+	    
+	    <ProgressBar 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_centerInParent="true"
+	        style="@android:style/Widget.ProgressBar" />
+	    
+	</RelativeLayout>
+    
+</FrameLayout>

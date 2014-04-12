@@ -71,6 +71,11 @@ public abstract class ApiParser {
 	public static final String TAG_PRE_DUE = "PreDue";
 	public static final String TAG_DUE = "Due";
 	public static final String TAG_OVER_DUE = "OverDue";
+	public static final String TAG_ONE_TAG = "OneTag";
+	public static final String TAG_SEQ = "Seq";
+	public static final String TAG_TAG = "Tag";
+	public static final String TAG_CAPTION = "Caption";
+	public static final String TAG_CONTENTS = "Contents";
 	
 	protected static final String namespace = null;
 	

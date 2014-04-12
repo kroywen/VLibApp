@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Reservation;
 import com.vtecsys.vlib.ui.screen.ReservationListScreen;
+import com.vtecsys.vlib.util.Utilities;
 
 public class ReservationListAdapter extends BaseAdapter implements OnClickListener {
 	
@@ -51,7 +52,7 @@ public class ReservationListAdapter extends BaseAdapter implements OnClickListen
 		Reservation reservation = getItem(position);
 		
 		TextView reserveDate = (TextView) convertView.findViewById(R.id.reserveDate);
-		reserveDate.setText(reservation.getReserveDate());
+		reserveDate.setText(Utilities.convertDate(reservation.getReserveDate()));
 		
 		TextView callNumber = (TextView) convertView.findViewById(R.id.callNumber);
 		callNumber.setText(reservation.getCallNumber());
