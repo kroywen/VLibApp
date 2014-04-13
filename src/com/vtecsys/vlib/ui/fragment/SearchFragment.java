@@ -1,7 +1,6 @@
 package com.vtecsys.vlib.ui.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,12 +12,14 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.adapter.SimpleAdapter;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.ui.screen.BrowseResultScreen;
 import com.vtecsys.vlib.ui.screen.ISBNScannerScreen;
 import com.vtecsys.vlib.ui.screen.SearchResultScreen;
+import com.vtecsys.vlib.util.LocaleManager;
 
-public class SearchFragment extends Fragment implements OnClickListener {
+public class SearchFragment extends BaseFragment implements OnClickListener {
 	
 	public static final int REQUEST_SCAN = 0;
 	
@@ -41,9 +42,13 @@ public class SearchFragment extends Fragment implements OnClickListener {
 		return rootView;
 	}
 	
+	@Override
 	protected void initializeViews(View rootView) {
+		super.initializeViews(rootView);
 		searchView = (EditText) rootView.findViewById(R.id.searchView);
+		searchView.setHint(locale.get(LocaleManager.PLEASE_ENTER_THE_KEYWORDS));
 		sortByView = (Spinner) rootView.findViewById(R.id.sortByView);
+		populateSortBySpinner();
 		searchTitleBtn = (Button) rootView.findViewById(R.id.searchTitleBtn);
 		searchTitleBtn.setOnClickListener(this);
 		searchAuthorBtn = (Button) rootView.findViewById(R.id.searchAuthorBtn);
@@ -64,24 +69,48 @@ public class SearchFragment extends Fragment implements OnClickListener {
 		browseSeriesBtn.setOnClickListener(this);
 	}
 	
+	private void populateSortBySpinner() {
+		String[] items = new String[] {
+			locale.get(LocaleManager.NONE),
+			locale.get(LocaleManager.TITLE),
+			locale.get(LocaleManager.AUTHOR),
+			locale.get(LocaleManager.CALL_NO),
+			locale.get(LocaleManager.PUBLICATION_DATE)
+		};
+		SimpleAdapter adapter = new SimpleAdapter(
+			getActivity(), R.layout.simple_spinner_item, items);
+		sortByView.setAdapter(adapter);
+	}
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.searchTitleBtn:
+			showSearchScreen(searchView.getText().toString(), "title");
+			break;
 		case R.id.searchAuthorBtn:
+			showSearchScreen(searchView.getText().toString(), "author");
+			break;
 		case R.id.searchSubjectBtn:
+			showSearchScreen(searchView.getText().toString(), "subject");
+			break;
 		case R.id.searchSeriesBtn:
+			showSearchScreen(searchView.getText().toString(), "series"); 
+			break;
 		case R.id.searchAllBtn:
-			showSearchScreen(searchView.getText().toString(), 
-				(String) v.getTag());
+			showSearchScreen(searchView.getText().toString(), "all"); 
 			break;
 		case R.id.searchIsbnBtn:
 			showISBNScannerScreen();
 			break;
 		case R.id.browseAuthorBtn:
+			showBrowseScreen("author");
+			break;
 		case R.id.browseSubjectBtn:
+			showBrowseScreen("subject");
+			break;
 		case R.id.browseSeriesBtn:
-			showBrowseScreen((String) v.getTag());
+			showBrowseScreen("series");
 			break;
 		}
 	}

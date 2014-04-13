@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -28,8 +29,9 @@ public class BibDetailScreen extends BaseScreen {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.bib_detail_screen);
-		initializeViews();
+		View root = inflater.inflate(R.layout.bib_detail_screen, null);
+		setContentView(root);
+		initializeViews(root);
 		
 		Intent intent = getIntent();
 		if (intent == null) {
@@ -45,8 +47,8 @@ public class BibDetailScreen extends BaseScreen {
 	}
 	
 	@Override
-	protected void initializeViews() {
-		super.initializeViews();
+	protected void initializeViews(View root) {
+		super.initializeViews(root);
 		tagContainer = (LinearLayout) findViewById(R.id.tagContainer);
 	}
 	

@@ -32,7 +32,7 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:entries="@array/font_size_items" />
+	            android:popupBackground="@color/app_main_color" />
 	        
 	    </LinearLayout>
 	    
@@ -60,7 +60,7 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:entries="@array/pre_due_days_notification_items" />
+	            android:popupBackground="@color/app_main_color" />
 	        
 	    </LinearLayout>
 	    
@@ -173,21 +173,21 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textColor="@android:color/white"
-	            android:text="@string/lang0" />
+	            android:tag="@string/lang0" />
 	        
 	        <RadioButton
 	            android:id="@+id/lang1" 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textColor="@android:color/white"
-	            android:text="@string/lang1" />
+	            android:tag="@string/lang1" />
 	        
 	        <RadioButton 
 	            android:id="@+id/lang2"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textColor="@android:color/white"
-	            android:text="@string/lang2" />
+	            android:tag="@string/lang2" />
 	        
 	    </RadioGroup>
 	    

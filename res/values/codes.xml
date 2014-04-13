@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="enter_keywords">2001</string>
+    <string name="title">2002</string>
+    <string name="author">2003</string>
+    <string name="subject">2004</string>
+    <string name="series">2005</string>
+    <string name="all">2006</string>
+    <string name="isbn">2007</string>
+    <string name="none">2008</string>
+    <string name="call_no">2009</string>
+    <string name="publication_date">2010</string>
+    <string name="sort_by">2011</string>
+    <string name="browse_by_author">2012</string>
+    <string name="browse_by_subject">2013</string>
+    <string name="browse_by_series">2014</string>
+    <string name="edition">2023</string>
+    <string name="publication">2024</string>
+    <string name="login">2025</string>
+    <string name="reserve">2026</string>
+    <string name="item_no">2027</string>
+    <string name="status">2028</string>
+    <string name="location">2029</string>
+    <string name="call_no_issue_vol">2030</string>
+    <string name="member_id">2031</string>
+    <string name="reset">2033</string>
+    <string name="remember_password">2034</string>
+    <string name="title_confirm_reserve">2036</string>
+    <string name="title_reserved">2037</string>
+    <string name="loan_activities">2043</string>
+    <string name="reservation_list">2044</string>
+    <string name="change_password">2045</string>
+    <string name="title_confirm_cancel_reservation">2046</string>
+    <string name="yes">2047</string>
+    <string name="no">2048</string>
+    <string name="enter_new_password">2052</string>
+    <string name="re_enter_new_password">2053</string>
+    <string name="lang0">2054</string>
+    <string name="lang1">2055</string>
+    <string name="lang2">2056</string>
+    
+    <!-- Additional codes (start from 5000) -->
+    <string name="title_caption">5001</string>
+    <string name="author_caption">5002</string>
+    <string name="publisher_caption">5003</string>
+    <string name="call_no_caption">5004</string>
+    <string name="isbn_caption">5005</string>
+    <string name="edition_caption">5006</string>
+    <string name="publication_caption">5007</string>
+    <string name="member_id_caption">5008</string>
+    <string name="member_name_caption">5009</string>
+    <string name="item_no_caption">5010</string>
+    <string name="due_date_caption">5011</string>
+        
+</resources>

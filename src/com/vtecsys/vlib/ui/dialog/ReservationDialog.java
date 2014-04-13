@@ -15,6 +15,7 @@ import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Book;
 import com.vtecsys.vlib.model.Volume;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.LocaleManager;
 
 public class ReservationDialog extends DialogFragment implements OnClickListener {
 	
@@ -58,11 +59,13 @@ public class ReservationDialog extends DialogFragment implements OnClickListener
 	
 	private void initializeViews(View view) {
 		Settings settings = new Settings(getActivity());
+		LocaleManager locale = LocaleManager.getInstance();
+		locale.apply(view);
 		
 		dialogTitle = (TextView) view.findViewById(R.id.dialogTitle);
 		dialogTitle.setText(mode == MODE_BEFORE_RESERVATION ? 
-			R.string.confirm_reservation_title : 
-			R.string.reservation_success_title);		
+			locale.get(LocaleManager.TITLE_CONFIRM_RESERVE) : 
+			locale.get(LocaleManager.TITLE_RESERVED));		
 		
 		memberId = (TextView) view.findViewById(R.id.memberId);
 		memberId.setText(settings.getString(Settings.MEMBER_ID));

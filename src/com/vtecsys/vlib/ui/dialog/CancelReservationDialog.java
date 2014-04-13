@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Reservation;
+import com.vtecsys.vlib.util.LocaleManager;
 
 public class CancelReservationDialog extends DialogFragment implements OnClickListener {
 	
@@ -34,8 +35,11 @@ public class CancelReservationDialog extends DialogFragment implements OnClickLi
 	}
 	
 	private void initializeViews(View view) {
+		LocaleManager locale = LocaleManager.getInstance();
+		locale.apply(view);
+		
 		dialogTitle = (TextView) view.findViewById(R.id.dialogTitle);
-		dialogTitle.setText(R.string.confirm_cancel_reservation_title);		
+		dialogTitle.setText(locale.get(LocaleManager.TITLE_CONFIRM_CANCEL_RESERVATION));		
 				
 		title = (TextView) view.findViewById(R.id.title);
 		title.setText(reservation.getTitle());

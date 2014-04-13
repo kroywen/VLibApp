@@ -29,6 +29,7 @@ import com.vtecsys.vlib.ui.dialog.CancelAllReservationDialog.OnCancelAllReservat
 import com.vtecsys.vlib.ui.dialog.CancelReservationDialog;
 import com.vtecsys.vlib.ui.dialog.CancelReservationDialog.OnCancelReservationClickListener;
 import com.vtecsys.vlib.util.DialogUtils;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class ReservationListScreen extends BaseScreen 
@@ -50,8 +51,9 @@ public class ReservationListScreen extends BaseScreen
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.reservation_list_screen);
-		initializeViews();
+		View root = inflater.inflate(R.layout.reservation_list_screen, null);
+		setContentView(root);
+		initializeViews(root);
 		
 		if (isLoggedIn) {
 			if (Utilities.isConnectionAvailable(this)) {
@@ -66,8 +68,8 @@ public class ReservationListScreen extends BaseScreen
 	}
 	
 	@Override
-	protected void initializeViews() {
-		super.initializeViews();
+	protected void initializeViews(View root) {
+		super.initializeViews(root);
 		memberId = (TextView) findViewById(R.id.memberId);
 		listView = (ListView) findViewById(R.id.listView);
 		emptyView = (TextView) findViewById(R.id.emptyView);
@@ -75,6 +77,10 @@ public class ReservationListScreen extends BaseScreen
 		LayoutInflater inflater = (LayoutInflater) 
 			getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		listHeaderView = inflater.inflate(R.layout.reservation_list_header, null);
+		locale.apply(listHeaderView);
+		float fontSize = Utilities.getFontSize(
+			settings.getInt(Settings.FONT_SIZE)) - 4.0f;
+		Utilities.setFontSize(listHeaderView, fontSize);
 		
 		allBtn = (Button) listHeaderView.findViewById(R.id.allBtn);
 		allBtn.setOnClickListener(this);
@@ -124,9 +130,10 @@ public class ReservationListScreen extends BaseScreen
 					
 					String id = null;
 					if (patron != null) {
-						id = getString(R.string.member_id_pattern, patron.getId());
+						id = locale.get(LocaleManager.MEMBER_ID) + ": " + patron.getId();
 					} else {
-						id = settings.getString(Settings.MEMBER_ID);
+						id = locale.get(LocaleManager.MEMBER_ID) + ": " +
+							settings.getString(Settings.MEMBER_ID);
 					}
 					memberId.setText(id);
 					

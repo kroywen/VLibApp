@@ -19,8 +19,7 @@
 	            style="@style/MyEditText"
 	            android:id="@+id/memberId"
 	            android:layout_width="match_parent"
-	            android:layout_height="wrap_content" 
-	            android:hint="@string/member_id" />
+	            android:layout_height="wrap_content" />
 	        
 	        <EditText
 	            style="@style/MyEditText"
@@ -28,8 +27,7 @@
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
 	            android:layout_marginTop="10dp"
-	            android:inputType="textPassword"
-	            android:hint="@string/password" />
+	            android:inputType="textPassword" />
 	        
 	        <CheckBox 
 	            android:id="@+id/remember"
@@ -37,7 +35,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_marginTop="10dp"
 	            android:textColor="@android:color/white"
-	            android:text="@string/remember_password" />
+	            android:tag="@string/remember_password" />
 	        
 	        <LinearLayout 
 	            android:layout_width="match_parent"
@@ -53,7 +51,7 @@
 	                android:layout_weight="1"
 	                android:layout_marginRight="10dp"
 	                android:background="@drawable/btn_orange"
-	                android:text="@string/login" />
+	                android:tag="@string/login" />
 	            
 	            <Button
 	                style="@style/MyButton"
@@ -63,7 +61,7 @@
 	                android:layout_weight="1"
 	                android:layout_marginLeft="10dp"
 	                android:background="@drawable/btn_orange"
-	                android:text="@string/reset" />
+	                android:tag="@string/reset" />
 	            
 	        </LinearLayout>
 	        

@@ -1,0 +1,68 @@
+﻿# 2000 – 2099 For Android devices
+2001;Please Enter The Keywords
+2002;Title
+2003;Author
+2004;Subject
+2005;Series
+2006;All
+2007;ISBN
+2008;None
+2009;Call No. 
+2010;Publication Date
+2011;Sort By
+2012;Browse By Author
+2013;Browse By Subject
+2014;Browse By Series
+2015;Search
+2016;My Account
+2017;Settings
+2018;WebOpac
+2019;Publisher
+2020;records found.
+2021;records loaded.
+2022;ISBN
+2023;Edition
+2024;Publication
+2025;Login
+2026;Reserve
+2027;Item No.
+2028;Status
+2029;Location
+2030;Call No./Issue/Vol.
+2031;Member ID
+2032;Password
+2033;Reset
+2034;Remember Password
+2035;Reserve
+2036;Confirm to reserve this book title?
+2037;This book title is reserved now by
+2038;Member ID
+2039;Member Name
+2040;Confirm to renew this book title?
+2041;The book title is now renewed
+2042;My Account
+2043;Loan Activities
+2044;Reservation List
+2045;Change Password
+2046;Confirm Cancel Reservation?
+2047;Yes
+2048;No
+2050;Back
+2052;Enter New Password
+2053;Re-enter New Password
+2054;English
+2055;繁體
+2056;简体
+
+# additional text
+5001;Title:
+5002;Author:
+5003;Publisher:
+5004;Call No.:
+5005;ISBN:
+5006;Edition:
+5007;Publication:
+5008;Member ID:
+5009;Member Name: 
+5010;Item No.:
+5011;Due Date:

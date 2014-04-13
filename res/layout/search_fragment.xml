@@ -21,7 +21,6 @@
 	        android:layout_height="wrap_content"
 	        android:drawableLeft="@drawable/ic_search"
 	        android:drawablePadding="5dp"
-	        android:hint="@string/enter_keywords"
 	        android:inputType="textCapWords"
 	        android:maxLength="255"
 	        android:padding="5dp" />
@@ -38,14 +37,14 @@
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
 	            android:textColor="@android:color/white"
-	            android:text="@string/sort_by_caption" />
+	            android:tag="@string/sort_by" />
 	        
 	        <Spinner
 	            android:id="@+id/sortByView"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:entries="@array/sort_by_items" />
+	            android:popupBackground="@color/app_main_color" />
 	        
 	    </LinearLayout>
 	    
@@ -54,7 +53,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="15dp"
 	        android:textColor="@android:color/white"
-	        android:text="@string/search_by_caption" />
+	        android:text="@string/search_by" />
 	    
 	    <LinearLayout
 	        android:layout_width="match_parent"
@@ -68,9 +67,8 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:tag="title"
 	            android:background="@drawable/btn_orange"
-	            android:text="@string/title" />
+	            android:tag="@string/title" />
 	        
 	        <Button
 	            style="@style/MyButton"
@@ -80,9 +78,8 @@
 	            android:layout_weight="1"
 	            android:layout_marginLeft="10dp"
 	            android:layout_marginRight="10dp"
-	            android:tag="author"
 	            android:background="@drawable/btn_orange"
-	            android:text="@string/author" />
+	            android:tag="@string/author" />
 	        
 	        <Button
 	            style="@style/MyButton"
@@ -90,9 +87,8 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:tag="subject"
 	            android:background="@drawable/btn_orange"
-	            android:text="@string/subject" />
+	            android:tag="@string/subject" />
 	        
 	    </LinearLayout>
 	    
@@ -108,9 +104,8 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:tag="series"
 	            android:background="@drawable/btn_orange"
-	            android:text="@string/series" />
+	            android:tag="@string/series" />
 	        
 	        <Button
 	            style="@style/MyButton"
@@ -120,9 +115,8 @@
 	            android:layout_weight="1"
 	            android:layout_marginLeft="10dp"
 	            android:layout_marginRight="10dp"
-	            android:tag="all"
 	            android:background="@drawable/btn_purple"
-	            android:text="@string/all" />
+	            android:tag="@string/all" />
 	        
 	        <Button
 	            style="@style/MyButton"
@@ -130,9 +124,8 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:tag="isbn"
 	            android:background="@drawable/btn_gray"
-	            android:text="@string/isbn" />
+	            android:tag="@string/isbn" />
 	        
 	    </LinearLayout>
 	    
@@ -143,9 +136,8 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="20dp"
 	        android:layout_gravity="center_horizontal"
-	        android:tag="author"
 	        android:background="@drawable/btn_blue"
-	        android:text="@string/browse_by_author" />
+	        android:tag="@string/browse_by_author" />
 	    
 	    <Button
 	        style="@style/MyButton"
@@ -154,9 +146,8 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
 	        android:layout_gravity="center_horizontal"
-	        android:tag="subject"
 	        android:background="@drawable/btn_blue"
-	        android:text="@string/browse_by_subject" />
+	        android:tag="@string/browse_by_subject" />
 	    
 	    <Button
 	        style="@style/MyButton"
@@ -165,9 +156,8 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
 	        android:layout_gravity="center_horizontal"
-	        android:tag="series"
 	        android:background="@drawable/btn_blue"
-	        android:text="@string/browse_by_series" />
+	        android:tag="@string/browse_by_series" />
 	
 	</LinearLayout>
 	

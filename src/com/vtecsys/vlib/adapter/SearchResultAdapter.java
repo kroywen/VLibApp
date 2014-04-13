@@ -13,15 +13,22 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Book;
+import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.LocaleManager;
+import com.vtecsys.vlib.util.Utilities;
 
 public class SearchResultAdapter extends BaseAdapter {
 	
 	private Context context;
 	private List<Book> books;
+	private LocaleManager locale;
+	private Settings settings;
 	
 	public SearchResultAdapter(Context context, List<Book> books) {
 		this.context = context;
 		this.books = books;
+		locale = LocaleManager.getInstance();
+		settings = new Settings(context);
 	}
 
 	@Override
@@ -45,6 +52,10 @@ public class SearchResultAdapter extends BaseAdapter {
 			LayoutInflater inflater = (LayoutInflater) 
 				context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.search_result_list_item, null);
+			locale.apply(convertView);
+			float fontSize = Utilities.getFontSize(
+				settings.getInt(Settings.FONT_SIZE));
+			Utilities.setFontSize(convertView, fontSize);
 		}
 		
 		Book book = getItem(position);

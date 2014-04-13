@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -101,6 +102,41 @@ public class Utilities {
 	
 	public static String convertDate(String date) {
 		return convertDate(date, "yyyy-MM-dd", "dd/MM/yyyy");
+	}
+	
+	public static float getFontSize(int position) {
+		switch (position) {
+		case 0:
+			return 12.0f;
+		case 1:
+			return 14.0f;
+		case 2: 
+			return 18.0f;
+		default:
+			return 14.0f;
+		}
+	}
+	
+	public static void setFontSize(View view, float fontSize) { 
+		try {
+			Class[] paramFloat = new Class[1];	
+			paramFloat[0] = Float.TYPE;
+			
+			Class clas = Class.forName("android.widget.TextView");
+			Method method = clas.getDeclaredMethod("setTextSize", paramFloat);
+			
+			if (view instanceof ViewGroup) {
+				ViewGroup group = (ViewGroup) view;
+				for (int i=0; i<group.getChildCount(); i++) {
+					View child = group.getChildAt(i);
+					setFontSize(child, fontSize);
+				}
+			} else {
+				method.invoke(view, new Float(fontSize));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

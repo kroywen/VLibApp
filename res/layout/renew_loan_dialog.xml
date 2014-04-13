@@ -35,7 +35,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textStyle="bold"
-				android:text="@string/item_no_caption"
+				android:tag="@string/item_no_caption"
 				android:textColor="@color/app_main_color" />
 		    
 		    <TextView 
@@ -61,7 +61,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textStyle="bold"
-				android:text="@string/due_date_caption"
+				android:tag="@string/due_date_caption"
 				android:textColor="@color/app_main_color" />
 		    
 		    <TextView 
@@ -86,7 +86,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textStyle="bold"
-				android:text="@string/title_caption"
+				android:tag="@string/title_caption"
 				android:textColor="@color/app_main_color" />
 		    
 		    <TextView 
@@ -111,7 +111,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textStyle="bold"
-				android:text="@string/author_caption"
+				android:tag="@string/author_caption"
 				android:textColor="@color/app_main_color" />
 		    
 		    <TextView 
@@ -136,7 +136,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textStyle="bold"
-				android:text="@string/publisher_caption"
+				android:tag="@string/publisher_caption"
 				android:textColor="@color/app_main_color" />
 		    
 		    <TextView 
@@ -165,7 +165,7 @@
 		        android:layout_weight="1"
 		        android:layout_marginRight="10dp"
 		        android:background="@drawable/btn_orange"
-		        android:text="@string/yes" />
+		        android:tag="@string/yes" />
 	        
 	        <Button
 		        style="@style/MyButton"
@@ -183,7 +183,7 @@
 		        android:layout_weight="1"
 		        android:layout_marginLeft="10dp"
 		        android:background="@drawable/btn_orange"
-		        android:text="@string/no" />
+		        android:tag="@string/no" />
 	        
 	    </LinearLayout>
 	    

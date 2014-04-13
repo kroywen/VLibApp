@@ -10,15 +10,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.adapter.SimpleAdapter;
 import com.vtecsys.vlib.ui.fragment.AboutFragment;
 import com.vtecsys.vlib.ui.fragment.AccountFragment;
 import com.vtecsys.vlib.ui.fragment.SearchFragment;
 import com.vtecsys.vlib.ui.fragment.SettingsFragment;
 import com.vtecsys.vlib.ui.fragment.WebOpacFragment;
+import com.vtecsys.vlib.util.LocaleManager;
 
 public class MainScreen extends BaseScreen implements OnItemClickListener {
 	
@@ -28,7 +29,6 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
 	
-	private String[] mMainMenu;
 	private int selected = -1;
 	
 	@Override
@@ -36,13 +36,10 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_screen);
 		
-		mMainMenu = getResources().getStringArray(R.array.main_menu);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
-		
-		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
-                R.layout.drawer_list_item, mMainMenu));
 		mDrawerList.setOnItemClickListener(this);
+		populateDrawerList();
 				
 		mDrawerToggle = new ActionBarDrawerToggle(
 			MainScreen.this, mDrawerLayout, R.drawable.ic_drawer, 0, 0)
@@ -59,6 +56,19 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 	    if (savedInstanceState == null) {
             selectItem(0);
         }
+	}
+	
+	public void populateDrawerList() {
+		String[] items = new String[] {
+			locale.get(LocaleManager.SEARCH),
+			locale.get(LocaleManager.MY_ACCOUNT),
+			locale.get(LocaleManager.SETTINGS),
+			locale.get(LocaleManager.WEB_OPAC),
+			"About" // TODO change
+		};
+		SimpleAdapter adapter = new SimpleAdapter(
+			this, R.layout.drawer_list_item, items);
+		mDrawerList.setAdapter(adapter);
 	}
 	
 	@Override

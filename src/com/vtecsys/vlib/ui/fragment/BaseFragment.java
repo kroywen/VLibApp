@@ -12,18 +12,22 @@ import com.vtecsys.vlib.api.ApiResponseReceiver;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.api.OnApiResponseListener;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.LocaleManager;
+import com.vtecsys.vlib.util.Utilities;
 
 public class BaseFragment extends Fragment implements OnApiResponseListener {
 	
 	protected View mainContent;
 	protected View progress;
 	protected Settings settings;
+	protected LocaleManager locale;
 	protected ApiResponseReceiver responseReceiver;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		settings = new Settings(getActivity());
+		locale = LocaleManager.getInstance();
 	}
 	
 	protected void initializeViews(View rootView) {
@@ -46,6 +50,14 @@ public class BaseFragment extends Fragment implements OnApiResponseListener {
 		LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(responseReceiver);
 	}
 	
+	@Override
+	public void onStart() {
+		super.onStart();
+		locale.apply(getView());
+		Utilities.setFontSize(getView(), Utilities.getFontSize(
+			settings.getInt(Settings.FONT_SIZE)));
+	}
+	
 	protected void showProgress(boolean hideContent) {
 		if (progress != null) {
 			progress.setVisibility(View.VISIBLE);
@@ -65,9 +77,6 @@ public class BaseFragment extends Fragment implements OnApiResponseListener {
 	}
 
 	@Override
-	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {}
 
 }

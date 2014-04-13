@@ -11,15 +11,19 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Auth;
+import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.Utilities;
 
 public class BrowseResultAdapter extends BaseAdapter {
 	
 	private Context context;
 	private List<Auth> authes;
+	private Settings settings;
 	
 	public BrowseResultAdapter(Context context, List<Auth> authes) {
 		this.context = context;
 		this.authes = authes;
+		settings = new Settings(context);
 	}
 
 	@Override
@@ -43,6 +47,9 @@ public class BrowseResultAdapter extends BaseAdapter {
 			LayoutInflater inflater = (LayoutInflater)
 				context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.browse_result_list_item, null);
+			float fontSize = Utilities.getFontSize(
+				settings.getInt(Settings.FONT_SIZE));
+			Utilities.setFontSize(convertView, fontSize);
 		}
 		
 		Auth auth = getItem(position);

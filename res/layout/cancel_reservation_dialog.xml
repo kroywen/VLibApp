@@ -34,7 +34,7 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:textStyle="bold"
-				android:text="@string/title_caption"
+				android:tag="@string/title_caption"
 				android:textColor="@color/app_main_color" />
 		    
 		    <TextView 
@@ -63,7 +63,7 @@
 		        android:layout_weight="1"
 		        android:layout_marginRight="10dp"
 		        android:background="@drawable/btn_orange"
-		        android:text="@string/yes" />
+		        android:tag="@string/yes" />
 	        
 	        <Button
 		        style="@style/MyButton"
@@ -73,7 +73,7 @@
 		        android:layout_weight="1"
 		        android:layout_marginLeft="10dp"
 		        android:background="@drawable/btn_orange"
-		        android:text="@string/no" />
+		        android:tag="@string/no" />
 	        
 	    </LinearLayout>
 	    

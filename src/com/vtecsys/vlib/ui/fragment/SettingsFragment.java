@@ -8,6 +8,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
@@ -15,11 +17,14 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.adapter.SimpleAdapter;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.ui.screen.BaseScreen;
+import com.vtecsys.vlib.ui.screen.MainScreen;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class SettingsFragment extends BaseFragment {
@@ -33,12 +38,14 @@ public class SettingsFragment extends BaseFragment {
 	
 	private int[] languages = new int[] { R.id.lang0, R.id.lang1, R.id.lang2 };
 	private boolean langChanged;
+	private boolean fontSizeChanged;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setHasOptionsMenu(true);
 		langChanged = false;
+		fontSizeChanged = false;
 	}
 	
 	@Override
@@ -67,8 +74,24 @@ public class SettingsFragment extends BaseFragment {
 	protected void initializeViews(View rootView) {
 		super.initializeViews(rootView);
 		fontSize = (Spinner) rootView.findViewById(R.id.fontSize);
+		populateFontSizeSpinner();
+		fontSize.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				int prevFontSize = settings.getInt(Settings.FONT_SIZE);
+				int currentFontSize = position;
+				if (currentFontSize != prevFontSize) {
+					fontSizeChanged = true;
+				} else {
+					fontSizeChanged = false;
+				}
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {}
+		});
 		preDueDaysNotification = (Spinner)
 			rootView.findViewById(R.id.preDueDaysNotification);
+		populateNotificationSpinner();
 		dueDateNotification = (Switch) 
 			rootView.findViewById(R.id.dueDateNotification);
 		overdueDateNotification = (Switch)
@@ -83,9 +106,33 @@ public class SettingsFragment extends BaseFragment {
 				int currentLang = getLanguage();
 				if (currentLang != prevLang) {
 					langChanged = true;
+				} else {
+					langChanged = false;
 				}
 			}
 		});
+	}
+	
+	private void populateFontSizeSpinner() {
+		String[] items = new String[] {
+			"Small",
+			"Medium",
+			"Large"
+		};
+		SimpleAdapter adapter = new SimpleAdapter(
+			getActivity(), R.layout.simple_spinner_item, items);
+		fontSize.setAdapter(adapter);
+	}
+	
+	private void populateNotificationSpinner() {
+		String[] items = new String[] {
+			locale.get(LocaleManager.NONE),
+			"3 Days",
+			"7 Days"
+		};
+		SimpleAdapter adapter = new SimpleAdapter(
+			getActivity(), R.layout.simple_spinner_item, items);
+		preDueDaysNotification.setAdapter(adapter);
 	}
 	
 	private void updateViews() {
@@ -114,13 +161,22 @@ public class SettingsFragment extends BaseFragment {
 		
 		if (langChanged) {
 			int currentLang = getLanguage();
+			locale.setLanguage(getActivity(), currentLang);
+			locale.apply(getView());
+			((MainScreen) getActivity()).populateDrawerList();
+			
 			if (Utilities.isConnectionAvailable(getActivity())) {
 				requestSiteName();
 			} else {
 				settings.setInt(Settings.LANGUAGE, currentLang);
-				Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 			}
-		} else {
+		} 
+		if (fontSizeChanged) {
+			((MainScreen) getActivity()).populateDrawerList();
+			Utilities.setFontSize(getView(), Utilities.getFontSize(
+				settings.getInt(Settings.FONT_SIZE)));
+		}
+		if (!langChanged) {
 			Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
 		}
 	}

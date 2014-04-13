@@ -15,7 +15,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="@string/item_number" />
+        android:tag="@string/item_no" />
     
     <TextView
         android:layout_width="0dp"
@@ -25,7 +25,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="@string/call_number" />
+        android:tag="@string/call_no" />
     
     <TextView
         android:layout_width="0dp"
@@ -46,6 +46,6 @@
         android:gravity="center"
         android:background="@drawable/btn_orange"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/all" />
+        android:tag="@string/all" />
 
 </LinearLayout>

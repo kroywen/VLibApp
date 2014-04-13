@@ -19,6 +19,7 @@ import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.model.Book;
 import com.vtecsys.vlib.model.result.SearchResult;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class SearchResultScreen extends BaseScreen implements OnItemClickListener {
@@ -35,8 +36,9 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.search_result_screen);
-		initializeViews();
+		View root = inflater.inflate(R.layout.search_result_screen, null);
+		setContentView(root);
+		initializeViews(root);
 		
 		Intent intent = getIntent();
 		if (intent == null) {
@@ -57,11 +59,13 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 	}
 	
 	@Override
-	protected void initializeViews() {
-		super.initializeViews();
+	protected void initializeViews(View root) {
+		super.initializeViews(root);
 		
 		infoView = (TextView) findViewById(R.id.infoView);
-		infoView.setText(getString(R.string.search_result_pattern, 0, 0));
+		String info = "0 " + locale.get(LocaleManager.RECORDS_FOUND) + ", 0 " +
+			locale.get(LocaleManager.RECORDS_LOADED) + ".";
+		infoView.setText(info);
 		
 		listView = (ListView) findViewById(R.id.listView);
 		listView.setOnItemClickListener(this);
@@ -94,13 +98,17 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 					listView.setAdapter(adapter);
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
-					infoView.setText(getString(R.string.search_result_pattern, 
-							result.getHits(), result.getLoaded()));
+					String info = result.getHits() + " " + locale.get(LocaleManager.RECORDS_FOUND) + 
+						", " + result.getLoaded() + " " +
+						locale.get(LocaleManager.RECORDS_LOADED) + ".";
+					infoView.setText(info);
 				}
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);
-				infoView.setText(getString(R.string.search_result_pattern, 0, 0));
+				String info = "0 " + locale.get(LocaleManager.RECORDS_FOUND) + ", 0 " +
+					locale.get(LocaleManager.RECORDS_LOADED) + ".";
+				infoView.setText(info);
 				emptyView.setVisibility(View.VISIBLE);
 				emptyView.setText(apiResponse.getMessage());
 			}

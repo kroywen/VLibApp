@@ -5,7 +5,6 @@ import java.util.List;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -13,17 +12,23 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Reservation;
+import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.ui.screen.ReservationListScreen;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
-public class ReservationListAdapter extends BaseAdapter implements OnClickListener {
+public class ReservationListAdapter extends BaseAdapter {
 	
 	private Context context;
 	private List<Reservation> reservations;
+	private Settings settings;
+	private LocaleManager locale;
 	
 	public ReservationListAdapter(Context context, List<Reservation> reservations) {
 		this.context = context;
 		this.reservations = reservations;
+		settings = new Settings(context);
+		locale = LocaleManager.getInstance();
 	}
 
 	@Override
@@ -47,9 +52,12 @@ public class ReservationListAdapter extends BaseAdapter implements OnClickListen
 			LayoutInflater inflater = (LayoutInflater)
 				context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.reservation_list_item, null);
+			float fontSize = Utilities.getFontSize(
+				settings.getInt(Settings.FONT_SIZE)) - 4.0f;
+			Utilities.setFontSize(convertView, fontSize);
 		}
 		
-		Reservation reservation = getItem(position);
+		final Reservation reservation = getItem(position);
 		
 		TextView reserveDate = (TextView) convertView.findViewById(R.id.reserveDate);
 		reserveDate.setText(Utilities.convertDate(reservation.getReserveDate()));
@@ -67,18 +75,16 @@ public class ReservationListAdapter extends BaseAdapter implements OnClickListen
 		title.setText(reservation.getTitle());
 		
 		Button cancelBtn = (Button) convertView.findViewById(R.id.cancelBtn);
-		cancelBtn.setTag(Integer.valueOf(position));
-		cancelBtn.setOnClickListener(this);
+		cancelBtn.setText("Cancel"); // TODO
 		cancelBtn.setEnabled(reservation.canCancel());
+		cancelBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				((ReservationListScreen) context).tryCancelReservation(reservation);
+			}
+		});
 		
 		return convertView;
-	}
-
-	@Override
-	public void onClick(View v) {
-		int position = (Integer) v.getTag();
-		Reservation reservation = reservations.get(position);
-		((ReservationListScreen) context).tryCancelReservation(reservation);
 	}
 
 }

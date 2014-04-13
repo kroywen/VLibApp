@@ -15,6 +15,7 @@ import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.DialogUtils;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class ChangePasswordScreen extends BaseScreen implements OnClickListener {
@@ -26,8 +27,9 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.change_password_screen);
-		initializeViews();
+		View root = inflater.inflate(R.layout.change_password_screen, null);
+		setContentView(root);
+		initializeViews(root);
 		
 		if (!isLoggedIn) {
 			Intent intent = new Intent(this, LoginScreen.class);
@@ -36,10 +38,12 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 	}
 	
 	@Override
-	protected void initializeViews() {
-		super.initializeViews();
+	protected void initializeViews(View root) {
+		super.initializeViews(root);
 		password1 = (EditText) findViewById(R.id.password1);
+		password1.setHint(locale.get(LocaleManager.ENTER_NEW_PASSWORD));
 		password2 = (EditText) findViewById(R.id.password2);
+		password2.setHint(locale.get(LocaleManager.RE_ENTER_NEW_PASSWORD));
 		changeBtn = (Button) findViewById(R.id.changeBtn);
 		changeBtn.setOnClickListener(this);
 	}

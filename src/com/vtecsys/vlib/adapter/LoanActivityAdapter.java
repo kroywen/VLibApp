@@ -6,7 +6,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -14,17 +13,23 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Loan;
+import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.ui.screen.LoanActivitiesScreen;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
-public class LoanActivityAdapter extends BaseAdapter implements OnClickListener {
+public class LoanActivityAdapter extends BaseAdapter {
 	
 	private Context context;
 	private List<Loan> loans;
+	private Settings settings;
+	private LocaleManager locale;
 	
 	public LoanActivityAdapter(Context context, List<Loan> loans) {
 		this.context = context;
 		this.loans = loans;
+		settings = new Settings(context);
+		locale = LocaleManager.getInstance();
 	}
 
 	@Override
@@ -48,9 +53,12 @@ public class LoanActivityAdapter extends BaseAdapter implements OnClickListener 
 			LayoutInflater inflater = (LayoutInflater)
 				context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.loan_activity_list_item, null);
+			float fontSize = Utilities.getFontSize(
+				settings.getInt(Settings.FONT_SIZE)) - 4.0f;
+			Utilities.setFontSize(convertView, fontSize);
 		}
 		
-		Loan loan = getItem(position);
+		final Loan loan = getItem(position);
 		
 		TextView itemNumber = (TextView) convertView.findViewById(R.id.itemNumber);
 		itemNumber.setText(loan.getItemNumber());
@@ -66,18 +74,16 @@ public class LoanActivityAdapter extends BaseAdapter implements OnClickListener 
 		title.setText(loan.getTitle());
 		
 		Button renewBtn = (Button) convertView.findViewById(R.id.renewBtn);
-		renewBtn.setTag(Integer.valueOf(position));
-		renewBtn.setOnClickListener(this);
+		renewBtn.setText("Renew"); // TODO
 		renewBtn.setEnabled(loan.canRenew());
+		renewBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				((LoanActivitiesScreen) context).tryRenewLoan(loan);
+			}
+		});
 		
 		return convertView;
-	}
-
-	@Override
-	public void onClick(View v) {
-		int position = (Integer) v.getTag();
-		Loan loan = loans.get(position);
-		((LoanActivitiesScreen) context).tryRenewLoan(loan);
 	}
 
 }

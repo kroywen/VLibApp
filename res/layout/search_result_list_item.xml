@@ -38,7 +38,7 @@
 	            android:layout_height="wrap_content"
 	            android:textStyle="bold"
 	            android:textColor="@android:color/white"
-	            android:text="@string/title_caption" />
+	            android:tag="@string/title_caption" />
             
             <TextView 
                 android:id="@+id/title"
@@ -62,8 +62,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textStyle="bold"
-	            android:text="@string/author_caption"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:tag="@string/author_caption" />
             
             <TextView 
                 android:id="@+id/author"
@@ -87,8 +87,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textStyle="bold"
-	            android:text="@string/publisher_caption"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:tag="@string/publisher_caption" />
             
             <TextView 
                 android:id="@+id/publisher"
@@ -112,8 +112,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:textStyle="bold"
-	            android:text="@string/callnumber_caption"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:tag="@string/call_no_caption" />
             
             <TextView 
                 android:id="@+id/callnumber"

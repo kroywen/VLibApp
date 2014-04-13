@@ -69,7 +69,6 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/list_btn_height"
         android:background="@drawable/btn_orange"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/renew" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </LinearLayout>

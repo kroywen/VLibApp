@@ -3,98 +3,31 @@
 
     <string name="app_name">V-App</string>
     
-    <string name="enter_keywords">Please Enter The Keywords</string>
-    <string name="title">Title</string>
-    <string name="author">Author</string>
-    <string name="subject">Subject</string>
-    <string name="series">Series</string>
-    <string name="all">All</string>
-    <string name="isbn">ISBN</string>
-    <string name="browse_by_author">Browse By Author</string>
-    <string name="browse_by_subject">Browse By Subject</string>
-    <string name="browse_by_series">Browse By Series</string>
-    <string name="connection_error_title">Connection error</string>
-    <string name="connection_error_message">There is no internet connection</string>
-    <string name="empty">Empty</string>
-    <string name="search_result_pattern">%1$d records found, %2$d records loaded.</string>
-    <string name="browse_result_pattern">%1$d records loaded</string>
-    <string name="title_caption">Title:&#160;</string>
-    <string name="author_caption">Author:&#160;</string>
-    <string name="publisher_caption">Publisher:&#160;</string>
-    <string name="callnumber_caption">Call No:&#160;</string>
-    <string name="isbn_caption">ISBN:&#160;</string>
-    <string name="edition_caption">Editiion:&#160;</string>
-    <string name="publication_caption">Publication:&#160;</string>
-    <string name="sort_by_caption">Sort By:&#160;</string>
-    <string name="search_by_caption">Search By:&#160;</string>
-    <string name="volume_caption">Call No. / Issue / Vol.</string>
-    <string name="item_number">Item No.</string>
-    <string name="item_no_caption">Item No.:&#160;</string>
-    <string name="due_date_caption">Due Date:&#160;</string>
-    <string name="status">Status</string>
-    <string name="location">Location</string>
-    <string name="renew">Renew</string>
-    <string name="reserve">Reserve</string>
     <string name="font_size">Font Size</string>
     <string name="pre_due_days_notification">Pre-due Days Notification</string>
     <string name="due_date_notification">Due Date Notification</string>
     <string name="overdue_date_notification">Overdue Date Notification</string>
     <string name="collection_notification">Collection Notification</string>
-    <string name="language">Language</string>
     <string name="on">On</string>
     <string name="off">Off</string>
-    <string name="lang0">English</string>
-    <string name="lang1">Chinese</string>
-    <string name="lang2">Korean</string>
     <string name="save">Save</string>
     <string name="settings_saved">Settings saved</string>
-    <string name="member_id">Member ID</string>
-    <string name="password">Password</string>
-    <string name="remember_password">Remember Password</string>
-    <string name="login">Login</string>
-    <string name="reset">Reset</string>
-    <string name="loan_activities">Loan Activities</string>
-    <string name="reservation_list">Reservation List</string>
-    <string name="change_password">Change Password</string>
-    <string name="enter_new_password">Enter New Password</string>
-    <string name="reenter_new_password">Re-enter New Password</string>
-    <string name="error">Error</string>
-    <string name="member_id_pattern">Member ID: %1$s</string>
-    <string name="call_number">Call No.</string>
-    <string name="due_date">Due Date</string>
-    <string name="passwords_do_not_match">Passwords do not match</string>
-    <string name="cancel">Cancel</string>
+    <string name="search_by">Search By:&#160;</string>
+    <string name="about">About</string>
     <string name="reserve_date">Reserve Date</string>
-    <string name="ready_date">Ready Date</string>
     <string name="volume_number">Vol No.</string>
-    <string name="browse_by_pattern">Browse By %1$s</string>
-    <string name="confirm_reservation_title">Confirm to reserve this book title?</string>
-    <string name="reservation_success_title">The book title is reserved by</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="ok">Ok</string>
-    <string name="member_id_caption">Member ID:&#160;</string>
-    <string name="member_name_caption">Member Name:&#160;</string>
-    <string name="confirm_cancel_reservation_title">Confirm cancel reservation?</string>
-    <string name="confirm_renew_title">Confirm to renew this book title?</string>
-    <string name="renew_success_title">The book title is renewed</string>
+    <string name="ready_date">Ready Date</string>
+    <string name="cancel">Cancel</string>
+    <string name="renew">Renew</string>
+    <string name="due_date">Due Date</string>
     <string name="catalogue_details">Catalogue Details</string>
+    <string name="ok">OK</string>
+    <string name="error">Error</string>
+    <string name="empty">Empty</string>
+    <string name="language">Language</string>
     
-    <string-array name="main_menu">
-        <item>Search</item>
-        <item>My Account</item>
-        <item>Settings</item>
-        <item>WebOpac</item>
-        <item>About V-App</item>
-    </string-array>
-    
-    <string-array name="sort_by_items">
-        <item>None</item>
-        <item>Title</item>
-        <item>Author</item>
-        <item>Call No.</item>
-        <item>Publication Date</item>
-    </string-array>
+    <string name="connection_error_message">There is no internet connection</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
     
     <string-array name="sort_by_params">
         <item></item>
@@ -102,24 +35,6 @@
         <item>author</item>
         <item>callNo</item>
         <item>pubYearD</item>
-    </string-array>
-    
-    <string-array name="font_size_items">
-        <item>Small</item>
-        <item>Medium</item>
-        <item>Large</item>
-    </string-array>
-    
-    <string-array name="pre_due_days_notification_items">
-        <item>None</item>
-        <item>3 Days</item>
-        <item>7 Days</item>
-    </string-array>
-    
-    <string-array name="language_items">
-        <item>English</item>
-        <item>Chinese</item>
-        <item>Korean</item>
     </string-array>
 
 </resources>

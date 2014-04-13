@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Loan;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class RenewLoanDialog extends DialogFragment implements OnClickListener {
@@ -51,10 +52,13 @@ public class RenewLoanDialog extends DialogFragment implements OnClickListener {
 	}
 	
 	private void initializeViews(View view) {
+		LocaleManager locale = LocaleManager.getInstance();
+		locale.apply(view);
+		
 		dialogTitle = (TextView) view.findViewById(R.id.dialogTitle);
 		dialogTitle.setText(mode == MODE_BEFORE_RENEW ? 
-			R.string.confirm_renew_title : 
-			R.string.renew_success_title);		
+			locale.get(LocaleManager.TITLE_CONFIRM_RENEW) : 
+			locale.get(LocaleManager.TITLE_RENEWED));		
 		
 		itemNo = (TextView) view.findViewById(R.id.itemNo);
 		itemNo.setText(loan.getItemNumber());

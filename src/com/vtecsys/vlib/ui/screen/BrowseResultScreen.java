@@ -19,6 +19,7 @@ import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.model.Auth;
 import com.vtecsys.vlib.model.result.BrowseResult;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class BrowseResultScreen extends BaseScreen implements OnItemClickListener {
@@ -35,8 +36,9 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.browse_result_screen);
-		initializeViews();
+		View root = inflater.inflate(R.layout.browse_result_screen, null);
+		setContentView(root);
+		initializeViews(root);
 		
 		Intent intent = getIntent();
 		if (intent == null) {
@@ -48,8 +50,7 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		sortBy = sortByParams[intent.getIntExtra(ApiData.PARAM_SORT_BY, 0)];
 		browseBy = intent.getStringExtra(ApiData.PARAM_BROWSE_BY);
 		
-		String headerTitle = getString(R.string.browse_by_pattern, 
-			Utilities.uppercase(browseBy));
+		String headerTitle = getBrowseByText(browseBy);
 		headerView.setText(headerTitle);
 		
 		if (Utilities.isConnectionAvailable(this)) {
@@ -59,14 +60,27 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		}
 	}
 	
+	private String getBrowseByText(String browseByParam) {
+		if ("author".equalsIgnoreCase(browseByParam)) {
+			return locale.get(LocaleManager.BROWSE_BY_AUTHOR);
+		} else if ("subject".equalsIgnoreCase(browseByParam)) {
+			return locale.get(LocaleManager.BROWSE_BY_SUBJECT);
+		} else if ("series".equalsIgnoreCase(browseByParam)) {
+			return locale.get(LocaleManager.BROWSE_BY_SERIES);
+		} else {
+			return null;
+		}
+	}
+	
 	@Override
-	protected void initializeViews() {
-		super.initializeViews();
+	protected void initializeViews(View root) {
+		super.initializeViews(root);
 		
 		headerView = (TextView) findViewById(R.id.headerView);
 		
 		infoView = (TextView) findViewById(R.id.infoView);
-		infoView.setText(getString(R.string.browse_result_pattern, 0));
+		String info = "0 " + locale.get(LocaleManager.RECORDS_LOADED);
+		infoView.setText(info);
 		
 		listView = (ListView) findViewById(R.id.listView);
 		listView.setOnItemClickListener(this);
@@ -98,13 +112,15 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 					listView.setAdapter(adapter);
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
-					infoView.setText(getString(R.string.browse_result_pattern,
-						result.getLoaded()));
+					String info = result.getLoaded() + " " +
+						locale.get(LocaleManager.RECORDS_LOADED);
+					infoView.setText(info);
 				}
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);
-				infoView.setText(getString(R.string.browse_result_pattern, 0));
+				String info = "0 " + locale.get(LocaleManager.RECORDS_LOADED);
+				infoView.setText(info);
 				emptyView.setVisibility(View.VISIBLE);
 				emptyView.setText(apiResponse.getMessage());
 			}

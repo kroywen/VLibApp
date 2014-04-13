@@ -15,7 +15,7 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
 	        android:background="@drawable/btn_orange"
-	        android:text="@string/loan_activities" />
+	        android:tag="@string/loan_activities" />
 	    
 	    <Button
 	        style="@style/MyButton"
@@ -24,7 +24,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
 	        android:background="@drawable/btn_orange"
-	        android:text="@string/reservation_list" />
+	        android:tag="@string/reservation_list" />
 	    
 	    <Button
 	        style="@style/MyButton"
@@ -33,7 +33,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
 	        android:background="@drawable/btn_orange"
-	        android:text="@string/change_password" />
+	        android:tag="@string/change_password" />
 	
 	</LinearLayout>
 

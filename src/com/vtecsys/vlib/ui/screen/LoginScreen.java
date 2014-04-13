@@ -21,6 +21,7 @@ import com.vtecsys.vlib.model.Patron;
 import com.vtecsys.vlib.model.result.PatronAccountResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.DialogUtils;
+import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class LoginScreen extends BaseScreen implements OnClickListener, OnCheckedChangeListener {
@@ -34,16 +35,19 @@ public class LoginScreen extends BaseScreen implements OnClickListener, OnChecke
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login_screen);
-		initializeViews();
+		View root = inflater.inflate(R.layout.login_screen, null);
+		setContentView(root);
+		initializeViews(root);
 		updateViews();
 	}
 	
 	@Override
-	protected void initializeViews() {
-		super.initializeViews();
+	protected void initializeViews(View root) {
+		super.initializeViews(root);
 		memberId = (EditText) findViewById(R.id.memberId);
+		memberId.setHint(locale.get(LocaleManager.MEMBER_ID));
 		password = (EditText) findViewById(R.id.password);
+		password.setHint(locale.get(LocaleManager.PASSWORD));
 		remember = (CheckBox) findViewById(R.id.remember);
 		remember.setOnCheckedChangeListener(this);
 		loginBtn = (Button) findViewById(R.id.loginBtn);
