@@ -79,17 +79,25 @@ public class SplashScreen extends BaseScreen {
 				if (ApiData.COMMAND_SITENAME.equalsIgnoreCase(apiResponse.getRequestName())) {
 					appTitle = (String) apiResponse.getData();
 					setTitle(appTitle);
-					requestAlerts();
+					String memberID = settings.getString(Settings.MEMBER_ID);
+					if (TextUtils.isEmpty(memberID)) {
+						startMainScreen();
+					} else {
+						requestAlerts();
+					}
 				} else if (ApiData.COMMAND_CHECK_ALERTS.equalsIgnoreCase(apiResponse.getRequestName())) {
 					Notices notices = (Notices) apiResponse.getData();
 					showAlerts(notices);
-					
-					Intent intent = new Intent(this, MainScreen.class);
-					startActivity(intent);
-					finish();
+					startMainScreen();
 				}
 			}
 		}
+	}
+	
+	private void startMainScreen() {
+		Intent intent = new Intent(this, MainScreen.class);
+		startActivity(intent);
+		finish();
 	}
 	
 	private void showAlerts(Notices notices) {

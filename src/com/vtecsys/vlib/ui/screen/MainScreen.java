@@ -64,7 +64,7 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 			locale.get(LocaleManager.MY_ACCOUNT),
 			locale.get(LocaleManager.SETTINGS),
 			locale.get(LocaleManager.WEB_OPAC),
-			"About" // TODO change
+			locale.get(LocaleManager.ABOUT)
 		};
 		SimpleAdapter adapter = new SimpleAdapter(
 			this, R.layout.drawer_list_item, items);

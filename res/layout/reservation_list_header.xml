@@ -15,7 +15,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="@string/reserve_date" />
+        android:tag="@string/reserve_date" />
     
     <TextView
         android:layout_width="0dp"
@@ -35,7 +35,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="@string/volume_number" />
+        android:tag="@string/vol_no" />
     
     <TextView
         android:layout_width="0dp"
@@ -45,7 +45,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:textColor="@android:color/white"
-        android:text="@string/ready_date" />
+        android:tag="@string/ready_date" />
     
     <Button
         style="@style/MyButton"

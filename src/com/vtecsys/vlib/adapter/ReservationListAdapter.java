@@ -52,6 +52,7 @@ public class ReservationListAdapter extends BaseAdapter {
 			LayoutInflater inflater = (LayoutInflater)
 				context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.reservation_list_item, null);
+			locale.apply(convertView);
 			float fontSize = Utilities.getFontSize(
 				settings.getInt(Settings.FONT_SIZE)) - 4.0f;
 			Utilities.setFontSize(convertView, fontSize);
@@ -75,7 +76,6 @@ public class ReservationListAdapter extends BaseAdapter {
 		title.setText(reservation.getTitle());
 		
 		Button cancelBtn = (Button) convertView.findViewById(R.id.cancelBtn);
-		cancelBtn.setText("Cancel"); // TODO
 		cancelBtn.setEnabled(reservation.canCancel());
 		cancelBtn.setOnClickListener(new View.OnClickListener() {
 			@Override

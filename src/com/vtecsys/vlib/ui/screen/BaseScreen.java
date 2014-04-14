@@ -114,8 +114,8 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 	
 	public void showConnectionErrorDialog() {
 		DialogUtils.showDialog(this,
-			R.string.error, 
-			R.string.connection_error_message,
+			locale.get(LocaleManager.ERROR), 
+			locale.get(LocaleManager.NO_CONNECTION_ERROR),
 			new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {

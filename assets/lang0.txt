@@ -18,8 +18,8 @@
 2017;Settings
 2018;WebOpac
 2019;Publisher
-2020;records found.
-2021;records loaded.
+2020;records found
+2021;records loaded
 2022;ISBN
 2023;Edition
 2024;Publication
@@ -53,6 +53,36 @@
 2054;English
 2055;繁體
 2056;简体
+2057;Font Size
+2058;Small
+2059;Medium
+2060;Large
+2061;Pre-due Days Notification
+2062;None
+2063;3 Days
+2064;7 Days
+2065;Due Date Notification
+2066;Overdue Date Notification
+2067;Collection Notification
+2068;On
+2069;Off
+2070;Save
+2071;Settings saved successfully
+2072;Search By
+2073;About
+2074;Reserve Date
+2075;Vol No.
+2076;Ready Date
+2077;Cancel
+2078;Renew
+2079;Due Date
+2080;Catalogue Details
+2081;OK
+2082;Error
+2083;Empty
+2084;Language
+2085;There is no internet connection
+2086;Passwords do not match
 
 # additional text
 5001;Title:

@@ -73,8 +73,8 @@ public class SettingsFragment extends BaseFragment {
 	@Override
 	protected void initializeViews(View rootView) {
 		super.initializeViews(rootView);
+		
 		fontSize = (Spinner) rootView.findViewById(R.id.fontSize);
-		populateFontSizeSpinner();
 		fontSize.setOnItemSelectedListener(new OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -89,15 +89,19 @@ public class SettingsFragment extends BaseFragment {
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
+		
 		preDueDaysNotification = (Spinner)
 			rootView.findViewById(R.id.preDueDaysNotification);
-		populateNotificationSpinner();
+		
 		dueDateNotification = (Switch) 
 			rootView.findViewById(R.id.dueDateNotification);
+		
 		overdueDateNotification = (Switch)
 			rootView.findViewById(R.id.overdueDateNotification);
+		
 		collectionNotification = (Switch)
 			rootView.findViewById(R.id.collectionNotification);
+		
 		language = (RadioGroup) rootView.findViewById(R.id.language);
 		language.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
@@ -115,9 +119,9 @@ public class SettingsFragment extends BaseFragment {
 	
 	private void populateFontSizeSpinner() {
 		String[] items = new String[] {
-			"Small",
-			"Medium",
-			"Large"
+			locale.get(LocaleManager.SMALL),
+			locale.get(LocaleManager.MEDIUM),
+			locale.get(LocaleManager.LARGE)
 		};
 		SimpleAdapter adapter = new SimpleAdapter(
 			getActivity(), R.layout.simple_spinner_item, items);
@@ -127,8 +131,8 @@ public class SettingsFragment extends BaseFragment {
 	private void populateNotificationSpinner() {
 		String[] items = new String[] {
 			locale.get(LocaleManager.NONE),
-			"3 Days",
-			"7 Days"
+			locale.get(LocaleManager.THREE_DAYS),
+			locale.get(LocaleManager.SEVEN_DAYS)
 		};
 		SimpleAdapter adapter = new SimpleAdapter(
 			getActivity(), R.layout.simple_spinner_item, items);
@@ -136,13 +140,21 @@ public class SettingsFragment extends BaseFragment {
 	}
 	
 	private void updateViews() {
+		populateFontSizeSpinner();
 		fontSize.setSelection(settings.getInt(Settings.FONT_SIZE));
+		populateNotificationSpinner();
 		preDueDaysNotification.setSelection(
 			settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
+		dueDateNotification.setTextOn(locale.get(LocaleManager.ON));
+		dueDateNotification.setTextOff(locale.get(LocaleManager.OFF));
 		dueDateNotification.setChecked(
 			settings.getBoolean(Settings.DUE_DATE_NOTIFICATION));
+		overdueDateNotification.setTextOn(locale.get(LocaleManager.ON));
+		overdueDateNotification.setTextOff(locale.get(LocaleManager.OFF));
 		overdueDateNotification.setChecked(
 			settings.getBoolean(Settings.OVERDUE_DATE_NOTIFICATION));
+		collectionNotification.setTextOn(locale.get(LocaleManager.ON));
+		collectionNotification.setTextOff(locale.get(LocaleManager.OFF));
 		collectionNotification.setChecked(
 			settings.getBoolean(Settings.COLLECTION_NOTIFICATION));
 		language.check(languages[settings.getInt(Settings.LANGUAGE)]);
@@ -169,6 +181,7 @@ public class SettingsFragment extends BaseFragment {
 				requestSiteName();
 			} else {
 				settings.setInt(Settings.LANGUAGE, currentLang);
+				updateViews();
 			}
 		} 
 		if (fontSizeChanged) {
@@ -177,7 +190,8 @@ public class SettingsFragment extends BaseFragment {
 				settings.getInt(Settings.FONT_SIZE)));
 		}
 		if (!langChanged) {
-			Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getActivity(), locale.get(LocaleManager.SETTINGS_SAVED),
+				Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -197,8 +211,10 @@ public class SettingsFragment extends BaseFragment {
 				BaseScreen.appTitle = (String) apiResponse.getData();
 				getActivity().setTitle(BaseScreen.appTitle);
 				settings.setInt(Settings.LANGUAGE, getLanguage());
+				updateViews();
 				langChanged = false;
-				Toast.makeText(getActivity(), R.string.settings_saved, Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), locale.get(LocaleManager.SETTINGS_SAVED),
+					Toast.LENGTH_SHORT).show();
 			}
 		}
 	}

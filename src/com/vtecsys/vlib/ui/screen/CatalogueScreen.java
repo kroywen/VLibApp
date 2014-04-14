@@ -107,7 +107,7 @@ public class CatalogueScreen extends BaseScreen
 				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 					showReservationSuccessDialog();
 				} else {
-					DialogUtils.showDialog(this, getString(R.string.error),
+					DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
 						apiResponse.getMessage());
 				}
 			}

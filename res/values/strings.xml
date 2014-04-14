@@ -3,32 +3,6 @@
 
     <string name="app_name">V-App</string>
     
-    <string name="font_size">Font Size</string>
-    <string name="pre_due_days_notification">Pre-due Days Notification</string>
-    <string name="due_date_notification">Due Date Notification</string>
-    <string name="overdue_date_notification">Overdue Date Notification</string>
-    <string name="collection_notification">Collection Notification</string>
-    <string name="on">On</string>
-    <string name="off">Off</string>
-    <string name="save">Save</string>
-    <string name="settings_saved">Settings saved</string>
-    <string name="search_by">Search By:&#160;</string>
-    <string name="about">About</string>
-    <string name="reserve_date">Reserve Date</string>
-    <string name="volume_number">Vol No.</string>
-    <string name="ready_date">Ready Date</string>
-    <string name="cancel">Cancel</string>
-    <string name="renew">Renew</string>
-    <string name="due_date">Due Date</string>
-    <string name="catalogue_details">Catalogue Details</string>
-    <string name="ok">OK</string>
-    <string name="error">Error</string>
-    <string name="empty">Empty</string>
-    <string name="language">Language</string>
-    
-    <string name="connection_error_message">There is no internet connection</string>
-    <string name="passwords_do_not_match">Passwords do not match</string>
-    
     <string-array name="sort_by_params">
         <item></item>
         <item>title</item>

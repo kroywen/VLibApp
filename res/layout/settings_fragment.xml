@@ -25,7 +25,7 @@
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
 	            android:textColor="@android:color/white"
-	            android:text="@string/font_size" />
+	            android:tag="@string/font_size" />
 	        
 	        <Spinner
 	            android:id="@+id/fontSize"
@@ -53,7 +53,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:text="@string/pre_due_days_notification" />
+	            android:tag="@string/pre_due_days_notification" />
 	        
 	        <Spinner
 	            android:id="@+id/preDueDaysNotification"
@@ -76,19 +76,17 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:text="@string/due_date_notification" />
+	            android:tag="@string/due_date_notification" />
 	        
 	        <View
 	            android:layout_width="0dp"
 	            android:layout_height="1dp"
 	            android:layout_weight="1" />
 	        
-	        <Switch 
+	        <com.vtecsys.vlib.ui.view.MySwitch 
 	            android:id="@+id/dueDateNotification"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textOn="@string/on"
-	            android:textOff="@string/off" />
+	            android:layout_height="wrap_content" />
 	        
 	    </LinearLayout>
 	    
@@ -104,19 +102,17 @@
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
 	            android:textColor="@android:color/white"
-	            android:text="@string/overdue_date_notification" />
+	            android:tag="@string/overdue_date_notification" />
 	        
 	        <View
 	            android:layout_width="0dp"
 	            android:layout_height="1dp"
 	            android:layout_weight="1" />
 	        
-	        <Switch 
+	        <com.vtecsys.vlib.ui.view.MySwitch 
 	            android:id="@+id/overdueDateNotification"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textOn="@string/on"
-	            android:textOff="@string/off" />
+	            android:layout_height="wrap_content" />
 	        
 	    </LinearLayout>
 	    
@@ -133,19 +129,17 @@
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
 	            android:textColor="@android:color/white"
-	            android:text="@string/collection_notification" />
+	            android:tag="@string/collection_notification" />
 	        
 	        <View
 	            android:layout_width="0dp"
 	            android:layout_height="1dp"
 	            android:layout_weight="1" />
 	        
-	        <Switch 
+	        <com.vtecsys.vlib.ui.view.MySwitch 
 	            android:id="@+id/collectionNotification"
 	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textOn="@string/on"
-	            android:textOff="@string/off" />
+	            android:layout_height="wrap_content" />
 	        
 	    </LinearLayout>
 	    
@@ -159,7 +153,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
 	        android:textColor="@android:color/white"
-	        android:text="@string/language" />
+	        android:tag="@string/language" />
 	    
 	    <RadioGroup 
 	        android:id="@+id/language"

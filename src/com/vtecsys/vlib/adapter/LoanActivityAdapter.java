@@ -53,6 +53,7 @@ public class LoanActivityAdapter extends BaseAdapter {
 			LayoutInflater inflater = (LayoutInflater)
 				context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			convertView = inflater.inflate(R.layout.loan_activity_list_item, null);
+			locale.apply(convertView);
 			float fontSize = Utilities.getFontSize(
 				settings.getInt(Settings.FONT_SIZE)) - 4.0f;
 			Utilities.setFontSize(convertView, fontSize);
@@ -74,7 +75,6 @@ public class LoanActivityAdapter extends BaseAdapter {
 		title.setText(loan.getTitle());
 		
 		Button renewBtn = (Button) convertView.findViewById(R.id.renewBtn);
-		renewBtn.setText("Renew"); // TODO
 		renewBtn.setEnabled(loan.canRenew());
 		renewBtn.setOnClickListener(new View.OnClickListener() {
 			@Override

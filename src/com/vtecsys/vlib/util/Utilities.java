@@ -117,6 +117,7 @@ public class Utilities {
 		}
 	}
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static void setFontSize(View view, float fontSize) { 
 		try {
 			Class[] paramFloat = new Class[1];	
@@ -132,7 +133,7 @@ public class Utilities {
 					setFontSize(child, fontSize);
 				}
 			} else {
-				method.invoke(view, new Float(fontSize));
+				method.invoke(view, Float.valueOf(fontSize));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

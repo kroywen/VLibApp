@@ -80,6 +80,6 @@
         android:layout_height="@dimen/list_btn_height"
         android:background="@drawable/btn_orange"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/cancel" />
+        android:tag="@string/cancel" />
 
 </LinearLayout>

@@ -54,7 +54,8 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 			String pass1 = password1.getText().toString();
 			String pass2 = password2.getText().toString();
 			if (!pass1.equals(pass2)) {
-				Toast.makeText(this, R.string.passwords_do_not_match, Toast.LENGTH_SHORT).show();
+				Toast.makeText(this, locale.get(LocaleManager.PASSWORDS_NOT_MATCH),
+					Toast.LENGTH_SHORT).show();
 			} else {
 				if (Utilities.isConnectionAvailable(this)) {
 					requestChangePassword();
@@ -105,7 +106,7 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 				Toast.makeText(this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
 				finish();
 			} else {
-				DialogUtils.showDialog(this, getString(R.string.error),
+				DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
 					apiResponse.getMessage());
 			}
 		}

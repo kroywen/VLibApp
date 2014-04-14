@@ -16,15 +16,7 @@ public class DialogUtils {
 			String title, String message, 
 			final DialogInterface.OnClickListener okListener, 
 			DialogInterface.OnCancelListener cancelListener)
-	{
-//		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//		builder.setTitle(title)
-//			.setMessage(message)
-//			.setPositiveButton(android.R.string.ok, okListener)
-//			.setOnCancelListener(cancelListener)
-//			.create()
-//			.show();
-		
+	{		
 		LayoutInflater inflater = (LayoutInflater)
 			context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.simple_dialog, null);

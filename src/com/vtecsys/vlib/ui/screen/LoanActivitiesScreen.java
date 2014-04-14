@@ -159,7 +159,7 @@ public class LoanActivitiesScreen extends BaseScreen
 		} else if (ApiData.COMMAND_RENEW_LOAN.equalsIgnoreCase(apiResponse.getRequestName())) {
 			if (renewAll) {
 				if (apiResponse.getStatus() != ApiResponse.STATUS_OK) {
-					DialogUtils.showDialog(this, getString(R.string.error),
+					DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
 						apiResponse.getMessage());
 				}
 				int currentIndex = requestedLoanList.indexOf(requestedLoan);
@@ -176,7 +176,7 @@ public class LoanActivitiesScreen extends BaseScreen
 					requestedLoan.setDueDate(newDueDate);
 					showRenewLoanSuccessDialog();
 				} else {
-					DialogUtils.showDialog(this, getString(R.string.error),
+					DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
 						apiResponse.getMessage());
 				}
 			}
