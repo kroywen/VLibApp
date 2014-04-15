@@ -21,6 +21,9 @@ public class DialogUtils {
 			context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		View view = inflater.inflate(R.layout.simple_dialog, null);
 		
+		LocaleManager locale = LocaleManager.getInstance();
+		locale.apply(view);
+		
 		AlertDialog.Builder builder = new AlertDialog.Builder(context);
 		builder.setView(view);
 		builder.setOnCancelListener(cancelListener);
