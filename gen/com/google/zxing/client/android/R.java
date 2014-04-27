@@ -21,13 +21,13 @@ public final class R {
 		public static final int viewfinder_view = 0x7f070028;
 		public static final int launch_product_query = 0x7f070003;
 		public static final int decode = 0x7f070000;
-		public static final int snippet_view = 0x7f070046;
+		public static final int snippet_view = 0x7f070048;
 		public static final int history_title = 0x7f070029;
 		public static final int contents_text_view = 0x7f070026;
 		public static final int history_detail = 0x7f07002a;
 		public static final int decode_failed = 0x7f070001;
 		public static final int bookmark_title = 0x7f07000f;
-		public static final int page_number_view = 0x7f070045;
+		public static final int page_number_view = 0x7f070047;
 	}
 	public static final class color {
 		public static final int status_text = 0x7f050007;
@@ -51,9 +51,9 @@ public final class R {
 		public static final int bookmark_picker_list_item = 0x7f030004;
 		public static final int fragment_capture = 0x7f03000e;
 		public static final int encode = 0x7f03000d;
-		public static final int search_book_contents_list_item = 0x7f03001e;
+		public static final int search_book_contents_list_item = 0x7f03001f;
 		public static final int history_list_item = 0x7f03000f;
-		public static final int search_book_contents_header = 0x7f03001d;
+		public static final int search_book_contents_header = 0x7f03001e;
 	}
 	public static final class dimen {
 		public static final int half_padding = 0x7f060001;

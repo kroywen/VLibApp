@@ -80,7 +80,9 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		headerView = (TextView) findViewById(R.id.headerView);
 		
 		infoView = (TextView) findViewById(R.id.infoView);
-		String info = "<font color=\"" + getResources().getColor(R.color.highlight) +
+		String color = String.format("#%06X", 0xFFFFFF & 
+			getResources().getColor(R.color.highlight));
+		String info = "<font color=\"" + color +
 			"\">0</font> " + locale.get(LocaleManager.RECORDS_LOADED);
 		infoView.setText(Html.fromHtml(info));
 		
@@ -105,6 +107,8 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+			String color = String.format("#%06X", 0xFFFFFF & 
+				getResources().getColor(R.color.highlight));
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 				Object data = apiResponse.getData();
 				if (data != null && data instanceof BrowseResult) {
@@ -114,14 +118,15 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 					listView.setAdapter(adapter);
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
-					String info = "<font color=\"" + getResources().getColor(R.color.highlight) +
+					
+					String info = "<font color=\"" + color +
 						"\">" + result.getLoaded() + "</font> " + locale.get(LocaleManager.RECORDS_LOADED);
 					infoView.setText(Html.fromHtml(info));
 				}
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);
-				String info = "<font color=\"" + getResources().getColor(R.color.highlight) +
+				String info = "<font color=\"" + color +
 					"\">0</font> " + locale.get(LocaleManager.RECORDS_LOADED);
 				infoView.setText(Html.fromHtml(info));
 				emptyView.setVisibility(View.VISIBLE);

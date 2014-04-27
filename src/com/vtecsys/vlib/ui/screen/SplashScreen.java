@@ -4,13 +4,13 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.widget.Toast;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.model.Notices;
+import com.vtecsys.vlib.model.result.SiteNameResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.util.Utilities;
 
@@ -77,45 +77,29 @@ public class SplashScreen extends BaseScreen {
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 				if (ApiData.COMMAND_SITENAME.equalsIgnoreCase(apiResponse.getRequestName())) {
-					appTitle = (String) apiResponse.getData();
+					SiteNameResult result = (SiteNameResult) apiResponse.getData();
+					appTitle = result.getSiteName();
 					setTitle(appTitle);
+					webOpacUrl = result.getUrl();
 					String memberID = settings.getString(Settings.MEMBER_ID);
 					if (TextUtils.isEmpty(memberID)) {
-						startMainScreen();
+						startMainScreen(null);
 					} else {
 						requestAlerts();
 					}
 				} else if (ApiData.COMMAND_CHECK_ALERTS.equalsIgnoreCase(apiResponse.getRequestName())) {
 					Notices notices = (Notices) apiResponse.getData();
-					showAlerts(notices);
-					startMainScreen();
+					startMainScreen(notices);
 				}
 			}
 		}
 	}
 	
-	private void startMainScreen() {
+	private void startMainScreen(Notices notices) {
 		Intent intent = new Intent(this, MainScreen.class);
+		intent.putExtra("notices", notices);
 		startActivity(intent);
 		finish();
-	}
-	
-	private void showAlerts(Notices notices) {
-		if (notices == null) {
-			return;
-		}
-		if (notices.hasPredue()) {
-			Toast.makeText(this, notices.getPredue(), Toast.LENGTH_LONG).show();
-		}
-		if (notices.hasDue()) {
-			Toast.makeText(this, notices.getDue(), Toast.LENGTH_LONG).show();
-		} 
-		if (notices.hasOverdue()) {
-			Toast.makeText(this, notices.getOverdue(), Toast.LENGTH_LONG).show();
-		}
-		if (notices.hasCollection()) {
-			Toast.makeText(this, notices.getCollection(), Toast.LENGTH_LONG).show();
-		}
 	}
 	
 }

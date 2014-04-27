@@ -28,6 +28,7 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 	
 	protected ApiResponseReceiver responseReceiver;
 	public static String appTitle;
+	public static String webOpacUrl;
 	public static boolean isLoggedIn;
 	protected Settings settings;
 	protected LocaleManager locale;

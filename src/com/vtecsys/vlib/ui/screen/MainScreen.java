@@ -2,6 +2,7 @@ package com.vtecsys.vlib.ui.screen;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -14,6 +15,8 @@ import android.widget.ListView;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.adapter.SimpleAdapter;
+import com.vtecsys.vlib.model.Notices;
+import com.vtecsys.vlib.ui.dialog.NoticesDialog;
 import com.vtecsys.vlib.ui.fragment.AboutFragment;
 import com.vtecsys.vlib.ui.fragment.AccountFragment;
 import com.vtecsys.vlib.ui.fragment.SearchFragment;
@@ -56,6 +59,12 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 	    if (savedInstanceState == null) {
             selectItem(0);
         }
+	    
+	    Intent intent = getIntent();
+	    if (intent != null) {
+	    	Notices notices = (Notices) intent.getSerializableExtra("notices");
+	    	showNotices(notices);
+	    }
 	}
 	
 	public void populateDrawerList() {
@@ -132,5 +141,16 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 		
 		selected = position;
     }
+	
+	private void showNotices(Notices notices) {
+		if (notices == null || !notices.hasNotices()) {
+			return;
+		}
+		
+		NoticesDialog dialog = new NoticesDialog();
+		dialog.setRetainInstance(true);
+		dialog.setNotices(notices);
+		dialog.show(getFragmentManager(), "notices");
+	}
 
 }

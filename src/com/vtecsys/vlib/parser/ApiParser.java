@@ -19,6 +19,7 @@ public abstract class ApiParser {
 	public static final String TAG_REQUEST_NAME = "RequestName";
 	public static final String TAG_RESPONSE_DATA = "ResponseData";
 	public static final String TAG_SITE_NAME = "SiteName";
+	public static final String TAG_WEB_OPAC = "WebOPAC";
 	public static final String TAG_RESULTS = "Results";
 	public static final String TAG_HITS = "Hits";
 	public static final String TAG_LOADED = "Loaded";

@@ -130,12 +130,14 @@ public class ReservationListScreen extends BaseScreen
 					Patron patron = result.getPatron();
 					
 					String id = null;
+					String color = String.format("#%06X", 0xFFFFFF & 
+						getResources().getColor(R.color.highlight));
 					if (patron != null) {
-						id = "<font color=\"" + getResources().getColor(R.color.highlight) +
+						id = "<font color=\"" + color +
 							"\">" + locale.get(LocaleManager.MEMBER_ID) + 
 							":</font> " + patron.getId();
 					} else {
-						id = "<font color=\"" + getResources().getColor(R.color.highlight) +
+						id = "<font color=\"" + color +
 							"\">" + locale.get(LocaleManager.MEMBER_ID) + 
 							":</font> " + settings.getString(Settings.MEMBER_ID);
 					}

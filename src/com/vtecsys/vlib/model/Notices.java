@@ -1,8 +1,12 @@
 package com.vtecsys.vlib.model;
 
+import java.io.Serializable;
+
 import android.text.TextUtils;
 
-public class Notices {
+public class Notices implements Serializable {
+	
+	private static final long serialVersionUID = -2898566294218208549L;
 	
 	private String predue;
 	private String due;
@@ -57,6 +61,10 @@ public class Notices {
 	
 	public boolean hasCollection() {
 		return !TextUtils.isEmpty(collection);
+	}
+	
+	public boolean hasNotices() {
+		return hasPredue() || hasDue() || hasOverdue() || hasCollection();
 	}
 
 }

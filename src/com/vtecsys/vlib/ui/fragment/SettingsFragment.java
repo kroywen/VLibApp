@@ -21,6 +21,7 @@ import com.vtecsys.vlib.adapter.SimpleAdapter;
 import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
+import com.vtecsys.vlib.model.result.SiteNameResult;
 import com.vtecsys.vlib.storage.Settings;
 import com.vtecsys.vlib.ui.screen.BaseScreen;
 import com.vtecsys.vlib.ui.screen.MainScreen;
@@ -208,7 +209,9 @@ public class SettingsFragment extends BaseFragment {
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				BaseScreen.appTitle = (String) apiResponse.getData();
+				SiteNameResult result = (SiteNameResult) apiResponse.getData();
+				BaseScreen.appTitle = result.getSiteName();
+				BaseScreen.webOpacUrl = result.getUrl();
 				getActivity().setTitle(BaseScreen.appTitle);
 				settings.setInt(Settings.LANGUAGE, getLanguage());
 				updateViews();

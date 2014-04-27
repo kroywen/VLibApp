@@ -11,10 +11,9 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.ui.screen.BaseScreen;
 
 public class WebOpacFragment extends Fragment {
-	
-	public static final String WEB_OPAC_URL = "http://demo.vlibonline.com/";
 	
 	private WebView webView;
 	private ProgressBar progressView;
@@ -44,7 +43,7 @@ public class WebOpacFragment extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		webView.loadUrl(WEB_OPAC_URL);
+		webView.loadUrl("http://" + BaseScreen.webOpacUrl);
 	}
 
 }
