@@ -1,14 +1,20 @@
 package com.vtecsys.vlib.ui.fragment;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.vtecsys.vlib.R;
@@ -23,7 +29,7 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 	
 	public static final int REQUEST_SCAN = 0;
 	
-	private EditText searchView;
+	private AutoCompleteTextView searchView;
 	private Spinner sortByView;
 	private Button searchTitleBtn;
 	private Button searchAuthorBtn;
@@ -45,8 +51,11 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 	@Override
 	protected void initializeViews(View rootView) {
 		super.initializeViews(rootView);
-		searchView = (EditText) rootView.findViewById(R.id.searchView);
+		searchView = (AutoCompleteTextView) rootView.findViewById(R.id.searchView);
 		searchView.setHint(locale.get(LocaleManager.PLEASE_ENTER_THE_KEYWORDS));
+		searchView.setThreshold(1);
+		searchView.addTextChangedListener(watcher);
+		
 		sortByView = (Spinner) rootView.findViewById(R.id.sortByView);
 		populateSortBySpinner();
 		searchTitleBtn = (Button) rootView.findViewById(R.id.searchTitleBtn);
@@ -104,35 +113,35 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 			showISBNScannerScreen();
 			break;
 		case R.id.browseAuthorBtn:
-			showBrowseScreen("author");
+			showBrowseScreen(searchView.getText().toString(), "author");
 			break;
 		case R.id.browseSubjectBtn:
-			showBrowseScreen("subject");
+			showBrowseScreen(searchView.getText().toString(), "subject");
 			break;
 		case R.id.browseSeriesBtn:
-			showBrowseScreen("series");
+			showBrowseScreen(searchView.getText().toString(), "series");
 			break;
 		}
 	}
 	
 	private void showSearchScreen(String term, String searchBy) {
-		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
+		saveTerm(term);
 		
+		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
 		intent.putExtra(ApiData.PARAM_TYPE, ApiData.TYPE_SEARCH);
 		intent.putExtra(ApiData.PARAM_TERM, term);
 		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
-		
 		getActivity().startActivity(intent);
 	}
 	
-	private void showBrowseScreen(String browseBy) {
-		Intent intent = new Intent(getActivity(), BrowseResultScreen.class);
+	private void showBrowseScreen(String term, String browseBy) {
+		saveTerm(term);
 		
-		intent.putExtra(ApiData.PARAM_TERM, searchView.getText().toString());
+		Intent intent = new Intent(getActivity(), BrowseResultScreen.class);
+		intent.putExtra(ApiData.PARAM_TERM, term);
 		intent.putExtra(ApiData.PARAM_BROWSE_BY, browseBy);
 		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
-		
 		getActivity().startActivity(intent);
 	}
 	
@@ -148,6 +157,38 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 				String isbn = data.getStringExtra("isbn");
 				showSearchScreen(isbn, "isbn");
 			}
+		}
+	}
+	
+	private TextWatcher watcher = new TextWatcher() {
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {}
+		
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+		
+		@Override
+		public void afterTextChanged(Editable s) {
+			String text = s.toString();
+			if (TextUtils.isEmpty(text)) {
+				searchView.setAdapter(null);
+			} else {
+				List<String> words = dbManager.getWords(text);
+				if (words == null || words.isEmpty()) {
+					searchView.setAdapter(null);
+				} else {
+					ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+				        android.R.layout.simple_dropdown_item_1line, words);
+					searchView.setAdapter(adapter);
+				}
+			}
+		}
+	};
+	
+	private void saveTerm(String term) {
+		boolean found = dbManager.hasWord(term);
+		if (!found) {
+			dbManager.saveWord(term);
 		}
 	}
 

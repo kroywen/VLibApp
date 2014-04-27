@@ -83,6 +83,8 @@
 2084;Language
 2085;There is no internet connection
 2086;Passwords do not match
+2087;You have successfully logged out
+2088;Logout
 
 # additional text
 5001;Title:

@@ -12,6 +12,7 @@ import com.vtecsys.vlib.api.ApiResponseReceiver;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.api.OnApiResponseListener;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.storage.database.DatabaseManager;
 import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
@@ -22,12 +23,14 @@ public class BaseFragment extends Fragment implements OnApiResponseListener {
 	protected Settings settings;
 	protected LocaleManager locale;
 	protected ApiResponseReceiver responseReceiver;
+	protected DatabaseManager dbManager;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		settings = new Settings(getActivity());
 		locale = LocaleManager.getInstance();
+		dbManager = DatabaseManager.newInstance(getActivity());
 	}
 	
 	protected void initializeViews(View rootView) {

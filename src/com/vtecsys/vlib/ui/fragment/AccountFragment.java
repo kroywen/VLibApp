@@ -14,6 +14,7 @@ import com.vtecsys.vlib.ui.screen.ChangePasswordScreen;
 import com.vtecsys.vlib.ui.screen.LoanActivitiesScreen;
 import com.vtecsys.vlib.ui.screen.ReservationListScreen;
 import com.vtecsys.vlib.util.DialogUtils;
+import com.vtecsys.vlib.util.LocaleManager;
 
 public class AccountFragment extends BaseFragment implements OnClickListener {
 	
@@ -66,7 +67,8 @@ public class AccountFragment extends BaseFragment implements OnClickListener {
 	
 	private void logout() {
 		BaseScreen.isLoggedIn = false;
-		DialogUtils.showDialog(getActivity(), "Success", "You have logged out");
+		DialogUtils.showDialog(getActivity(), locale.get(LocaleManager.LOGOUT), 
+			locale.get(LocaleManager.LOGGED_OUT_SUCCESS));
 		logoutBtn.setEnabled(false);
 	}
 	

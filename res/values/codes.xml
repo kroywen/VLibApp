@@ -81,6 +81,8 @@
     <string name="language">2084</string>
     <string name="no_connection_error">2085</string>
     <string name="passwords_not_match">2086</string>
+    <string name="logged_out_success">2087</string>
+    <string name="logout">2088</string>
     
     <!-- Additional codes (start from 5000) -->
     <string name="title_caption">5001</string>

@@ -3,6 +3,7 @@ package com.vtecsys.vlib.ui.fragment;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +44,11 @@ public class WebOpacFragment extends Fragment {
 	@Override
 	public void onStart() {
 		super.onStart();
-		webView.loadUrl("http://" + BaseScreen.webOpacUrl);
+		if (!TextUtils.isEmpty(BaseScreen.webOpacUrl)) {
+			String url = BaseScreen.webOpacUrl;
+			url = url.startsWith("http") ? url : "http://" + url;
+			webView.loadUrl(url);
+		}
 	}
 
 }

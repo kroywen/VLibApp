@@ -3,6 +3,7 @@ package com.vtecsys.vlib.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,10 @@ public class SearchResultAdapter extends BaseAdapter {
 		callNumber.setText(book.getCallNumber());
 		
 		TextView number = (TextView) convertView.findViewById(R.id.number);
-		number.setText(String.valueOf(position + 1));
+		String numberText = "<font color=\"" + 
+			context.getResources().getColor(R.color.highlight) + "\">" + 
+			String.valueOf(position + 1) + "</font>";
+		number.setText(Html.fromHtml(numberText));
 		
 		return convertView;
 	}

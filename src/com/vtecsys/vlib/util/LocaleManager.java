@@ -97,6 +97,8 @@ public class LocaleManager {
 	public static final int LANGUAGE = 2084;
 	public static final int NO_CONNECTION_ERROR = 2085;
 	public static final int PASSWORDS_NOT_MATCH = 2086;
+	public static final int LOGGED_OUT_SUCCESS = 2087;
+	public static final int LOGOUT = 2088;
 	
 	private int language = -1;
 	private SparseArray<String> translations;
