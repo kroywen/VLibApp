@@ -36,7 +36,6 @@
             <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textStyle="bold"
 	            android:textColor="@android:color/white"
 	            android:tag="@string/title_caption" />
             
@@ -48,7 +47,8 @@
                 android:maxLength="30"
                 android:maxLines="1"
 	            android:ellipsize="end"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:textStyle="bold" />
             
         </LinearLayout>
         
@@ -61,7 +61,6 @@
             <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textStyle="bold"
 	            android:textColor="@android:color/white"
 	            android:tag="@string/author_caption" />
             
@@ -73,7 +72,8 @@
                 android:maxLength="30"
                 android:maxLines="1"
 	            android:ellipsize="end"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:textStyle="bold" />
             
         </LinearLayout>
         
@@ -86,7 +86,6 @@
             <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textStyle="bold"
 	            android:textColor="@android:color/white"
 	            android:tag="@string/publisher_caption" />
             
@@ -98,7 +97,8 @@
                 android:maxLength="30"
                 android:maxLines="1"
 	            android:ellipsize="end"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:textStyle="bold" />
             
         </LinearLayout>
         
@@ -111,7 +111,6 @@
             <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textStyle="bold"
 	            android:textColor="@android:color/white"
 	            android:tag="@string/call_no_caption" />
             
@@ -123,7 +122,8 @@
                 android:maxLength="20"
                 android:maxLines="1"
 	            android:ellipsize="end"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@android:color/white"
+	            android:textStyle="bold" />
             
         </LinearLayout>
         

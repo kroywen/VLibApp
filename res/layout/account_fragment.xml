@@ -13,7 +13,7 @@
 	        style="@style/MyButton"
 	        android:id="@+id/loanActivitiesBtn"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="@dimen/btn_height"
 	        android:background="@drawable/btn_orange"
 	        android:tag="@string/loan_activities" />
 	    
@@ -21,7 +21,7 @@
 	        style="@style/MyButton"
 	        android:id="@+id/reservationListBtn"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="10dp"
 	        android:background="@drawable/btn_orange"
 	        android:tag="@string/reservation_list" />
@@ -30,10 +30,19 @@
 	        style="@style/MyButton"
 	        android:id="@+id/changePasswordBtn"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="10dp"
 	        android:background="@drawable/btn_orange"
 	        android:tag="@string/change_password" />
+	    
+	    <Button
+	        style="@style/MyButton"
+	        android:id="@+id/logoutBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/btn_height"
+	        android:layout_marginTop="10dp"
+	        android:background="@drawable/btn_orange"
+	        android:text="@string/logout" />
 	
 	</LinearLayout>
 

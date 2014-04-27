@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -130,12 +131,15 @@ public class LoanActivitiesScreen extends BaseScreen
 					
 					String id = null;
 					if (patron != null) {
-						id = locale.get(LocaleManager.MEMBER_ID) + ": " + patron.getId();
+						id = "<font color=\"" + getResources().getColor(R.color.highlight) +
+							"\">" + locale.get(LocaleManager.MEMBER_ID) + 
+							":</font> " + patron.getId();
 					} else {
-						id = locale.get(LocaleManager.MEMBER_ID) + ": " +
-							settings.getString(Settings.MEMBER_ID);
+						id = "<font color=\"" + getResources().getColor(R.color.highlight) +
+							"\">" + locale.get(LocaleManager.MEMBER_ID) + 
+							":</font> " + settings.getString(Settings.MEMBER_ID);
 					}
-					memberId.setText(id);
+					memberId.setText(Html.fromHtml(id));
 					
 					if (listView.getHeaderViewsCount() == 0) {
 						listView.addHeaderView(listHeaderView, null, false);

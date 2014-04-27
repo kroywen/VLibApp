@@ -23,7 +23,8 @@
 	        android:drawablePadding="5dp"
 	        android:inputType="textCapWords"
 	        android:maxLength="255"
-	        android:padding="5dp" />
+	        android:padding="5dp"
+	        android:text="Fashion Design" />
 	    
 	    <LinearLayout 
 	        android:layout_width="match_parent"
@@ -65,7 +66,7 @@
 	            style="@style/MyButton"
 	            android:id="@+id/searchTitleBtn"
 	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
+	            android:layout_height="@dimen/btn_height"
 	            android:layout_weight="1"
 	            android:background="@drawable/btn_orange"
 	            android:tag="@string/title" />
@@ -74,7 +75,7 @@
 	            style="@style/MyButton"
 	            android:id="@+id/searchAuthorBtn"
 	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
+	            android:layout_height="@dimen/btn_height"
 	            android:layout_weight="1"
 	            android:layout_marginLeft="10dp"
 	            android:layout_marginRight="10dp"
@@ -85,7 +86,7 @@
 	            style="@style/MyButton"
 	            android:id="@+id/searchSubjectBtn"
 	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
+	            android:layout_height="@dimen/btn_height"
 	            android:layout_weight="1"
 	            android:background="@drawable/btn_orange"
 	            android:tag="@string/subject" />
@@ -102,7 +103,7 @@
 	            style="@style/MyButton"
 	            android:id="@+id/searchSeriesBtn"
 	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
+	            android:layout_height="@dimen/btn_height"
 	            android:layout_weight="1"
 	            android:background="@drawable/btn_orange"
 	            android:tag="@string/series" />
@@ -111,7 +112,7 @@
 	            style="@style/MyButton"
 	            android:id="@+id/searchAllBtn"
 	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
+	            android:layout_height="@dimen/btn_height"
 	            android:layout_weight="1"
 	            android:layout_marginLeft="10dp"
 	            android:layout_marginRight="10dp"
@@ -122,7 +123,7 @@
 	            style="@style/MyButton"
 	            android:id="@+id/searchIsbnBtn"
 	            android:layout_width="0dp"
-	            android:layout_height="wrap_content"
+	            android:layout_height="@dimen/btn_height"
 	            android:layout_weight="1"
 	            android:background="@drawable/btn_gray"
 	            android:tag="@string/isbn" />
@@ -133,7 +134,7 @@
 	        style="@style/MyButton"
 	        android:id="@+id/browseAuthorBtn"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="20dp"
 	        android:layout_gravity="center_horizontal"
 	        android:background="@drawable/btn_blue"
@@ -143,7 +144,7 @@
 	        style="@style/MyButton"
 	        android:id="@+id/browseSubjectBtn"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="10dp"
 	        android:layout_gravity="center_horizontal"
 	        android:background="@drawable/btn_blue"
@@ -153,7 +154,7 @@
 	        style="@style/MyButton"
 	        android:id="@+id/browseSeriesBtn"
 	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
+	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="10dp"
 	        android:layout_gravity="center_horizontal"
 	        android:background="@drawable/btn_blue"

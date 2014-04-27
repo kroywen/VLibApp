@@ -14,6 +14,18 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical">
 	    
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textColor="@android:color/white"
+            android:text="@string/touch_picture_2" />
+	    
+        <View 
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/list_top_divider" />
+	    
         <LinearLayout 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,7 +54,6 @@
 		            <TextView
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
-			            android:textStyle="bold"
 			            android:textColor="@android:color/white"
 			            android:tag="@string/isbn_caption" />
 		            
@@ -54,7 +65,8 @@
 		                android:maxLength="20"
 		                android:maxLines="1"
 			            android:ellipsize="end"
-			            android:textColor="@android:color/white" />
+			            android:textColor="@android:color/white"
+			            android:textStyle="bold" />
 		            
 		        </LinearLayout>
 		        
@@ -67,7 +79,6 @@
 		            <TextView
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
-			            android:textStyle="bold"
 			            android:tag="@string/call_no_caption"
 			            android:textColor="@android:color/white" />
 		            
@@ -79,7 +90,8 @@
 		                android:maxLength="20"
 		                android:maxLines="1"
 			            android:ellipsize="end"
-			            android:textColor="@android:color/white" />
+			            android:textColor="@android:color/white"
+			            android:textStyle="bold" />
 		            
 		        </LinearLayout>
 		        
@@ -92,7 +104,6 @@
 		            <TextView
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
-			            android:textStyle="bold"
 			            android:tag="@string/author_caption"
 			            android:textColor="@android:color/white" />
 		            
@@ -104,7 +115,8 @@
 		                android:maxLength="30"
 		                android:maxLines="1"
 			            android:ellipsize="end"
-			            android:textColor="@android:color/white" />
+			            android:textColor="@android:color/white"
+			            android:textStyle="bold" />
 		            
 		        </LinearLayout>
 		        
@@ -117,7 +129,6 @@
 		            <TextView
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
-			            android:textStyle="bold"
 			            android:tag="@string/title_caption"
 			            android:textColor="@android:color/white" />
 		            
@@ -129,7 +140,8 @@
 		                android:maxLength="30"
 		                android:maxLines="1"
 			            android:ellipsize="end"
-			            android:textColor="@android:color/white" />
+			            android:textColor="@android:color/white"
+			            android:textStyle="bold" />
 		            
 		        </LinearLayout>
 		        
@@ -142,7 +154,6 @@
 		            <TextView
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
-			            android:textStyle="bold"
 			            android:tag="@string/edition_caption"
 			            android:textColor="@android:color/white" />
 		            
@@ -154,7 +165,8 @@
 		                android:maxLength="6"
 		                android:maxLines="1"
 			            android:ellipsize="end"
-			            android:textColor="@android:color/white" />
+			            android:textColor="@android:color/white"
+			            android:textStyle="bold" />
 		            
 		        </LinearLayout>
 		        
@@ -167,7 +179,6 @@
 		            <TextView
 			            android:layout_width="wrap_content"
 			            android:layout_height="wrap_content"
-			            android:textStyle="bold"
 			            android:tag="@string/publication_caption"
 			            android:textColor="@android:color/white" />
 		            
@@ -179,7 +190,8 @@
 		                android:maxLength="30"
 		                android:maxLines="1"
 			            android:ellipsize="end"
-			            android:textColor="@android:color/white" />
+			            android:textColor="@android:color/white"
+			            android:textStyle="bold" />
 		            
 		        </LinearLayout>
                 

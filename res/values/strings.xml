@@ -3,6 +3,10 @@
 
     <string name="app_name">V-App</string>
     
+    <string name="touch_picture">Touch the picture to see more details</string>
+    <string name="touch_picture_2">Touch the picture to see full catalogue details</string>
+    <string name="logout">Logout</string>
+    
     <string-array name="sort_by_params">
         <item></item>
         <item>title</item>

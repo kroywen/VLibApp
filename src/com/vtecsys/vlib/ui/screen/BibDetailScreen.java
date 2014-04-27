@@ -96,7 +96,7 @@ public class BibDetailScreen extends BaseScreen {
 		
 		for (Tag tag : tags) {
 			TextView tv = (TextView) inflater.inflate(R.layout.bib_detail_tag, null);
-			String text = "<b>" + tag.getCaption() + ":</b> " + tag.getContents();
+			String text = tag.getCaption() + ": <b>" + tag.getContents() + "</b>";
 			tv.setText(Html.fromHtml(text));
 			tagContainer.addView(tv);
 		}

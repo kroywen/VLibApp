@@ -3,6 +3,7 @@ package com.vtecsys.vlib.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,9 @@ public class BrowseResultAdapter extends BaseAdapter {
 		Auth auth = getItem(position);
 		
 		TextView authEntry = (TextView) convertView.findViewById(R.id.text);
-		authEntry.setText((position + 1) + ". " + auth.getAuthEntry());
+		String text = "<font color=\"" + context.getResources().getColor(R.color.highlight) +
+			"\">" + (position+1) + ".</font> " + auth.getAuthEntry();
+		authEntry.setText(Html.fromHtml(text));
 		
 		return convertView;
 	}

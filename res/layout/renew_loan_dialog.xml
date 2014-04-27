@@ -34,7 +34,6 @@
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textStyle="bold"
 				android:tag="@string/item_no_caption"
 				android:textColor="@color/app_main_color" />
 		    
@@ -46,7 +45,8 @@
 		        android:maxLength="30"
 		        android:maxLines="1"
 				android:ellipsize="end"
-				android:textColor="@color/app_main_color" />
+				android:textColor="@color/app_main_color"
+				android:textStyle="bold" />
 		    
 		</LinearLayout>
 	    
@@ -60,7 +60,6 @@
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textStyle="bold"
 				android:tag="@string/due_date_caption"
 				android:textColor="@color/app_main_color" />
 		    
@@ -72,7 +71,8 @@
 		        android:maxLength="30"
 		        android:maxLines="1"
 				android:ellipsize="end"
-				android:textColor="@color/app_main_color" />
+				android:textColor="@color/app_main_color"
+				android:textStyle="bold" />
 		    
 		</LinearLayout>
 	    
@@ -85,7 +85,6 @@
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textStyle="bold"
 				android:tag="@string/title_caption"
 				android:textColor="@color/app_main_color" />
 		    
@@ -97,7 +96,8 @@
 		        android:maxLength="30"
 		        android:maxLines="1"
 				android:ellipsize="end"
-				android:textColor="@color/app_main_color" />
+				android:textColor="@color/app_main_color"
+				android:textStyle="bold" />
 		    
 		</LinearLayout>
 	    
@@ -110,7 +110,6 @@
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textStyle="bold"
 				android:tag="@string/author_caption"
 				android:textColor="@color/app_main_color" />
 		    
@@ -122,7 +121,8 @@
 		        android:maxLength="30"
 		        android:maxLines="1"
 				android:ellipsize="end"
-				android:textColor="@color/app_main_color" />
+				android:textColor="@color/app_main_color"
+				android:textStyle="bold" />
 		    
 		</LinearLayout>
 		
@@ -135,7 +135,6 @@
 		    <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:textStyle="bold"
 				android:tag="@string/publisher_caption"
 				android:textColor="@color/app_main_color" />
 		    
@@ -147,7 +146,8 @@
 		        android:maxLength="30"
 		        android:maxLines="1"
 				android:ellipsize="end"
-				android:textColor="@color/app_main_color" />
+				android:textColor="@color/app_main_color"
+				android:textStyle="bold" />
 		    
 		</LinearLayout>
 		
@@ -161,7 +161,7 @@
 		        style="@style/MyButton"
 		        android:id="@+id/yesBtn"
 		        android:layout_width="0dp"
-		        android:layout_height="wrap_content"
+		        android:layout_height="@dimen/btn_height"
 		        android:layout_weight="1"
 		        android:layout_marginRight="10dp"
 		        android:background="@drawable/btn_orange"
@@ -171,7 +171,7 @@
 		        style="@style/MyButton"
 		        android:id="@+id/okBtn"
 		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
+		        android:layout_height="@dimen/btn_height"
 		        android:background="@drawable/btn_orange"
 		        android:tag="@string/ok" />
 	        
@@ -179,7 +179,7 @@
 		        style="@style/MyButton"
 		        android:id="@+id/noBtn"
 		        android:layout_width="0dp"
-		        android:layout_height="wrap_content"
+		        android:layout_height="@dimen/btn_height"
 		        android:layout_weight="1"
 		        android:layout_marginLeft="10dp"
 		        android:background="@drawable/btn_orange"

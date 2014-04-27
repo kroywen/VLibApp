@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -79,8 +80,9 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 		headerView = (TextView) findViewById(R.id.headerView);
 		
 		infoView = (TextView) findViewById(R.id.infoView);
-		String info = "0 " + locale.get(LocaleManager.RECORDS_LOADED);
-		infoView.setText(info);
+		String info = "<font color=\"" + getResources().getColor(R.color.highlight) +
+			"\">0</font> " + locale.get(LocaleManager.RECORDS_LOADED);
+		infoView.setText(Html.fromHtml(info));
 		
 		listView = (ListView) findViewById(R.id.listView);
 		listView.setOnItemClickListener(this);
@@ -112,15 +114,16 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 					listView.setAdapter(adapter);
 					listView.setVisibility(View.VISIBLE);
 					emptyView.setVisibility(View.GONE);
-					String info = result.getLoaded() + " " +
-						locale.get(LocaleManager.RECORDS_LOADED);
-					infoView.setText(info);
+					String info = "<font color=\"" + getResources().getColor(R.color.highlight) +
+						"\">" + result.getLoaded() + "</font> " + locale.get(LocaleManager.RECORDS_LOADED);
+					infoView.setText(Html.fromHtml(info));
 				}
 			} else {
 				listView.setVisibility(View.GONE);
 				listView.setAdapter(null);
-				String info = "0 " + locale.get(LocaleManager.RECORDS_LOADED);
-				infoView.setText(info);
+				String info = "<font color=\"" + getResources().getColor(R.color.highlight) +
+					"\">0</font> " + locale.get(LocaleManager.RECORDS_LOADED);
+				infoView.setText(Html.fromHtml(info));
 				emptyView.setVisibility(View.VISIBLE);
 				emptyView.setText(apiResponse.getMessage());
 			}
