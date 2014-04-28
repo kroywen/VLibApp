@@ -85,6 +85,8 @@
 2086;Passwords do not match
 2087;You have successfully logged out
 2088;Logout
+2089;Touch the picture to see more details.
+2090;Touch the picture to see full catalogue details.
 
 # additional text
 5001;Title:

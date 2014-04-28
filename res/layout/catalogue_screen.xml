@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:textColor="@android:color/white"
-            android:text="@string/touch_picture_2" />
+            android:tag="@string/touch_picture_full_details" />
 	    
         <View 
             android:layout_width="match_parent"

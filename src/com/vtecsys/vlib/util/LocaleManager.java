@@ -99,6 +99,8 @@ public class LocaleManager {
 	public static final int PASSWORDS_NOT_MATCH = 2086;
 	public static final int LOGGED_OUT_SUCCESS = 2087;
 	public static final int LOGOUT = 2088;
+	public static final int TOUCH_PICTURE_MORE_DETAILS = 2089;
+	public static final int TOUCH_PICTURE_FULL_DETAILS = 2090;
 	
 	private int language = -1;
 	private SparseArray<String> translations;

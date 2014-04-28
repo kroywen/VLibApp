@@ -27,7 +27,7 @@
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
 	            android:textColor="@android:color/white"
-	            android:text="@string/touch_picture" />
+	            android:tag="@string/touch_picture_more_details" />
             
         </LinearLayout>
         
