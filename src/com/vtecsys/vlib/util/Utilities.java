@@ -13,14 +13,21 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.vtecsys.vlib.receiver.CheckAlertsReceiver;
+import com.vtecsys.vlib.storage.Settings;
 
 public class Utilities {
 	
@@ -138,6 +145,32 @@ public class Utilities {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static String getPreDueDaysNotificationParam(int position) {
+		switch (position) {
+		case 0:
+			return "none";
+		case 1:
+			return "3";
+		case 2:
+			return "7";
+		default:
+			return null;
+		}
+	}
+	
+	public static void setupCheckAlertsAlarm(Context context) {
+		Settings settings = new Settings(context);
+		int checkAlertsInterval = settings.getInt(Settings.CHECK_ALERTS_INTERVAL);
+//		long interval = (checkAlertsInterval) == 0 ? AlarmManager.INTERVAL_HALF_DAY : AlarmManager.INTERVAL_DAY;
+		long interval = (checkAlertsInterval) == 0 ? 5 * 60 * 1000 : 10 * 60 * 1000;
+		
+		AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+		Intent intent = new Intent(context, CheckAlertsReceiver.class);
+		PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+		alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +
+			interval, interval, alarmIntent);
 	}
 
 }

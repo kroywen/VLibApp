@@ -23,6 +23,7 @@ import com.vtecsys.vlib.ui.fragment.SearchFragment;
 import com.vtecsys.vlib.ui.fragment.SettingsFragment;
 import com.vtecsys.vlib.ui.fragment.WebOpacFragment;
 import com.vtecsys.vlib.util.LocaleManager;
+import com.vtecsys.vlib.util.Utilities;
 
 public class MainScreen extends BaseScreen implements OnItemClickListener {
 	
@@ -38,6 +39,8 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main_screen);
+		
+		Utilities.setupCheckAlertsAlarm(this); 
 		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -112,6 +115,8 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 			return;
 		}
 		
+		selected = position;
+		
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
@@ -138,8 +143,6 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 	        mDrawerList.setItemChecked(position, true);
 	        mDrawerLayout.closeDrawer(mDrawerList);
 		}
-		
-		selected = position;
     }
 	
 	private void showNotices(Notices notices) {

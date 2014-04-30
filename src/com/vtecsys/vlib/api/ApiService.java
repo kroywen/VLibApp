@@ -54,6 +54,7 @@ public class ApiService extends IntentService {
 				if (parser != null) {
 					parser.parse(is);
 					ApiResponse apiResponse = parser.getApiResponse();
+					apiResponse.setRequestName(command);
 					sendResult(API_STATUS_SUCCESS, apiResponse);
 				}
 				

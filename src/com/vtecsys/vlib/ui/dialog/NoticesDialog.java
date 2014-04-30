@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +42,7 @@ public class NoticesDialog extends DialogFragment implements OnClickListener {
 	
 	private void initializeViews(View rootView) {
 		noticeText = (TextView) rootView.findViewById(R.id.noticeText);
-		String text = getNoticesText();
+		String text = Notices.getNoticesText(notices);
 		noticeText.setText(text);
 		
 		closeBtn = (ImageView) rootView.findViewById(R.id.closeBtn);
@@ -64,35 +63,6 @@ public class NoticesDialog extends DialogFragment implements OnClickListener {
 		if (v.getId() == R.id.closeBtn) {
 			dismiss();
 		}
-	}
-	
-	private String getNoticesText() {
-		if (notices == null) {
-			return null;
-		}
-		String text = "";
-		if (notices.hasPredue()) {
-			text += notices.getPredue();
-		}
-		if (notices.hasDue()) {
-			if (!TextUtils.isEmpty(text)) {
-				text += '\n';
-			}
-			text += notices.getDue();
-		}
-		if (notices.hasOverdue()) {
-			if (!TextUtils.isEmpty(text)) {
-				text += '\n';
-			}
-			text += notices.getOverdue();
-		}
-		if (notices.hasCollection()) {
-			if (!TextUtils.isEmpty(text)) {
-				text += '\n';
-			}
-			text += notices.getCollection();
-		}
-		return text;
 	}
 
 }

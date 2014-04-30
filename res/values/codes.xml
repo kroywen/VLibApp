@@ -85,6 +85,10 @@
     <string name="logout">2088</string>
     <string name="touch_picture_more_details">2089</string>
     <string name="touch_picture_full_details">2090</string>
+    <string name="check_alerts_interval">2091</string>
+    <string name="interval_12">2092</string>
+    <string name="interval_24">2093</string>
+    <string name="version">2094</string>
     
     <!-- Additional codes (start from 5000) -->
     <string name="title_caption">5001</string>

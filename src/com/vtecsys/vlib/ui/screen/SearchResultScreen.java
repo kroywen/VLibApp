@@ -101,22 +101,24 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 			String color = String.format("#%06X", 0xFFFFFF & 
 				getResources().getColor(R.color.highlight));
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+				if (ApiData.COMMAND_SEARCH.equalsIgnoreCase(apiResponse.getRequestName())) {
 				Object data = apiResponse.getData();
-				if (data != null && data instanceof SearchResult) {
-					SearchResult result = (SearchResult) apiResponse.getData();
-					List<Book> books = result.getBooks();
-					SearchResultAdapter adapter = new SearchResultAdapter(this, books);
-					listView.setAdapter(adapter);
-					listView.setVisibility(View.VISIBLE);
-					emptyView.setVisibility(View.GONE);
-					
-					String info = "<font color=\"" + color +
-						"\">" + result.getHits() + "</font> " + locale.get(LocaleManager.RECORDS_FOUND) + 
-						", " + "<font color=\"" + color + 
-						"\">" + result.getLoaded() + "</font> " +
-						locale.get(LocaleManager.RECORDS_LOADED) + ".";
-					infoView.setText(Html.fromHtml(info));
-					touchPictureView.setVisibility(View.VISIBLE);
+					if (data != null && data instanceof SearchResult) {
+						SearchResult result = (SearchResult) apiResponse.getData();
+						List<Book> books = result.getBooks();
+						SearchResultAdapter adapter = new SearchResultAdapter(this, books);
+						listView.setAdapter(adapter);
+						listView.setVisibility(View.VISIBLE);
+						emptyView.setVisibility(View.GONE);
+						
+						String info = "<font color=\"" + color +
+							"\">" + result.getHits() + "</font> " + locale.get(LocaleManager.RECORDS_FOUND) + 
+							", " + "<font color=\"" + color + 
+							"\">" + result.getLoaded() + "</font> " +
+							locale.get(LocaleManager.RECORDS_LOADED) + ".";
+						infoView.setText(Html.fromHtml(info));
+						touchPictureView.setVisibility(View.VISIBLE);
+					}
 				}
 			} else {
 				listView.setVisibility(View.GONE);

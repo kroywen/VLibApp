@@ -124,21 +124,23 @@ public class LoginScreen extends BaseScreen implements OnClickListener, OnChecke
 	@Override
 	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
 		hideProgress();
-		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
-			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				PatronAccountResult result = (PatronAccountResult) apiResponse.getData();
-				Patron patron = result.getPatron();
-				settings.setString(Settings.MEMBER_ID, 
-					memberId.getText().toString().trim());
-				settings.setString(Settings.PASSWORD, 
-					password.getText().toString().trim());
-				settings.setString(Settings.MEMBER_NAME, patron.getSurname());
-				isLoggedIn = true;
-				setResult(RESULT_OK);
-				finish();
-			} else {
-				DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
-					apiResponse.getMessage());
+		if (ApiData.COMMAND_PATR_ACCOUNT.equalsIgnoreCase(apiResponse.getRequestName())) {
+			if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+					PatronAccountResult result = (PatronAccountResult) apiResponse.getData();
+					Patron patron = result.getPatron();
+					settings.setString(Settings.MEMBER_ID, 
+						memberId.getText().toString().trim());
+					settings.setString(Settings.PASSWORD, 
+						password.getText().toString().trim());
+					settings.setString(Settings.MEMBER_NAME, patron.getSurname());
+					isLoggedIn = true;
+					setResult(RESULT_OK);
+					finish();
+				} else {
+					DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
+						apiResponse.getMessage());
+				}
 			}
 		}
 	}

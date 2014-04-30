@@ -101,6 +101,10 @@ public class LocaleManager {
 	public static final int LOGOUT = 2088;
 	public static final int TOUCH_PICTURE_MORE_DETAILS = 2089;
 	public static final int TOUCH_PICTURE_FULL_DETAILS = 2090;
+	public static final int CHECK_ALERTS_INTERVAL = 2091;
+	public static final int INTERVAL_12 = 2092;
+	public static final int INTERVAL_24 = 2093;
+	public static final int VERSION = 2094;
 	
 	private int language = -1;
 	private SparseArray<String> translations;

@@ -114,9 +114,6 @@ public abstract class ApiParser {
 					} else if (tagName.equalsIgnoreCase(TAG_MESSAGE)) {
 						String message = readString(parser, TAG_MESSAGE);
 						apiResponse.setMessage(message);
-					} else if (tagName.equalsIgnoreCase(TAG_REQUEST_NAME)) {
-						String requestName = readString(parser, TAG_REQUEST_NAME);
-						apiResponse.setRequestName(requestName);
 					} else if (tagName.equalsIgnoreCase(TAG_RESPONSE_DATA)) {
 						Object data = readData(parser);
 						apiResponse.setData(data);

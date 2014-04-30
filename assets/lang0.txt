@@ -87,6 +87,10 @@
 2088;Logout
 2089;Touch the picture to see more details.
 2090;Touch the picture to see full catalogue details.
+2091;Check alerts interval
+2092;Every 12 hours
+2093;Every 24 hours
+2094;Version
 
 # additional text
 5001;Title:

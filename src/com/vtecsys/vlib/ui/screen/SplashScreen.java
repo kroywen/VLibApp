@@ -48,7 +48,7 @@ public class SplashScreen extends BaseScreen {
 		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
 		intent.putExtra(ApiData.PARAM_ID, settings.getString(Settings.MEMBER_ID));
 		intent.putExtra(ApiData.PARAM_PASSWD, settings.getString(Settings.PASSWORD));
-		String predue = getPreDueDaysNotificationParam(
+		String predue = Utilities.getPreDueDaysNotificationParam(
 			settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
 		if (!TextUtils.isEmpty(predue)) {
 			intent.putExtra(ApiData.PARAM_PREDUE, predue);
@@ -58,19 +58,6 @@ public class SplashScreen extends BaseScreen {
 		intent.putExtra(ApiData.PARAM_N_COLL, settings.getBoolean(Settings.COLLECTION_NOTIFICATION) ? "y" : "n");
 		startService(intent);
 	}
-	
-	private String getPreDueDaysNotificationParam(int position) {
-		switch (position) {
-		case 0:
-			return "none";
-		case 1:
-			return "3";
-		case 2:
-			return "7";
-		default:
-			return null;
-		}
-	}
 
 	@Override
 	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
@@ -78,9 +65,9 @@ public class SplashScreen extends BaseScreen {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 				if (ApiData.COMMAND_SITENAME.equalsIgnoreCase(apiResponse.getRequestName())) {
 					SiteNameResult result = (SiteNameResult) apiResponse.getData();
-					appTitle = result.getSiteName();
-					setTitle(appTitle);
-					webOpacUrl = result.getUrl();
+					settings.setString(Settings.APP_TITLE, result.getSiteName());
+					settings.setString(Settings.WEB_OPAC_URL, result.getUrl());
+					setTitle(result.getSiteName());
 					String memberID = settings.getString(Settings.MEMBER_ID);
 					if (TextUtils.isEmpty(memberID)) {
 						startMainScreen(null);

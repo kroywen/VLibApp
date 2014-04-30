@@ -8,6 +8,7 @@ public class Settings {
 	public static final String FILENAME = "VLibApp";
 	
 	public static final String FONT_SIZE = "font_size";
+	public static final String CHECK_ALERTS_INTERVAL = "check_alerts_interval";
 	public static final String PRE_DUE_DAYS_NOTIFICATION = "pre_due_days_notitication";
 	public static final String DUE_DATE_NOTIFICATION = "due_date_notification";
 	public static final String OVERDUE_DATE_NOTIFICATION = "overdue_date_notification";
@@ -17,6 +18,8 @@ public class Settings {
 	public static final String PASSWORD = "password";
 	public static final String REMEMBER_PASSWORD = "remember_password";
 	public static final String MEMBER_NAME = "member_name";
+	public static final String APP_TITLE = "app_title";
+	public static final String WEB_OPAC_URL = "web_opac_url";
 	
 	public static final int PRE_DUE_THREE_DAYS = 0;
 	public static final int PRE_DUE_SEVEN_DAYS = 1;

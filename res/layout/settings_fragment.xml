@@ -121,8 +121,7 @@
 	        android:layout_height="wrap_content"
 	        android:orientation="horizontal"
 	        android:gravity="center_vertical"
-	        android:layout_marginTop="10dp"
-	        android:layout_marginBottom="10dp">
+	        android:layout_marginTop="10dp">
 	        
 	        <TextView 
 	            android:layout_width="wrap_content"
@@ -140,6 +139,30 @@
 	            android:id="@+id/collectionNotification"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="10dp"
+	        android:layout_marginBottom="10dp">
+	        
+	        <TextView 
+	            android:textColor="@android:color/white"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:tag="@string/check_alerts_interval" />
+	        
+	        <Spinner
+	            android:id="@+id/checkAlertsInterval"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:popupBackground="@color/app_main_color" />
 	        
 	    </LinearLayout>
 	    
@@ -189,6 +212,29 @@
 	        android:layout_width="match_parent"
 	        android:layout_height="1px"
 	        android:background="@color/list_selector" />
+	    
+	    <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginTop="10dp">
+	        
+	        <TextView 
+	            android:textColor="@android:color/white"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:tag="@string/version" />
+	        
+	        <TextView 
+	            android:textColor="@android:color/white"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="15dp"
+	            android:text="V-App 1.0" />
+	        
+	    </LinearLayout>
 	
 	</LinearLayout>
 	</ScrollView>

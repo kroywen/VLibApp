@@ -2,6 +2,7 @@ package com.vtecsys.vlib.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,7 @@ public class AboutFragment extends BaseFragment {
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 				String aboutText = (String) apiResponse.getData();
-				about.setText(aboutText);
+				about.setText(Html.fromHtml(aboutText));
 			}
 		}
 	}

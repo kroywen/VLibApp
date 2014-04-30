@@ -23,7 +23,6 @@ import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.model.result.SiteNameResult;
 import com.vtecsys.vlib.storage.Settings;
-import com.vtecsys.vlib.ui.screen.BaseScreen;
 import com.vtecsys.vlib.ui.screen.MainScreen;
 import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
@@ -31,6 +30,7 @@ import com.vtecsys.vlib.util.Utilities;
 public class SettingsFragment extends BaseFragment {
 	
 	private Spinner fontSize;
+	private Spinner checkAlertsInterval;
 	private Spinner preDueDaysNotification;
 	private Switch dueDateNotification;
 	private Switch overdueDateNotification;
@@ -40,6 +40,7 @@ public class SettingsFragment extends BaseFragment {
 	private int[] languages = new int[] { R.id.lang0, R.id.lang1, R.id.lang2 };
 	private boolean langChanged;
 	private boolean fontSizeChanged;
+	private boolean intervalChanged;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class SettingsFragment extends BaseFragment {
 		setHasOptionsMenu(true);
 		langChanged = false;
 		fontSizeChanged = false;
+		intervalChanged = false;
 	}
 	
 	@Override
@@ -91,6 +93,22 @@ public class SettingsFragment extends BaseFragment {
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
 		
+		checkAlertsInterval = (Spinner) rootView.findViewById(R.id.checkAlertsInterval);
+		checkAlertsInterval.setOnItemSelectedListener(new OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+				int prevInterval = settings.getInt(Settings.CHECK_ALERTS_INTERVAL);
+				int currentInterval = position;
+				if (currentInterval != prevInterval) {
+					intervalChanged = true;
+				} else {
+					intervalChanged = false;
+				}
+			}
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {}
+		});
+		
 		preDueDaysNotification = (Spinner)
 			rootView.findViewById(R.id.preDueDaysNotification);
 		
@@ -129,6 +147,16 @@ public class SettingsFragment extends BaseFragment {
 		fontSize.setAdapter(adapter);
 	}
 	
+	private void populateCheckAlertsIntervalSpinner() {
+		String[] items = new String[] {
+			locale.get(LocaleManager.INTERVAL_12),
+			locale.get(LocaleManager.INTERVAL_24)
+		};
+		SimpleAdapter adapter = new SimpleAdapter(
+			getActivity(), R.layout.simple_spinner_item, items);
+		checkAlertsInterval.setAdapter(adapter);
+	}
+	
 	private void populateNotificationSpinner() {
 		String[] items = new String[] {
 			locale.get(LocaleManager.NONE),
@@ -143,6 +171,8 @@ public class SettingsFragment extends BaseFragment {
 	private void updateViews() {
 		populateFontSizeSpinner();
 		fontSize.setSelection(settings.getInt(Settings.FONT_SIZE));
+		populateCheckAlertsIntervalSpinner();
+		checkAlertsInterval.setSelection(settings.getInt(Settings.CHECK_ALERTS_INTERVAL));
 		populateNotificationSpinner();
 		preDueDaysNotification.setSelection(
 			settings.getInt(Settings.PRE_DUE_DAYS_NOTIFICATION));
@@ -163,6 +193,8 @@ public class SettingsFragment extends BaseFragment {
 	
 	private void saveSettings() {
 		settings.setInt(Settings.FONT_SIZE, fontSize.getSelectedItemPosition());
+		settings.setInt(Settings.CHECK_ALERTS_INTERVAL, 
+			checkAlertsInterval.getSelectedItemPosition());
 		settings.setInt(Settings.PRE_DUE_DAYS_NOTIFICATION, 
 			preDueDaysNotification.getSelectedItemPosition());
 		settings.setBoolean(Settings.DUE_DATE_NOTIFICATION, 
@@ -190,6 +222,9 @@ public class SettingsFragment extends BaseFragment {
 			Utilities.setFontSize(getView(), Utilities.getFontSize(
 				settings.getInt(Settings.FONT_SIZE)));
 		}
+		if (intervalChanged) {
+			Utilities.setupCheckAlertsAlarm(getActivity());
+		}
 		if (!langChanged) {
 			Toast.makeText(getActivity(), locale.get(LocaleManager.SETTINGS_SAVED),
 				Toast.LENGTH_SHORT).show();
@@ -209,15 +244,17 @@ public class SettingsFragment extends BaseFragment {
 		hideProgress();
 		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				SiteNameResult result = (SiteNameResult) apiResponse.getData();
-				BaseScreen.appTitle = result.getSiteName();
-				BaseScreen.webOpacUrl = result.getUrl();
-				getActivity().setTitle(BaseScreen.appTitle);
-				settings.setInt(Settings.LANGUAGE, getLanguage());
-				updateViews();
-				langChanged = false;
-				Toast.makeText(getActivity(), locale.get(LocaleManager.SETTINGS_SAVED),
-					Toast.LENGTH_SHORT).show();
+				if (ApiData.COMMAND_SITENAME.equals(apiResponse.getRequestName())) {
+					SiteNameResult result = (SiteNameResult) apiResponse.getData();
+					settings.setString(Settings.APP_TITLE, result.getSiteName());
+					settings.setString(Settings.WEB_OPAC_URL, result.getUrl());
+					getActivity().setTitle(result.getSiteName());
+					settings.setInt(Settings.LANGUAGE, getLanguage());
+					updateViews();
+					langChanged = false;
+					Toast.makeText(getActivity(), locale.get(LocaleManager.SETTINGS_SAVED),
+						Toast.LENGTH_SHORT).show();
+				}
 			}
 		}
 	}

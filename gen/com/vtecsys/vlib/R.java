@@ -104,7 +104,7 @@ public final class R {
     }
     public static final class id {
         public static final int about=0x7f070008;
-        public static final int action_save=0x7f070066;
+        public static final int action_save=0x7f070067;
         public static final int allBtn=0x7f07002d;
         public static final int author=0x7f07001e;
         public static final int bookCover=0x7f07001b;
@@ -118,6 +118,7 @@ public final class R {
         public static final int cancelBtn=0x7f070046;
         public static final int changeBtn=0x7f070024;
         public static final int changePasswordBtn=0x7f07000c;
+        public static final int checkAlertsInterval=0x7f07005b;
         public static final int closeBtn=0x7f07003a;
         public static final int collectionNotification=0x7f07005a;
         public static final int content_frame=0x7f070037;
@@ -139,19 +140,19 @@ public final class R {
         public static final int image_view=0x7f070025;
         public static final int infoView=0x7f070013;
         public static final int isbn=0x7f07001c;
-        public static final int item=0x7f070061;
+        public static final int item=0x7f070062;
         public static final int itemNo=0x7f07003c;
         public static final int itemNoContainer=0x7f07003b;
         public static final int itemNumber=0x7f07002e;
-        public static final int lang0=0x7f07005c;
-        public static final int lang1=0x7f07005d;
-        public static final int lang2=0x7f07005e;
-        public static final int language=0x7f07005b;
+        public static final int lang0=0x7f07005d;
+        public static final int lang1=0x7f07005e;
+        public static final int lang2=0x7f07005f;
+        public static final int language=0x7f07005c;
         public static final int launch_product_query=0x7f070003;
         public static final int left_drawer=0x7f070038;
         public static final int listView=0x7f070014;
         public static final int loanActivitiesBtn=0x7f07000a;
-        public static final int location=0x7f070063;
+        public static final int location=0x7f070064;
         public static final int loginBtn=0x7f070034;
         public static final int logoutBtn=0x7f07000d;
         public static final int main_content=0x7f070007;
@@ -159,7 +160,7 @@ public final class R {
         public static final int memberIdContainer=0x7f070040;
         public static final int memberName=0x7f070042;
         public static final int memberNameContainer=0x7f070041;
-        public static final int message=0x7f07005f;
+        public static final int message=0x7f070060;
         public static final int noBtn=0x7f070019;
         public static final int noticeText=0x7f070039;
         public static final int number=0x7f070054;
@@ -179,7 +180,7 @@ public final class R {
         public static final int remember=0x7f070033;
         public static final int renewBtn=0x7f070031;
         public static final int reservationListBtn=0x7f07000b;
-        public static final int reserveBtn=0x7f070064;
+        public static final int reserveBtn=0x7f070065;
         public static final int reserveDate=0x7f070043;
         public static final int resetBtn=0x7f070035;
         public static final int restart_preview=0x7f070005;
@@ -194,17 +195,17 @@ public final class R {
         public static final int searchView=0x7f070049;
         public static final int snippet_view=0x7f070048;
         public static final int sortByView=0x7f07004a;
-        public static final int status=0x7f070062;
+        public static final int status=0x7f070063;
         public static final int tagContainer=0x7f07000e;
         public static final int text=0x7f070011;
         public static final int title=0x7f07001a;
         public static final int titleContainer=0x7f070017;
         public static final int touchPictureView=0x7f070055;
         public static final int viewfinder_view=0x7f070028;
-        public static final int volume=0x7f070060;
+        public static final int volume=0x7f070061;
         public static final int volumeList=0x7f070021;
         public static final int volumeNumber=0x7f070044;
-        public static final int webView=0x7f070065;
+        public static final int webView=0x7f070066;
         public static final int yesBtn=0x7f070018;
     }
     public static final class layout {
@@ -262,33 +263,36 @@ public final class R {
         public static final int all=0x7f080008;
         public static final int app_name=0x7f080000;
         public static final int author=0x7f080005;
-        public static final int author_caption=0x7f080057;
+        public static final int author_caption=0x7f08005b;
         public static final int back=0x7f08002f;
         public static final int browse_by_author=0x7f08000e;
         public static final int browse_by_series=0x7f080010;
         public static final int browse_by_subject=0x7f08000f;
         public static final int button_ok=0x7f080002;
         public static final int call_no=0x7f08000b;
-        public static final int call_no_caption=0x7f080059;
+        public static final int call_no_caption=0x7f08005d;
         public static final int call_no_issue_vol=0x7f08001f;
         public static final int cancel=0x7f080048;
         public static final int catalogue_details=0x7f08004b;
         public static final int change_password=0x7f08002b;
+        public static final int check_alerts_interval=0x7f080056;
         public static final int collection_notification=0x7f08003e;
         public static final int due_date=0x7f08004a;
-        public static final int due_date_caption=0x7f080060;
+        public static final int due_date_caption=0x7f080064;
         public static final int due_date_notification=0x7f08003c;
         public static final int edition=0x7f080018;
-        public static final int edition_caption=0x7f08005b;
+        public static final int edition_caption=0x7f08005f;
         public static final int empty=0x7f08004e;
         public static final int enter_keywords=0x7f080003;
         public static final int enter_new_password=0x7f080030;
         public static final int error=0x7f08004d;
         public static final int font_size=0x7f080035;
+        public static final int interval_12=0x7f080057;
+        public static final int interval_24=0x7f080058;
         public static final int isbn=0x7f080009;
-        public static final int isbn_caption=0x7f08005a;
+        public static final int isbn_caption=0x7f08005e;
         public static final int item_no=0x7f08001c;
-        public static final int item_no_caption=0x7f08005f;
+        public static final int item_no_caption=0x7f080063;
         public static final int lang0=0x7f080032;
         public static final int lang1=0x7f080033;
         public static final int lang2=0x7f080034;
@@ -301,9 +305,9 @@ public final class R {
         public static final int logout=0x7f080053;
         public static final int medium=0x7f080037;
         public static final int member_id=0x7f080020;
-        public static final int member_id_caption=0x7f08005d;
+        public static final int member_id_caption=0x7f080061;
         public static final int member_name=0x7f080026;
-        public static final int member_name_caption=0x7f08005e;
+        public static final int member_name_caption=0x7f080062;
         public static final int msg_camera_framework_bug=0x7f080001;
         public static final int my_account=0x7f080012;
         public static final int no=0x7f08002e;
@@ -317,10 +321,10 @@ public final class R {
         public static final int passwords_not_match=0x7f080051;
         public static final int pre_due_days_notification=0x7f080039;
         public static final int publication=0x7f080019;
-        public static final int publication_caption=0x7f08005c;
+        public static final int publication_caption=0x7f080060;
         public static final int publication_date=0x7f08000c;
         public static final int publisher=0x7f080015;
-        public static final int publisher_caption=0x7f080058;
+        public static final int publisher_caption=0x7f08005c;
         public static final int re_enter_new_password=0x7f080031;
         public static final int ready_date=0x7f080047;
         public static final int records_found=0x7f080016;
@@ -346,7 +350,7 @@ public final class R {
         public static final int title=0x7f080004;
         /**  Additional codes (start from 5000) 
          */
-        public static final int title_caption=0x7f080056;
+        public static final int title_caption=0x7f08005a;
         public static final int title_confirm_cancel_reservation=0x7f08002c;
         public static final int title_confirm_renew=0x7f080027;
         public static final int title_confirm_reserve=0x7f080024;
@@ -354,6 +358,7 @@ public final class R {
         public static final int title_reserved=0x7f080025;
         public static final int touch_picture_full_details=0x7f080055;
         public static final int touch_picture_more_details=0x7f080054;
+        public static final int version=0x7f080059;
         public static final int vol_no=0x7f080046;
         public static final int web_opac=0x7f080014;
         public static final int yes=0x7f08002d;

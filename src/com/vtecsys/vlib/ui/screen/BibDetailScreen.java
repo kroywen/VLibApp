@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -76,9 +77,9 @@ public class BibDetailScreen extends BaseScreen {
 	@Override
 	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
 		hideProgress();
-		if (ApiData.COMMAND_BIB_DETAIL.equalsIgnoreCase(apiResponse.getRequestName())) {
-			if (apiStatus == ApiService.API_STATUS_SUCCESS) {
-				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+				if (ApiData.COMMAND_BIB_DETAIL.equalsIgnoreCase(apiResponse.getRequestName())) {
 					List<Tag> tags = (List<Tag>) apiResponse.getData();
 					populateTagList(tags);
 				}
@@ -98,6 +99,7 @@ public class BibDetailScreen extends BaseScreen {
 			TextView tv = (TextView) inflater.inflate(R.layout.bib_detail_tag, null);
 			String text = tag.getCaption() + ": <b>" + tag.getContents() + "</b>";
 			tv.setText(Html.fromHtml(text));
+			tv.setMovementMethod(LinkMovementMethod.getInstance());
 			tagContainer.addView(tv);
 		}
 	}

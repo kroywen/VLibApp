@@ -27,8 +27,6 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 	public static final int REQUEST_LOGIN = 0;
 	
 	protected ApiResponseReceiver responseReceiver;
-	public static String appTitle;
-	public static String webOpacUrl;
 	public static boolean isLoggedIn;
 	protected Settings settings;
 	protected LocaleManager locale;
@@ -44,7 +42,7 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 		locale.setLanguage(this, settings.getInt(Settings.LANGUAGE));
 		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		
-		setTitle(appTitle);
+		setTitle(settings.getString(Settings.APP_TITLE));
 		ActionBar actionBar = getActionBar();
 		if (actionBar != null) {
 			actionBar.setDisplayHomeAsUpEnabled(true);

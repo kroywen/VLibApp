@@ -66,5 +66,34 @@ public class Notices implements Serializable {
 	public boolean hasNotices() {
 		return hasPredue() || hasDue() || hasOverdue() || hasCollection();
 	}
+	
+	public static String getNoticesText(Notices notices) {
+		if (notices == null) {
+			return null;
+		}
+		String text = "";
+		if (notices.hasPredue()) {
+			text += notices.getPredue();
+		}
+		if (notices.hasDue()) {
+			if (!TextUtils.isEmpty(text)) {
+				text += '\n';
+			}
+			text += notices.getDue();
+		}
+		if (notices.hasOverdue()) {
+			if (!TextUtils.isEmpty(text)) {
+				text += '\n';
+			}
+			text += notices.getOverdue();
+		}
+		if (notices.hasCollection()) {
+			if (!TextUtils.isEmpty(text)) {
+				text += '\n';
+			}
+			text += notices.getCollection();
+		}
+		return text;
+	}
 
 }

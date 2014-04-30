@@ -110,18 +110,20 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 			String color = String.format("#%06X", 0xFFFFFF & 
 				getResources().getColor(R.color.highlight));
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				Object data = apiResponse.getData();
-				if (data != null && data instanceof BrowseResult) {
-					BrowseResult result = (BrowseResult) apiResponse.getData();
-					List<Auth> authes = result.getAuthes();
-					BrowseResultAdapter adapter = new BrowseResultAdapter(this, authes);
-					listView.setAdapter(adapter);
-					listView.setVisibility(View.VISIBLE);
-					emptyView.setVisibility(View.GONE);
-					
-					String info = "<font color=\"" + color +
-						"\">" + result.getLoaded() + "</font> " + locale.get(LocaleManager.RECORDS_LOADED);
-					infoView.setText(Html.fromHtml(info));
+				if (ApiData.COMMAND_BROWSE.equalsIgnoreCase(apiResponse.getRequestName())) {
+					Object data = apiResponse.getData();
+					if (data != null && data instanceof BrowseResult) {
+						BrowseResult result = (BrowseResult) apiResponse.getData();
+						List<Auth> authes = result.getAuthes();
+						BrowseResultAdapter adapter = new BrowseResultAdapter(this, authes);
+						listView.setAdapter(adapter);
+						listView.setVisibility(View.VISIBLE);
+						emptyView.setVisibility(View.GONE);
+						
+						String info = "<font color=\"" + color +
+							"\">" + result.getLoaded() + "</font> " + locale.get(LocaleManager.RECORDS_LOADED);
+						infoView.setText(Html.fromHtml(info));
+					}
 				}
 			} else {
 				listView.setVisibility(View.GONE);

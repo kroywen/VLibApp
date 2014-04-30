@@ -100,14 +100,16 @@ public class ChangePasswordScreen extends BaseScreen implements OnClickListener 
 	@Override
 	public void onApiResponse(int apiStatus, ApiResponse apiResponse) {
 		hideProgress();
-		if (apiStatus == ApiService.API_STATUS_SUCCESS) {
-			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
-				settings.setString(Settings.PASSWORD, password1.getText().toString().trim());
-				Toast.makeText(this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
-				finish();
-			} else {
-				DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
-					apiResponse.getMessage());
+		if (ApiData.COMMAND_CHANGE_PASSWORD.equalsIgnoreCase(apiResponse.getRequestName())) {
+			if (apiStatus == ApiService.API_STATUS_SUCCESS) {
+				if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
+					settings.setString(Settings.PASSWORD, password1.getText().toString().trim());
+					Toast.makeText(this, apiResponse.getMessage(), Toast.LENGTH_SHORT).show();
+					finish();
+				} else {
+					DialogUtils.showDialog(this, locale.get(LocaleManager.ERROR),
+						apiResponse.getMessage());
+				}
 			}
 		}
 	}
