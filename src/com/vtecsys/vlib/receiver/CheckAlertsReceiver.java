@@ -6,7 +6,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.RingtoneManager;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.LocalBroadcastManager;
@@ -82,7 +81,6 @@ public class CheckAlertsReceiver extends BroadcastReceiver implements OnApiRespo
 					        .setSmallIcon(R.drawable.ic_launcher)
 					        .setAutoCancel(true)
 					        .setContentTitle(contentTitle)
-					        .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
 					        .setVibrate(new long[] {0, 100, 200, 300})
 					        .setContentText(contentText)
 					        .setStyle(new NotificationCompat.BigTextStyle().bigText(contentText));

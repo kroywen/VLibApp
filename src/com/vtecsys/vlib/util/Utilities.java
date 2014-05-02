@@ -163,8 +163,7 @@ public class Utilities {
 	public static void setupCheckAlertsAlarm(Context context) {
 		Settings settings = new Settings(context);
 		int checkAlertsInterval = settings.getInt(Settings.CHECK_ALERTS_INTERVAL);
-//		long interval = (checkAlertsInterval) == 0 ? AlarmManager.INTERVAL_HALF_DAY : AlarmManager.INTERVAL_DAY;
-		long interval = (checkAlertsInterval) == 0 ? 5 * 60 * 1000 : 10 * 60 * 1000;
+		long interval = (checkAlertsInterval) == 0 ? AlarmManager.INTERVAL_HALF_DAY : AlarmManager.INTERVAL_DAY;
 		
 		AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 		Intent intent = new Intent(context, CheckAlertsReceiver.class);
