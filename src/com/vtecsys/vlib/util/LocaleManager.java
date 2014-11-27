@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 
 public class LocaleManager {
 	
-	public static final int PLEASE_ENTER_THE_KEYWORDS = 2001;
+	public static final int PLEASE_ENTER_SEARCH_CRITERIA = 2001;
 	public static final int TITLE = 2002;
 	public static final int AUTHOR = 2003;
 	public static final int SUBJECT = 2004;
@@ -47,7 +47,7 @@ public class LocaleManager {
 	public static final int MEMBER_ID = 2031;
 	public static final int PASSWORD = 2032;
 	public static final int RESET = 2033;
-	public static final int REMEMBER_PASSWORD = 2034;
+	public static final int REMEMBER_ME = 2034;
 //	public static final int RESERVE = 2035; // 2026
 	public static final int TITLE_CONFIRM_RESERVE = 2036;
 	public static final int TITLE_RESERVED = 2037;
@@ -105,6 +105,24 @@ public class LocaleManager {
 	public static final int INTERVAL_12 = 2092;
 	public static final int INTERVAL_24 = 2093;
 	public static final int VERSION = 2094;
+	public static final int CONFIRM_EXIT = 2095;
+	public static final int SEARCHING_IN_PROGRESS = 2096;
+	public static final int PASSWORD_CHANGED = 2097;
+	public static final int SCAN_ISBN = 2098;
+	public static final int PUBLICATION_YEAR_LATEST_FIRST = 2099;
+	public static final int PUBLICATION_YEAR_EARLIEST_FIRST = 2100;
+	public static final int PLEASE_ENTER_VALID_INPUTS = 2101;
+	public static final int BOOKMARK_CATALOGUE = 2102;
+	public static final int MAXIMUM_BOOKMARKS_REACHED = 2103;
+	public static final int MY_BOOKMARKS = 2104;
+	public static final int EXTRA_LARGE = 2105;
+	public static final int MAXIMUM_NUMBER_OF_BOOKMARKS = 2106;
+	public static final int BOOKMARKS_COUNT = 2107;
+	public static final int BOOKMARKS_EMPTY = 2108;
+	public static final int CONFIRM_REMOVE_BOOKMARK = 2109;
+	public static final int CONFIRM_REMOVE_ALL_BOOKMARKS = 2110;
+	
+	public static final int PUBLICATION_CAPTION = 5007;
 	
 	private int language = -1;
 	private SparseArray<String> translations;

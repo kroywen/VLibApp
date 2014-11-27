@@ -2,6 +2,7 @@ package com.vtecsys.vlib.ui.screen;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.vtecsys.vlib.ui.fragment.AccountFragment;
 import com.vtecsys.vlib.ui.fragment.SearchFragment;
 import com.vtecsys.vlib.ui.fragment.SettingsFragment;
 import com.vtecsys.vlib.ui.fragment.WebOpacFragment;
+import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
@@ -154,6 +156,24 @@ public class MainScreen extends BaseScreen implements OnItemClickListener {
 		dialog.setRetainInstance(true);
 		dialog.setNotices(notices);
 		dialog.show(getFragmentManager(), "notices");
+	}
+	
+	@Override
+	public void onBackPressed() {
+		DialogUtils.showConfirmDialog(this,
+			null, 
+			locale.get(LocaleManager.CONFIRM_EXIT),
+			new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					finish();
+				}
+			},
+			new DialogInterface.OnCancelListener() {
+				@Override
+				public void onCancel(DialogInterface dialog) {}
+			}
+		);
 	}
 
 }

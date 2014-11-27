@@ -24,15 +24,39 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/font_size" />
 	        
 	        <Spinner
 	            android:id="@+id/fontSize"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
+	            android:layout_weight="1" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:id="@+id/maxBookmarks"  
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="center_vertical"
+	        android:layout_marginBottom="15dp">
+	        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginRight="15dp"
+	            android:textColor="@color/app_main_color"
+	            android:tag="@string/maximum_number_of_bookmarks" />
+	        
+	        <TextView
+	            android:id="@+id/maxBookmarksValue" 
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:popupBackground="@color/app_main_color" />
+	            android:gravity="right"
+	            android:textColor="@color/app_main_color" />
 	        
 	    </LinearLayout>
 	    
@@ -49,18 +73,17 @@
 	        android:layout_marginTop="10dp">
 	        
 	        <TextView 
-	            android:textColor="@android:color/white"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/pre_due_days_notification" />
 	        
 	        <Spinner
 	            android:id="@+id/preDueDaysNotification"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
-	            android:layout_weight="1"
-	            android:popupBackground="@color/app_main_color" />
+	            android:layout_weight="1" />
 	        
 	    </LinearLayout>
 	    
@@ -71,11 +94,11 @@
 	        android:gravity="center_vertical"
 	        android:layout_marginTop="10dp">
 	        
-	        <TextView 
-	            android:textColor="@android:color/white"
+	        <TextView
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/due_date_notification" />
 	        
 	        <View
@@ -101,7 +124,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/overdue_date_notification" />
 	        
 	        <View
@@ -127,7 +150,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/collection_notification" />
 	        
 	        <View
@@ -151,18 +174,17 @@
 	        android:layout_marginBottom="10dp">
 	        
 	        <TextView 
-	            android:textColor="@android:color/white"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/check_alerts_interval" />
 	        
 	        <Spinner
 	            android:id="@+id/checkAlertsInterval"
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
-	            android:layout_weight="1"
-	            android:popupBackground="@color/app_main_color" />
+	            android:layout_weight="1" />
 	        
 	    </LinearLayout>
 	    
@@ -175,7 +197,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dp"
-	        android:textColor="@android:color/white"
+	        android:textColor="@color/app_main_color"
 	        android:tag="@string/language" />
 	    
 	    <RadioGroup 
@@ -189,21 +211,21 @@
 	            android:id="@+id/lang0"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/lang0" />
 	        
 	        <RadioButton
 	            android:id="@+id/lang1" 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/lang1" />
 	        
 	        <RadioButton 
 	            android:id="@+id/lang2"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/lang2" />
 	        
 	    </RadioGroup>
@@ -221,17 +243,17 @@
 	        android:layout_marginTop="10dp">
 	        
 	        <TextView 
-	            android:textColor="@android:color/white"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/version" />
 	        
 	        <TextView 
-	            android:textColor="@android:color/white"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginLeft="15dp"
+	            android:textColor="@color/app_main_color"
 	            android:text="V-App 1.0" />
 	        
 	    </LinearLayout>

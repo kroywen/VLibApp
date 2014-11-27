@@ -17,6 +17,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.SystemClock;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.vtecsys.vlib.receiver.CheckAlertsReceiver;
 import com.vtecsys.vlib.storage.Settings;
@@ -35,6 +37,14 @@ public class Utilities {
 		ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo info = cm.getActiveNetworkInfo();
 		return info != null && info.isConnected();
+	}
+	
+	public static boolean isTabletDevice(Context context) {
+		boolean large = (context.getResources().getConfiguration().screenLayout & 
+			Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE;
+		boolean xlarge = (context.getResources().getConfiguration().screenLayout & 
+				Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE;
+		return large || xlarge;
 	}
 	
 	public static String streamToString(InputStream is) {
@@ -119,6 +129,8 @@ public class Utilities {
 			return 14.0f;
 		case 2: 
 			return 18.0f;
+		case 3:
+			return 22.0f;
 		default:
 			return 14.0f;
 		}
@@ -139,7 +151,7 @@ public class Utilities {
 					View child = group.getChildAt(i);
 					setFontSize(child, fontSize);
 				}
-			} else {
+			} else if (view instanceof TextView) {
 				method.invoke(view, Float.valueOf(fontSize));
 			}
 		} catch (Exception e) {
@@ -170,6 +182,20 @@ public class Utilities {
 		PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 		alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime() +
 			interval, interval, alarmIntent);
+	}
+	
+	public static String[] generateRangeItems(int start, int end) {
+		if (end < start) {
+			return null;
+		} else {
+			int count = end - start + 1;
+			String[] items = new String[count];
+			for (int i=start; i<=end; i++) {
+				int index = i - start; 
+				items[index] = String.valueOf(i); 
+			}
+			return items;
+		}
 	}
 
 }

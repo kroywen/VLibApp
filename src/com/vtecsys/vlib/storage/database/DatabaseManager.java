@@ -9,6 +9,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
+import com.vtecsys.vlib.model.Book;
+
 public class DatabaseManager {
 	
 	private SQLiteDatabase db;
@@ -64,5 +66,102 @@ public class DatabaseManager {
 		}
 		return found;
 	}
-
+	
+	public List<Book> getBookmarks(String memberId) {
+		if (TextUtils.isEmpty(memberId)) {
+			return null;
+		}
+		
+		List<Book> bookmarks = new ArrayList<Book>();
+		try {
+			String selection = DatabaseHelper.KEY_MEMBER_ID + "='" + memberId + "'";
+			Cursor c = db.query(DatabaseHelper.TABLE_BOOKMARKS, null, 
+				selection, null, null, null, null);
+			if (c != null && c.moveToFirst()) {
+				do {
+					bookmarks.add(new Book(
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_RID)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_ISBN)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_TITLE)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_AUTHOR)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_PUBLICATION)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_CALL_NUMBER)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_BOOK_COVER)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_EDITION))
+					));
+				} while (c.moveToNext());
+			}
+			if (c != null && !c.isClosed()) {
+				c.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return bookmarks;
+	}
+	
+	public boolean isBookmarked(String memberId, Book book) {
+		if (TextUtils.isEmpty(memberId) || book == null) {
+			return false;
+		}
+		boolean result = false;
+		try {
+			String selection = DatabaseHelper.KEY_MEMBER_ID + "='" + memberId + "' AND " + DatabaseHelper.KEY_RID + "='" + book.getRID() + "'";
+			Cursor c = db.query(DatabaseHelper.TABLE_BOOKMARKS, null, 
+				selection, null, null, null, null);
+			if (c != null && c.moveToFirst()) {
+				result = true;
+			}
+			if (c != null && !c.isClosed()) {
+				c.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public void addBookmark(String memberId, Book book) {
+		if (TextUtils.isEmpty(memberId) || book == null) {
+			return;
+		}	
+		if (!isBookmarked(memberId, book)) {
+			ContentValues values = prepareBookContentValues(memberId, book);
+			db.insert(DatabaseHelper.TABLE_BOOKMARKS, null, values);
+		}
+	}
+	
+	public void removeBookmark(String memberId, Book book) {
+		if (TextUtils.isEmpty(memberId) || book == null) {
+			return;
+		}
+		String whereClause = DatabaseHelper.KEY_MEMBER_ID + "='" + memberId + "' AND " +
+			DatabaseHelper.KEY_RID + "='" + book.getRID() + "'";
+		db.delete(DatabaseHelper.TABLE_BOOKMARKS, whereClause, null);
+	}
+	
+	public void removeAllBookmarks(String memberId) {
+		if (TextUtils.isEmpty(memberId)) {
+			return;
+		}
+		String whereClause = DatabaseHelper.KEY_MEMBER_ID + "='" + memberId + "'";
+		db.delete(DatabaseHelper.TABLE_BOOKMARKS, whereClause, null);
+	}
+	
+	private ContentValues prepareBookContentValues(String memberId, Book book) {
+		if (TextUtils.isEmpty(memberId) || book == null) {
+			return null;
+		}
+		ContentValues values = new ContentValues();
+		values.put(DatabaseHelper.KEY_MEMBER_ID, memberId);
+		values.put(DatabaseHelper.KEY_RID, book.getRID());
+		values.put(DatabaseHelper.KEY_ISBN, book.getISBN());
+		values.put(DatabaseHelper.KEY_TITLE, book.getTitle());
+		values.put(DatabaseHelper.KEY_AUTHOR, book.getAuthor());
+		values.put(DatabaseHelper.KEY_PUBLICATION, book.getPublication());
+		values.put(DatabaseHelper.KEY_CALL_NUMBER, book.getCallNumber());
+		values.put(DatabaseHelper.KEY_BOOK_COVER, book.getBookCover());
+		values.put(DatabaseHelper.KEY_EDITION, book.getEdition());
+		return values;
+	}
 }

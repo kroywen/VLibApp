@@ -2,6 +2,7 @@ package com.vtecsys.vlib.adapter;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -15,21 +16,28 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.model.Book;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.storage.database.DatabaseManager;
+import com.vtecsys.vlib.ui.screen.BaseScreen;
+import com.vtecsys.vlib.ui.screen.SearchResultScreen;
 import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
 public class SearchResultAdapter extends BaseAdapter {
 	
-	private Context context;
-	private List<Book> books;
-	private LocaleManager locale;
-	private Settings settings;
+	protected Context context;
+	protected List<Book> books;
+	protected LocaleManager locale;
+	protected Settings settings;
+	protected DatabaseManager dbManager;
+	protected String memberId;
 	
 	public SearchResultAdapter(Context context, List<Book> books) {
 		this.context = context;
 		this.books = books;
 		locale = LocaleManager.getInstance();
 		settings = new Settings(context);
+		dbManager = DatabaseManager.newInstance(context);
+		memberId = settings.getString(Settings.MEMBER_ID);
 	}
 
 	@Override
@@ -47,6 +55,7 @@ public class SearchResultAdapter extends BaseAdapter {
 		return 0;
 	}
 
+	@SuppressLint("InflateParams")
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
@@ -59,7 +68,7 @@ public class SearchResultAdapter extends BaseAdapter {
 			Utilities.setFontSize(convertView, fontSize);
 		}
 		
-		Book book = getItem(position);
+		final Book book = getItem(position);
 		
 		ImageView bookCover = (ImageView) convertView.findViewById(R.id.bookCover);
 		ImageLoader.getInstance().displayImage(book.getBookCover(), bookCover);
@@ -70,8 +79,8 @@ public class SearchResultAdapter extends BaseAdapter {
 		TextView author = (TextView) convertView.findViewById(R.id.author);
 		author.setText(book.getAuthor());
 		
-		TextView publisher = (TextView) convertView.findViewById(R.id.publisher);
-		publisher.setText(book.getPublisher());
+		TextView publication = (TextView) convertView.findViewById(R.id.publication);
+		publication.setText(book.getPublication());
 		
 		TextView callNumber = (TextView) convertView.findViewById(R.id.callnumber);
 		callNumber.setText(book.getCallNumber());
@@ -81,6 +90,22 @@ public class SearchResultAdapter extends BaseAdapter {
 			context.getResources().getColor(R.color.highlight) + "\">" + 
 			String.valueOf(position + 1) + "</font>";
 		number.setText(Html.fromHtml(numberText));
+		
+		View bookmarkBtn = convertView.findViewById(R.id.bookmarkBtn);
+		bookmarkBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				((SearchResultScreen) context).showBookmarkCatalogueDialog(book);
+			}
+		});
+		
+		View detailsBtn = convertView.findViewById(R.id.detailsBtn);
+		detailsBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				((BaseScreen) context).openCatalogueScreen(book);
+			}
+		});
 		
 		return convertView;
 	}

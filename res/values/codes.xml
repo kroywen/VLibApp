@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <string name="enter_keywords">2001</string>
+    <string name="enter_search_criteria">2001</string>
     <string name="title">2002</string>
     <string name="author">2003</string>
     <string name="subject">2004</string>
@@ -33,7 +33,7 @@
     <string name="member_id">2031</string>
     <string name="password">2032</string>
     <string name="reset">2033</string>
-    <string name="remember_password">2034</string>
+    <string name="remember_me">2034</string>
     <string name="title_confirm_reserve">2036</string>
     <string name="title_reserved">2037</string>
     <string name="member_name">2039</string>
@@ -56,7 +56,7 @@
     <string name="medium">2059</string>
     <string name="large">2060</string>
     <string name="pre_due_days_notification">2061</string>
-    <string name="none">2062</string>
+    
     <string name="three_days">2063</string>
     <string name="seven_days">2064</string>
     <string name="due_date_notification">2065</string>
@@ -89,6 +89,22 @@
     <string name="interval_12">2092</string>
     <string name="interval_24">2093</string>
     <string name="version">2094</string>
+    <string name="confirm_exit">2095</string>
+    <string name="searching_in_progress">2096</string>
+    <string name="password_changed">2097</string>
+    <string name="scan_isbn">2098</string>
+    <string name="publication_year_latest_first">2099</string>
+    <string name="publication_year_earliest_first">2100</string>
+    <string name="please_enter_valid_inputs">2101</string>
+    <string name="bookmark_catalogue">2102</string>
+    <string name="maximum_bookmarks_reached">2103</string>
+    <string name="my_bookmarks">2104</string>
+    <string name="extra_large">2105</string>
+    <string name="maximum_number_of_bookmarks">2106</string>
+    <string name="bookmarks_count">2107</string>
+    <string name="bookmarks_empty">2108</string>
+    <string name="confirm_remove_bookmark">2109</string>
+    <string name="confirm_remove_all_bookmark">2110</string>
     
     <!-- Additional codes (start from 5000) -->
     <string name="title_caption">5001</string>

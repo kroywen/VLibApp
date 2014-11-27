@@ -1,8 +1,11 @@
 package com.vtecsys.vlib.ui.screen;
 
+import java.util.List;
+
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
@@ -13,11 +16,14 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.vtecsys.vlib.R;
+import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.api.ApiResponse;
 import com.vtecsys.vlib.api.ApiResponseReceiver;
 import com.vtecsys.vlib.api.ApiService;
 import com.vtecsys.vlib.api.OnApiResponseListener;
+import com.vtecsys.vlib.model.Book;
 import com.vtecsys.vlib.storage.Settings;
+import com.vtecsys.vlib.storage.database.DatabaseManager;
 import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
@@ -29,15 +35,18 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 	protected ApiResponseReceiver responseReceiver;
 	public static boolean isLoggedIn;
 	protected Settings settings;
+	protected DatabaseManager dbManager;
 	protected LocaleManager locale;
 	protected LayoutInflater inflater;
 	protected View mainContent;
 	protected View progress;
+	private Book bookmark;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		settings = new Settings(this);
+		dbManager = DatabaseManager.newInstance(this);
 		locale = LocaleManager.getInstance();
 		locale.setLanguage(this, settings.getInt(Settings.LANGUAGE));
 		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -128,6 +137,55 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 				}
 			}
 		);
+	}
+	
+	public void showBookmarkCatalogueDialog(final Book book) {
+		if (book != null) {
+			DialogUtils.showConfirmDialog(this, null, locale.get(LocaleManager.BOOKMARK_CATALOGUE), new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					bookmarkBook(book);
+				}
+			}, null);
+		}
+	}
+	
+	private void bookmarkBook(Book book) {
+		if (isLoggedIn) {
+			String memberId = settings.getString(Settings.MEMBER_ID);
+			List<Book> bookmarks = dbManager.getBookmarks(memberId);
+			if (!Utilities.isEmpty(bookmarks)) {
+				int count = bookmarks.size();
+				int maxBookmarks = settings.getInt(Settings.MAX_BOOKMARKS, 10);
+				if (count >= maxBookmarks) {
+					DialogUtils.showDialog(BaseScreen.this, null, locale.get(LocaleManager.MAXIMUM_BOOKMARKS_REACHED));
+				} else {
+					dbManager.addBookmark(memberId, book);
+				}
+			} else {
+				dbManager.addBookmark(memberId, book);
+			}
+		} else {
+			bookmark = book;
+			Intent intent = new Intent(BaseScreen.this, LoginScreen.class);
+			startActivityForResult(intent, REQUEST_LOGIN);
+		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == REQUEST_LOGIN && resultCode == RESULT_OK) {
+			bookmarkBook(bookmark);
+			bookmark = null;
+		}
+	}
+	
+	public void openCatalogueScreen(Book book) {
+		if (book != null) {
+			Intent intent = new Intent(this, CatalogueScreen.class);
+			intent.putExtra(ApiData.PARAM_RID, book.getRID());
+			startActivity(intent);
+		}
 	}
 
 }

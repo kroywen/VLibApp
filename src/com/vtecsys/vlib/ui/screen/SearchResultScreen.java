@@ -2,9 +2,11 @@ package com.vtecsys.vlib.ui.screen;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,16 +27,19 @@ import com.vtecsys.vlib.util.Utilities;
 
 public class SearchResultScreen extends BaseScreen implements OnItemClickListener {
 	
-	private TextView infoView;
-	private ListView listView;
-	private TextView emptyView;
-	private View touchPictureView;
+	protected TextView infoView;
+	protected ListView listView;
+	protected TextView emptyView;
+	protected View touchPictureView;
 	
-	private String type;
-	private String term;
-	private String sortBy;
-	private String searchBy;
+	protected String type;
+	protected String term;
+	protected String sortBy;
+	protected String searchBy;
 	
+	private SearchResultAdapter adapter;
+	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -80,14 +85,21 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 		listView.setOnItemClickListener(this);
 		
 		emptyView = (TextView) findViewById(R.id.emptyView);
+		
+		TextView progressTextView = (TextView) findViewById(R.id.progressTextView);
+		progressTextView.setText(locale.get(LocaleManager.SEARCHING_IN_PROGRESS));
 	}
 	
 	private void requestSearch() {
 		Intent intent = new Intent(this, ApiService.class);
 		intent.setAction(ApiData.COMMAND_SEARCH);
 		intent.putExtra(ApiData.PARAM_TYPE, type);
-		intent.putExtra(ApiData.PARAM_TERM, term);
-		intent.putExtra(ApiData.PARAM_SORT_BY, sortBy);
+		if (!TextUtils.isEmpty(term)) {
+			intent.putExtra(ApiData.PARAM_TERM, term);
+		}
+		if (!TextUtils.isEmpty(sortBy)) {
+			intent.putExtra(ApiData.PARAM_SORT_BY, sortBy);
+		}
 		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
 		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
 		startService(intent);
@@ -106,7 +118,7 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 					if (data != null && data instanceof SearchResult) {
 						SearchResult result = (SearchResult) apiResponse.getData();
 						List<Book> books = result.getBooks();
-						SearchResultAdapter adapter = new SearchResultAdapter(this, books);
+						adapter = new SearchResultAdapter(this, books);
 						listView.setAdapter(adapter);
 						listView.setVisibility(View.VISIBLE);
 						emptyView.setVisibility(View.GONE);
@@ -149,10 +161,8 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-		Book book = ((SearchResultAdapter) parent.getAdapter()).getItem(position);
-		Intent intent = new Intent(this, CatalogueScreen.class);
-		intent.putExtra(ApiData.PARAM_RID, book.getRID());
-		startActivity(intent);
+		Book book = adapter.getItem(position);
+		openCatalogueScreen(book);
 	}
 
 }

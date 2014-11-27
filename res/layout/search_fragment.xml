@@ -23,7 +23,8 @@
 	        android:drawablePadding="5dp"
 	        android:inputType="textCapWords"
 	        android:maxLength="255"
-	        android:padding="5dp" />
+	        android:padding="5dp"
+	        android:imeOptions="actionSearch" />
 	    
 	    <LinearLayout 
 	        android:layout_width="match_parent"
@@ -36,7 +37,7 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginRight="15dp"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/sort_by" />
 	        
 	        <Spinner
@@ -44,7 +45,7 @@
 	            android:layout_width="0dp"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:popupBackground="@color/app_main_color" />
+	            android:textColor="@color/app_main_color" />
 	        
 	    </LinearLayout>
 	    
@@ -52,7 +53,7 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="15dp"
-	        android:textColor="@android:color/white"
+	        android:textColor="@color/app_main_color"
 	        android:tag="@string/search_by" />
 	    
 	    <LinearLayout
@@ -129,35 +130,97 @@
 	        
 	    </LinearLayout>
 	    
-	    <Button
-	        style="@style/MyButton"
-	        android:id="@+id/browseAuthorBtn"
+	    <LinearLayout 
+	        android:id="@+id/scanIsbnBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="20dp"
-	        android:layout_gravity="center_horizontal"
-	        android:background="@drawable/btn_blue"
-	        android:tag="@string/browse_by_author" />
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:background="@drawable/btn_green">
 	    
-	    <Button
-	        style="@style/MyButton"
+		    <TextView
+		        style="@style/MyButton"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:tag="@string/scan_isbn" />
+		    
+		    <ImageView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:src="@drawable/icon_scan_isbn" />
+		    
+		</LinearLayout>
+	    
+	    <LinearLayout 
+	        android:id="@+id/browseAuthorBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/btn_height"
+	        android:layout_marginTop="10dp"
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:background="@drawable/btn_blue">
+	    
+		    <TextView
+		        style="@style/MyButton"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:tag="@string/browse_by_author" />
+		    
+		    <ImageView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:src="@drawable/icon_browse_by_author" />
+		    
+		</LinearLayout>
+		
+	    <LinearLayout 
 	        android:id="@+id/browseSubjectBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="10dp"
-	        android:layout_gravity="center_horizontal"
-	        android:background="@drawable/btn_blue"
-	        android:tag="@string/browse_by_subject" />
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:background="@drawable/btn_blue">
 	    
-	    <Button
-	        style="@style/MyButton"
+		    <TextView
+		        style="@style/MyButton"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:tag="@string/browse_by_subject" />
+		    
+		    <ImageView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:src="@drawable/icon_browse_by_subject" />
+		    
+		</LinearLayout>
+	    
+	    <LinearLayout 
 	        android:id="@+id/browseSeriesBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="@dimen/btn_height"
 	        android:layout_marginTop="10dp"
-	        android:layout_gravity="center_horizontal"
-	        android:background="@drawable/btn_blue"
-	        android:tag="@string/browse_by_series" />
+	        android:orientation="horizontal"
+	        android:gravity="center"
+	        android:background="@drawable/btn_blue">
+	    
+		    <TextView
+		        style="@style/MyButton"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:tag="@string/browse_by_series" />
+		    
+		    <ImageView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:src="@drawable/icon_browse_by_series" />
+		    
+		</LinearLayout>
 	
 	</LinearLayout>
 	

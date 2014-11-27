@@ -2,9 +2,11 @@ package com.vtecsys.vlib.ui.screen;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,6 +36,7 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 	private String sortBy;
 	private String browseBy;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -95,8 +98,12 @@ public class BrowseResultScreen extends BaseScreen implements OnItemClickListene
 	private void requestBrowse() {
 		Intent intent = new Intent(this, ApiService.class);
 		intent.setAction(ApiData.COMMAND_BROWSE);
-		intent.putExtra(ApiData.PARAM_TERM, term);
-		intent.putExtra(ApiData.PARAM_SORT_BY, sortBy);
+		if (!TextUtils.isEmpty(term)) {
+			intent.putExtra(ApiData.PARAM_TERM, term);
+		}
+		if (!TextUtils.isEmpty(sortBy)) {
+			intent.putExtra(ApiData.PARAM_SORT_BY, sortBy);
+		}
 		intent.putExtra(ApiData.PARAM_BROWSE_BY, browseBy);
 		intent.putExtra(ApiData.PARAM_LANG, settings.getInt(Settings.LANGUAGE));
 		startService(intent);

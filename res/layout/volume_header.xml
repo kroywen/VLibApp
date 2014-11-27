@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:textStyle="bold"
         android:tag="@string/call_no_issue_vol" />
     
@@ -23,7 +23,7 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:textStyle="bold"
         android:tag="@string/item_no" />
     
@@ -33,7 +33,7 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:textStyle="bold"
         android:tag="@string/status" />
     
@@ -43,7 +43,7 @@
         android:layout_weight="1"
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:textStyle="bold"
         android:tag="@string/location" />
     
@@ -55,7 +55,6 @@
         android:tag="@string/all"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:background="@drawable/btn_orange"
-        
         android:visibility="invisible" />
 
 </LinearLayout>

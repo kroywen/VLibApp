@@ -2,10 +2,13 @@ package com.vtecsys.vlib.ui.screen;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,8 +16,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.vtecsys.vlib.R;
@@ -42,11 +45,14 @@ public class CatalogueScreen extends BaseScreen
 	private TextView title;
 	private TextView edition;
 	private TextView publication;
+	private View bookmarkBtn;
+	private View shareBtn;
 	
 	private String rid;
 	private Book book;
 	private Volume requestedVolume;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,6 +87,12 @@ public class CatalogueScreen extends BaseScreen
 		title = (TextView) findViewById(R.id.title);
 		edition = (TextView) findViewById(R.id.edition);
 		publication = (TextView) findViewById(R.id.publication);
+		
+		bookmarkBtn = findViewById(R.id.bookmarkBtn);
+		bookmarkBtn.setOnClickListener(this);
+		
+		shareBtn = findViewById(R.id.shareBtn);
+		shareBtn.setOnClickListener(this);
 	}
 	
 	private void requestCatalogue(boolean hideContent) {
@@ -117,19 +129,38 @@ public class CatalogueScreen extends BaseScreen
 	private void updateData(CatalogueResult result) {
 		book = result.getBook();
 		
+		int visibility = View.VISIBLE;
+		String memberId = settings.getString(Settings.MEMBER_ID);
+		if (!TextUtils.isEmpty(memberId)) {
+			boolean isBookmark = dbManager.isBookmarked(memberId, book);
+			visibility = isBookmark ? View.GONE : visibility;	
+		}	
+		bookmarkBtn.setVisibility(visibility);
+		
 		ImageLoader.getInstance().displayImage(book.getBookCover(), bookCover);
 		
-		isbn.setText(book.getISBN());
-		callNumber.setText(book.getCallNumber());
-		author.setText(book.getAuthor());
+		isbn.setText(Html.fromHtml(locale.get(LocaleManager.ISBN) + ":&nbsp;<b>" + book.getISBN() + "</b>"));
+		isbn.setVisibility(book.hasISBN() ? View.VISIBLE : View.GONE);
+		
+		callNumber.setText(Html.fromHtml(locale.get(LocaleManager.CALL_NO) + ":&nbsp;<b>" + book.getCallNumber() + "</b>"));
+		callNumber.setVisibility(book.hasCallNumber() ? View.VISIBLE : View.GONE);
+		
+		author.setText(Html.fromHtml(locale.get(LocaleManager.AUTHOR) + ":&nbsp;<b>" + book.getAuthor() + "</b>"));
+		author.setVisibility(book.hasAuthor() ? View.VISIBLE : View.GONE);
+		
 		title.setText(book.getTitle());
-		edition.setText(book.getEdition());
-		publication.setText(book.getPublication());
+		
+		edition.setText(Html.fromHtml(locale.get(LocaleManager.EDITION) + ":&nbsp;<b>" + book.getEdition() + "</b>"));
+		edition.setVisibility(book.hasEdition() ? View.VISIBLE : View.GONE);
+		
+		publication.setText(Html.fromHtml(locale.get(LocaleManager.PUBLICATION) + ":&nbsp;<b>" + book.getPublication() + "</b>"));
+		publication.setVisibility(book.hasPublication() ? View.VISIBLE : View.GONE);
 		
 		List<Volume> volumes = result.getVolumes();
 		populateVolumeList(volumes);
 	}
 	
+	@SuppressLint("InflateParams")
 	private void populateVolumeList(List<Volume> volumes) {
 		volumeList.removeAllViews();
 		if (!Utilities.isEmpty(volumes)) {
@@ -273,6 +304,23 @@ public class CatalogueScreen extends BaseScreen
 			intent.putExtra(ApiData.PARAM_RID, rid);
 			startActivity(intent);
 			break;
+		case R.id.bookmarkBtn:
+			showBookmarkCatalogueDialog(book);
+			break;
+		case R.id.shareBtn:
+			showShareCatalogueDialog(book);
+			break;
+		}
+	}
+	
+	private void showShareCatalogueDialog(Book book) {
+		if (book != null) {
+			Intent intent = new Intent(Intent.ACTION_SEND);
+			String extraText = book.getISBN() + "\n" + book.getCallNumber() + "\n" +
+					book.getAuthor() + "\n" + book.getTitle();
+			intent.putExtra(Intent.EXTRA_TEXT, extraText);
+			intent.setType("text/plain");
+			startActivity(Intent.createChooser(intent, "Share via"));
 		}
 	}
 

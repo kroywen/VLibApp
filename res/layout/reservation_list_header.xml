@@ -14,7 +14,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/reserve_date" />
     
     <TextView
@@ -24,7 +24,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/call_no" />
     
     <TextView
@@ -34,7 +34,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/vol_no" />
     
     <TextView
@@ -44,7 +44,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/ready_date" />
     
     <Button

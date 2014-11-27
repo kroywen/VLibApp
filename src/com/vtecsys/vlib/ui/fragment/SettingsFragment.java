@@ -1,5 +1,8 @@
 package com.vtecsys.vlib.ui.fragment;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -14,6 +18,7 @@ import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vtecsys.vlib.R;
@@ -27,9 +32,11 @@ import com.vtecsys.vlib.ui.screen.MainScreen;
 import com.vtecsys.vlib.util.LocaleManager;
 import com.vtecsys.vlib.util.Utilities;
 
-public class SettingsFragment extends BaseFragment {
+public class SettingsFragment extends BaseFragment implements OnClickListener {
 	
 	private Spinner fontSize;
+	private View maxBookmarks;
+	private TextView maxBookmarksValue;
 	private Spinner checkAlertsInterval;
 	private Spinner preDueDaysNotification;
 	private Switch dueDateNotification;
@@ -65,6 +72,7 @@ public class SettingsFragment extends BaseFragment {
 		return true;
 	}
 	
+	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.settings_fragment, null);
@@ -92,6 +100,11 @@ public class SettingsFragment extends BaseFragment {
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {}
 		});
+		
+		maxBookmarks = rootView.findViewById(R.id.maxBookmarks);
+		maxBookmarks.setOnClickListener(this);
+		
+		maxBookmarksValue = (TextView) rootView.findViewById(R.id.maxBookmarksValue);
 		
 		checkAlertsInterval = (Spinner) rootView.findViewById(R.id.checkAlertsInterval);
 		checkAlertsInterval.setOnItemSelectedListener(new OnItemSelectedListener() {
@@ -137,11 +150,21 @@ public class SettingsFragment extends BaseFragment {
 	}
 	
 	private void populateFontSizeSpinner() {
-		String[] items = new String[] {
-			locale.get(LocaleManager.SMALL),
-			locale.get(LocaleManager.MEDIUM),
-			locale.get(LocaleManager.LARGE)
-		};
+		String[] items = null;
+		if (Utilities.isTabletDevice(getActivity())) {
+			items = new String[] {
+				locale.get(LocaleManager.SMALL),
+				locale.get(LocaleManager.MEDIUM),
+				locale.get(LocaleManager.LARGE),
+				locale.get(LocaleManager.EXTRA_LARGE)
+			};
+		} else {
+			items = new String[] {
+				locale.get(LocaleManager.SMALL),
+				locale.get(LocaleManager.MEDIUM),
+				locale.get(LocaleManager.LARGE),	
+			};
+		}
 		SimpleAdapter adapter = new SimpleAdapter(
 			getActivity(), R.layout.simple_spinner_item, items);
 		fontSize.setAdapter(adapter);
@@ -171,6 +194,9 @@ public class SettingsFragment extends BaseFragment {
 	private void updateViews() {
 		populateFontSizeSpinner();
 		fontSize.setSelection(settings.getInt(Settings.FONT_SIZE));
+		
+		maxBookmarksValue.setText(String.valueOf(settings.getInt(Settings.MAX_BOOKMARKS, 10)));
+		
 		populateCheckAlertsIntervalSpinner();
 		checkAlertsInterval.setSelection(settings.getInt(Settings.CHECK_ALERTS_INTERVAL));
 		populateNotificationSpinner();
@@ -264,6 +290,31 @@ public class SettingsFragment extends BaseFragment {
 		return checkedId == R.id.lang0 ? 0 :
 			checkedId == R.id.lang1 ? 1 :
 			checkedId == R.id.lang2 ? 2 : -1;
+	}
+	
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.maxBookmarks:
+			showSelectMaxBookmarksDialog();
+			break;
+		}
+	}
+	
+	private void showSelectMaxBookmarksDialog() {
+		int checkedItem = settings.getInt(Settings.MAX_BOOKMARKS, 10) - 10;
+		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		final String[] items = Utilities.generateRangeItems(10, 100);
+		builder.setSingleChoiceItems(items, checkedItem, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				settings.setInt(Settings.MAX_BOOKMARKS, Integer.parseInt(items[which]));
+				updateViews();
+			}
+		})
+		.create()
+		.show();
 	}
 
 }

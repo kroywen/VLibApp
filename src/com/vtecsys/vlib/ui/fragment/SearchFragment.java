@@ -2,20 +2,25 @@ package com.vtecsys.vlib.ui.fragment;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
 import com.vtecsys.vlib.R;
 import com.vtecsys.vlib.adapter.SimpleAdapter;
@@ -23,9 +28,10 @@ import com.vtecsys.vlib.api.ApiData;
 import com.vtecsys.vlib.ui.screen.BrowseResultScreen;
 import com.vtecsys.vlib.ui.screen.ISBNScannerScreen;
 import com.vtecsys.vlib.ui.screen.SearchResultScreen;
+import com.vtecsys.vlib.util.DialogUtils;
 import com.vtecsys.vlib.util.LocaleManager;
 
-public class SearchFragment extends BaseFragment implements OnClickListener {
+public class SearchFragment extends BaseFragment implements OnClickListener, OnEditorActionListener {
 	
 	public static final int REQUEST_SCAN = 0;
 	
@@ -37,10 +43,12 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 	private Button searchSeriesBtn;
 	private Button searchAllBtn;
 	private Button searchIsbnBtn;
-	private Button browseAuthorBtn;
-	private Button browseSubjectBtn;
-	private Button browseSeriesBtn;
+	private View scanIsbnBtn;
+	private View browseAuthorBtn;
+	private View browseSubjectBtn;
+	private View browseSeriesBtn;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.search_fragment, null);
@@ -52,9 +60,10 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 	protected void initializeViews(View rootView) {
 		super.initializeViews(rootView);
 		searchView = (AutoCompleteTextView) rootView.findViewById(R.id.searchView);
-		searchView.setHint(locale.get(LocaleManager.PLEASE_ENTER_THE_KEYWORDS));
+		searchView.setHint(locale.get(LocaleManager.PLEASE_ENTER_SEARCH_CRITERIA));
 		searchView.setThreshold(1);
 		searchView.addTextChangedListener(watcher);
+		searchView.setOnEditorActionListener(this);
 		
 		sortByView = (Spinner) rootView.findViewById(R.id.sortByView);
 		populateSortBySpinner();
@@ -70,21 +79,24 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 		searchAllBtn.setOnClickListener(this);
 		searchIsbnBtn = (Button) rootView.findViewById(R.id.searchIsbnBtn);
 		searchIsbnBtn.setOnClickListener(this);
-		browseAuthorBtn = (Button) rootView.findViewById(R.id.browseAuthorBtn);
+		scanIsbnBtn = rootView.findViewById(R.id.scanIsbnBtn);
+		scanIsbnBtn.setOnClickListener(this);
+		browseAuthorBtn = rootView.findViewById(R.id.browseAuthorBtn);
 		browseAuthorBtn.setOnClickListener(this);
-		browseSubjectBtn = (Button) rootView.findViewById(R.id.browseSubjectBtn);
+		browseSubjectBtn = rootView.findViewById(R.id.browseSubjectBtn);
 		browseSubjectBtn.setOnClickListener(this);
-		browseSeriesBtn = (Button) rootView.findViewById(R.id.browseSeriesBtn);
+		browseSeriesBtn = rootView.findViewById(R.id.browseSeriesBtn);
 		browseSeriesBtn.setOnClickListener(this);
 	}
 	
 	private void populateSortBySpinner() {
 		String[] items = new String[] {
 			locale.get(LocaleManager.NONE),
-			locale.get(LocaleManager.TITLE),
-			locale.get(LocaleManager.AUTHOR),
 			locale.get(LocaleManager.CALL_NO),
-			locale.get(LocaleManager.PUBLICATION_DATE)
+			locale.get(LocaleManager.AUTHOR),
+			locale.get(LocaleManager.TITLE),
+			locale.get(LocaleManager.PUBLICATION_YEAR_LATEST_FIRST),
+			locale.get(LocaleManager.PUBLICATION_YEAR_EARLIEST_FIRST)
 		};
 		SimpleAdapter adapter = new SimpleAdapter(
 			getActivity(), R.layout.simple_spinner_item, items);
@@ -110,6 +122,9 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 			showSearchScreen(searchView.getText().toString(), "all"); 
 			break;
 		case R.id.searchIsbnBtn:
+			showSearchScreen(searchView.getText().toString(), "isbn");
+			break;
+		case R.id.scanIsbnBtn:
 			showISBNScannerScreen();
 			break;
 		case R.id.browseAuthorBtn:
@@ -124,20 +139,23 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 		}
 	}
 	
-	private void showSearchScreen(String term, String searchBy) {
-		saveTerm(term);
-		
-		Intent intent = new Intent(getActivity(), SearchResultScreen.class);
-		intent.putExtra(ApiData.PARAM_TYPE, ApiData.TYPE_SEARCH);
-		intent.putExtra(ApiData.PARAM_TERM, term);
-		intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
-		intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
-		getActivity().startActivity(intent);
+	private void showSearchScreen(String term, String searchBy) {		
+		if (TextUtils.isEmpty(term)) {
+			DialogUtils.showDialog(getActivity(), locale.get(LocaleManager.ERROR), 
+				locale.get(LocaleManager.PLEASE_ENTER_VALID_INPUTS));
+		} else {
+			saveTerm(term);			
+			Intent intent = new Intent(getActivity(), SearchResultScreen.class);
+			intent.putExtra(ApiData.PARAM_TYPE, ApiData.TYPE_SEARCH);
+			intent.putExtra(ApiData.PARAM_TERM, term);
+			intent.putExtra(ApiData.PARAM_SEARCH_BY, searchBy);
+			intent.putExtra(ApiData.PARAM_SORT_BY, sortByView.getSelectedItemPosition());
+			getActivity().startActivity(intent);
+		}
 	}
 	
 	private void showBrowseScreen(String term, String browseBy) {
 		saveTerm(term);
-		
 		Intent intent = new Intent(getActivity(), BrowseResultScreen.class);
 		intent.putExtra(ApiData.PARAM_TERM, term);
 		intent.putExtra(ApiData.PARAM_BROWSE_BY, browseBy);
@@ -190,6 +208,15 @@ public class SearchFragment extends BaseFragment implements OnClickListener {
 		if (!found) {
 			dbManager.saveWord(term);
 		}
+	}
+
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+            searchAllBtn.performClick();
+            return true;
+        }
+        return false;
 	}
 
 }

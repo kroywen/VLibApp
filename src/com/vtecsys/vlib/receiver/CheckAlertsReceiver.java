@@ -81,7 +81,6 @@ public class CheckAlertsReceiver extends BroadcastReceiver implements OnApiRespo
 					        .setSmallIcon(R.drawable.ic_launcher)
 					        .setAutoCancel(true)
 					        .setContentTitle(contentTitle)
-					        .setVibrate(new long[] {0, 100, 200, 300})
 					        .setContentText(contentText)
 					        .setStyle(new NotificationCompat.BigTextStyle().bigText(contentText));
 	

@@ -2,10 +2,10 @@ package com.vtecsys.vlib.ui.screen;
 
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -27,6 +27,7 @@ public class BibDetailScreen extends BaseScreen {
 	
 	private String rid;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -87,6 +88,7 @@ public class BibDetailScreen extends BaseScreen {
 		}
 	}
 	
+	@SuppressLint("InflateParams")
 	private void populateTagList(List<Tag> tags) {
 		tagContainer.removeAllViews();
 		if (Utilities.isEmpty(tags)) {
@@ -96,11 +98,16 @@ public class BibDetailScreen extends BaseScreen {
 			getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		for (Tag tag : tags) {
-			TextView tv = (TextView) inflater.inflate(R.layout.bib_detail_tag, null);
-			String text = tag.getCaption() + ": <b>" + tag.getContents() + "</b>";
-			tv.setText(Html.fromHtml(text));
-			tv.setMovementMethod(LinkMovementMethod.getInstance());
-			tagContainer.addView(tv);
+			View layout = inflater.inflate(R.layout.bib_detail_tag, null);
+			
+			TextView tagName = (TextView) layout.findViewById(R.id.tagName);
+			tagName.setText(tag.getCaption());
+			
+			TextView tagValue = (TextView) layout.findViewById(R.id.tagValue);
+			tagValue.setText(tag.getContents());
+			tagValue.setMovementMethod(LinkMovementMethod.getInstance());
+			
+			tagContainer.addView(layout);
 		}
 	}
 

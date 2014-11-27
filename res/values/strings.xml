@@ -5,10 +5,11 @@
         
     <string-array name="sort_by_params">
         <item></item>
-        <item>title</item>
-        <item>author</item>
         <item>callNo</item>
+        <item>author</item>
+        <item>title</item>
         <item>pubYearD</item>
+        <item>pubYearA</item>
     </string-array>
 
 </resources>

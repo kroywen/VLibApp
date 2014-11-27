@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="@drawable/main_background">
+    android:layout_height="match_parent">
     
     <LinearLayout
         android:id="@+id/main_content"
@@ -20,13 +19,13 @@
 	            android:id="@+id/infoView"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white" />
+	            android:textColor="@color/app_main_color" />
 	        
 	        <TextView
 	            android:id="@+id/touchPictureView"
 	            android:layout_width="match_parent"
 	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
+	            android:textColor="@color/app_main_color"
 	            android:tag="@string/touch_picture_more_details" />
             
         </LinearLayout>
@@ -49,7 +48,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:padding="15dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/app_main_color"
             android:visibility="gone" />
         
     </LinearLayout>
@@ -60,12 +59,30 @@
 	    android:layout_height="match_parent"
 	    android:background="@color/progress_view_background"
 	    android:visibility="invisible">
+        
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 	    
-	    <ProgressBar 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_centerInParent="true"
-	        style="@android:style/Widget.ProgressBar" />
+		    <ProgressBar 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        style="@android:style/Widget.ProgressBar" />
+		    
+		    <TextView 
+	            android:id="@+id/progressTextView"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:gravity="center"
+	            android:padding="15dp"
+	            android:textSize="16sp"
+	            android:textColor="@android:color/black"
+	            android:tag="@string/searching_in_progress" />
+	    
+	    </LinearLayout>
 	    
 	</RelativeLayout>
 

@@ -12,120 +12,81 @@
         android:layout_height="match_parent"
         android:layout_marginRight="15dp"
         android:gravity="center_vertical"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/app_main_color" />
 
-    <ImageView 
-        android:id="@+id/bookCover" 
-        android:layout_width="70dp"
-        android:layout_height="100dp"
-        android:scaleType="fitXY" />
+	<ImageView 
+	    android:id="@+id/bookCover" 
+	    android:layout_width="70dp"
+	    android:layout_height="100dp"
+	    android:scaleType="fitXY" />
     
     <LinearLayout 
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_marginLeft="15dp">
-        
-        <LinearLayout 
+        android:layout_marginLeft="10dp">
+            
+        <TextView 
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
-            
-            <TextView
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
-	            android:tag="@string/title_caption" />
-            
-            <TextView 
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:maxLength="30"
-                android:maxLines="1"
-	            android:ellipsize="end"
-	            android:textColor="@android:color/white"
-	            android:textStyle="bold" />
-            
-        </LinearLayout>
+            android:maxLength="30"
+            android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color"
+			android:textStyle="bold" />
         
-        <LinearLayout 
+        <TextView 
+            android:id="@+id/author"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
-            
-            <TextView
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
-	            android:tag="@string/author_caption" />
-            
-            <TextView 
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:maxLength="30"
-                android:maxLines="1"
-	            android:ellipsize="end"
-	            android:textColor="@android:color/white"
-	            android:textStyle="bold" />
-            
-        </LinearLayout>
+            android:maxLength="30"
+            android:maxLines="1"
+			android:ellipsize="end"
+         	android:textColor="@color/app_main_color" />
         
-        <LinearLayout 
+        <TextView 
+            android:id="@+id/publication"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
-            
-            <TextView
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
-	            android:tag="@string/publisher_caption" />
-            
-            <TextView 
-                android:id="@+id/publisher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:maxLength="30"
-                android:maxLines="1"
-	            android:ellipsize="end"
-	            android:textColor="@android:color/white"
-	            android:textStyle="bold" />
-            
-        </LinearLayout>
+            android:maxLength="30"
+            android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
         
-        <LinearLayout 
+        <TextView 
+            android:id="@+id/callnumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:orientation="horizontal">
-            
-            <TextView
+            android:maxLength="20"
+            android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+        
+        <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="right">
+	        
+	        <ImageView
+	            android:id="@+id/bookmarkBtn"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:textColor="@android:color/white"
-	            android:tag="@string/call_no_caption" />
-            
-            <TextView 
-                android:id="@+id/callnumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:maxLength="20"
-                android:maxLines="1"
-	            android:ellipsize="end"
-	            android:textColor="@android:color/white"
-	            android:textStyle="bold" />
-            
-        </LinearLayout>
+	            android:src="@drawable/icon_bookmark" />
+	        
+	        <ImageView
+	            android:id="@+id/detailsBtn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:src="@drawable/icon_catalogue_details" />
+	        
+	    </LinearLayout>
         
     </LinearLayout>
 

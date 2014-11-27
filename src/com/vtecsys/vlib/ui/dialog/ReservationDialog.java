@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.dialog;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -116,6 +117,7 @@ public class ReservationDialog extends DialogFragment implements OnClickListener
         }
     }
 	
+	@SuppressLint("InflateParams")
 	@Override
 	public Dialog onCreateDialog(Bundle savedInstanceState) {
 		LayoutInflater inflater = getActivity().getLayoutInflater();

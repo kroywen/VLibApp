@@ -1,5 +1,6 @@
 package com.vtecsys.vlib.ui.screen;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,6 +33,7 @@ public class LoginScreen extends BaseScreen implements OnClickListener, OnChecke
 	private Button loginBtn;
 	private Button resetBtn;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

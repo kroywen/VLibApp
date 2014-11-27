@@ -14,7 +14,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/item_no" />
     
     <TextView
@@ -24,7 +24,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/call_no" />
     
     <TextView
@@ -34,7 +34,7 @@
         android:textSize="@dimen/list_small_text_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:textColor="@android:color/white"
+        android:textColor="@color/app_main_color"
         android:tag="@string/due_date" />
     
     <Button

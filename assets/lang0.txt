@@ -1,5 +1,5 @@
 ﻿# 2000 – 2099 For Android devices
-2001;Please Enter The Keywords
+2001;Please Enter Search Criteria
 2002;Title
 2003;Author
 2004;Subject
@@ -32,7 +32,7 @@
 2031;Member ID
 2032;Password
 2033;Reset
-2034;Remember Password
+2034;Remember Me
 2035;Reserve
 2036;Confirm to reserve this book title?
 2037;This book title is reserved now by
@@ -91,6 +91,22 @@
 2092;Every 12 hours
 2093;Every 24 hours
 2094;Version
+2095;Confirm exit V-App ?
+2096;Searching in Progress..please wait
+2097;Password changed
+2098;Scan ISBN
+2099;Publication Year (Latest First)
+2100;Publication Year (Earliest First)
+2101;Please enter valid inputs!
+2102;Bookmark this catalogue?
+2103;Maximum bookmarks reached, please increase the limit or delete existing bookmarks!
+2104;My Bookmarks
+2105;Extra Large
+2106;Maximum No. of Bookmarks (10-100)
+2107;My bookmarks – <font color="%s">%d</font> No. of catalogue records
+2108;Bookmarks list empty
+2109;Remove this bookmark?
+2110;Remove all bookmarks?
 
 # additional text
 5001;Title:

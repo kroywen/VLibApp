@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     
-    <color name="app_main_color">#1b4c1d</color>
-    <color name="drawer_background">#163e00</color>
-    <color name="drawer_list_divider">#305f03</color>
+    <color name="app_main_color">#2c5a99</color>
+    <color name="drawer_list_divider">#ffffff</color>
     <color name="actionbar_text">#ffffff</color>
     <color name="progress_view_background">#88000000</color>
     <color name="list_selector">#cccccc</color>
     <color name="list_header_background">#33000000</color>
     <color name="list_header_background_2">#fa931d</color>
-    <color name="list_top_divider">#08ee02</color>
+    <color name="list_top_divider">#2c5a99</color>
     <color name="btn_orange_normal_start">#ffd57f4f</color>
     <color name="btn_orange_pressed_start">#ccd57f4f</color>
     <color name="btn_orange_disabled_start">#66d57f4f</color>
@@ -28,13 +27,23 @@
     <color name="btn_gray_normal_end">#ff2d3829</color>
     <color name="btn_gray_pressed_end">#cc2d3829</color>
     <color name="btn_gray_disabled_end">#662d3829</color>
+    
     <color name="btn_blue_normal_start">#ff6795dc</color>
     <color name="btn_blue_pressed_start">#cc6795dc</color>
     <color name="btn_blue_disabled_start">#666795dc</color>
+    
     <color name="btn_blue_normal_end">#ff0249bd</color>
     <color name="btn_blue_pressed_end">#cc0249bd</color>
     <color name="btn_blue_disabled_end">#660249bd</color>
-    <color name="dialog_border">#08ee02</color>
+    
+    <color name="btn_green_normal_end">#ff37640d</color>
+    <color name="btn_green_pressed_end">#cc37640d</color>
+    <color name="btn_green_disabled_end">#6637640d</color>
+    
+    <color name="btn_green_normal_start">#ff5c920f</color>
+    <color name="btn_green_pressed_start">#cc5c920f</color>
+    <color name="btn_green_disabled_start">#665c920f</color>
+    
     <color name="highlight">#ff0000</color>
     
 </resources>

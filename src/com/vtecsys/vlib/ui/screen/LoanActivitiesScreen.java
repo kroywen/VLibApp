@@ -3,6 +3,7 @@ package com.vtecsys.vlib.ui.screen;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +40,7 @@ public class LoanActivitiesScreen extends BaseScreen
 {
 	
 	private TextView memberId;
+	private View refreshBtn;
 	private ListView listView;
 	private TextView emptyView;
 	private View listHeaderView;
@@ -49,6 +51,7 @@ public class LoanActivitiesScreen extends BaseScreen
 	private List<Loan> requestedLoanList;
 	private boolean renewAll;
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -68,10 +71,15 @@ public class LoanActivitiesScreen extends BaseScreen
 		}
 	}
 	
+	@SuppressLint("InflateParams")
 	@Override
 	protected void initializeViews(View root) {
 		super.initializeViews(root);
 		memberId = (TextView) findViewById(R.id.memberId);
+		
+		refreshBtn = findViewById(R.id.refreshBtn);
+		refreshBtn.setOnClickListener(this);
+		
 		listView = (ListView) findViewById(R.id.listView);
 		emptyView = (TextView) findViewById(R.id.emptyView);
 		
@@ -265,6 +273,13 @@ public class LoanActivitiesScreen extends BaseScreen
 			boolean canRenewAll = canRenewAll();
 			if (canRenewAll) {
 				tryRenewAllLoans();
+			}
+			break;
+		case R.id.refreshBtn:
+			if (Utilities.isConnectionAvailable(this)) {
+				requestLoanActivities(false);
+			} else {
+				showConnectionErrorDialog();
 			}
 			break;
 		}

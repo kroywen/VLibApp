@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="15dp"
+    android:gravity="top">
+    
+    <TextView
+        android:id="@+id/number"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/app_main_color" />
+
+	<ImageView 
+	    android:id="@+id/bookCover" 
+	    android:layout_width="70dp"
+	    android:layout_height="100dp"
+	    android:scaleType="fitXY" />
+    
+    <LinearLayout 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+            
+        <TextView 
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:maxLength="30"
+            android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color"
+			android:textStyle="bold" />
+        
+        <TextView 
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:maxLength="30"
+            android:maxLines="1"
+			android:ellipsize="end"
+         	android:textColor="@color/app_main_color" />
+        
+        <TextView 
+            android:id="@+id/publication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:maxLength="30"
+            android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+        
+        <TextView 
+            android:id="@+id/callnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLength="20"
+            android:maxLines="1"
+			android:ellipsize="end"
+			android:textColor="@color/app_main_color" />
+        
+        <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:gravity="right">
+	        
+	        <ImageView
+	            android:id="@+id/removeBtn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/icon_remove" />
+	        
+	        <ImageView
+	            android:id="@+id/detailsBtn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:src="@drawable/icon_catalogue_details" />
+	        
+	    </LinearLayout>
+        
+    </LinearLayout>
+
+</LinearLayout>

@@ -28,6 +28,15 @@
 	    
 	    <Button
 	        style="@style/MyButton"
+	        android:id="@+id/bookmarksBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="@dimen/btn_height"
+	        android:layout_marginTop="10dp"
+	        android:background="@drawable/btn_orange"
+	        android:tag="@string/my_bookmarks" />
+	    
+	    <Button
+	        style="@style/MyButton"
 	        android:id="@+id/changePasswordBtn"
 	        android:layout_width="match_parent"
 	        android:layout_height="@dimen/btn_height"

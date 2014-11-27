@@ -3,5 +3,7 @@
     android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:textColor="@android:color/white"
+    android:textColor="@color/app_main_color"
+    android:drawableRight="@drawable/arrow_right"
+    android:drawablePadding="10dp"
     android:padding="15dp" />
