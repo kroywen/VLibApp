@@ -5,7 +5,6 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,8 +101,6 @@ public class BookmarksAdapter extends BaseAdapter {
 				((BaseScreen) context).openCatalogueScreen(book);
 			}
 		});
-		
-		Log.d("VLib", "RID: " + book.getRID());
 		
 		return convertView;
 	}

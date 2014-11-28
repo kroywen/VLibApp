@@ -34,7 +34,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		"create table if not exists " + TABLE_BOOKMARKS + " (" +
 		KEY_ID + " integer primary key autoincrement, " +
 		KEY_MEMBER_ID + " text not null, " + 
-		KEY_RID + " text, " +
+		KEY_RID + " text not null, " +
 		KEY_ISBN + " text, " +
 		KEY_TITLE + " text, " +
 		KEY_AUTHOR + " text, " +

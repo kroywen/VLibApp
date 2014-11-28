@@ -4,7 +4,9 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.text.Html;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,13 +93,32 @@ public class SearchResultAdapter extends BaseAdapter {
 			String.valueOf(position + 1) + "</font>";
 		number.setText(Html.fromHtml(numberText));
 		
-		View bookmarkBtn = convertView.findViewById(R.id.bookmarkBtn);
+		final ImageView bookmarkBtn = (ImageView) convertView.findViewById(R.id.bookmarkBtn);
 		bookmarkBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				((SearchResultScreen) context).showBookmarkCatalogueDialog(book);
+				String memberId = settings.getString(Settings.MEMBER_ID);
+				if (!TextUtils.isEmpty(memberId)) {
+					boolean isBookmark = dbManager.isBookmarked(memberId, book);
+					if (!isBookmark) {
+						((SearchResultScreen) context).showBookmarkCatalogueDialog(book, new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog, int which) {
+								notifyDataSetChanged();
+								updateBookmarkBtn(bookmarkBtn, book);
+							}
+						});
+					}
+				}
 			}
 		});
+		int resId = R.drawable.icon_bookmark;
+		String memeberId = settings.getString(Settings.MEMBER_ID);
+		if (!TextUtils.isEmpty(memeberId)) {
+			boolean isBookmark = dbManager.isBookmarked(memberId, book);
+			resId = isBookmark ? R.drawable.icon_bookmark_disabled : resId;	
+		}
+		bookmarkBtn.setImageResource(resId);
 		
 		View detailsBtn = convertView.findViewById(R.id.detailsBtn);
 		detailsBtn.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +129,16 @@ public class SearchResultAdapter extends BaseAdapter {
 		});
 		
 		return convertView;
+	}
+	
+	private void updateBookmarkBtn(ImageView bookmarkBtn, Book book) {
+		int resId = R.drawable.icon_bookmark;
+		String memberId = settings.getString(Settings.MEMBER_ID);
+		if (!TextUtils.isEmpty(memberId)) {
+			boolean isBookmark = dbManager.isBookmarked(memberId, book);
+			resId = isBookmark ? R.drawable.icon_bookmark_disabled : resId;	
+		}	
+		bookmarkBtn.setImageResource(resId);
 	}
 
 }

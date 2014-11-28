@@ -66,6 +66,14 @@ public class SearchResultScreen extends BaseScreen implements OnItemClickListene
 	}
 	
 	@Override
+	protected void onResume() {
+		super.onResume();
+		if (adapter != null && !adapter.isEmpty()) {
+			adapter.notifyDataSetChanged();
+		}
+	}
+	
+	@Override
 	protected void initializeViews(View root) {
 		super.initializeViews(root);
 		

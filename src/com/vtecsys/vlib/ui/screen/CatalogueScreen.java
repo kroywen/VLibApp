@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class CatalogueScreen extends BaseScreen
 	private TextView title;
 	private TextView edition;
 	private TextView publication;
-	private View bookmarkBtn;
+	private ImageView bookmarkBtn;
 	private View shareBtn;
 	
 	private String rid;
@@ -88,7 +89,7 @@ public class CatalogueScreen extends BaseScreen
 		edition = (TextView) findViewById(R.id.edition);
 		publication = (TextView) findViewById(R.id.publication);
 		
-		bookmarkBtn = findViewById(R.id.bookmarkBtn);
+		bookmarkBtn = (ImageView) findViewById(R.id.bookmarkBtn);
 		bookmarkBtn.setOnClickListener(this);
 		
 		shareBtn = findViewById(R.id.shareBtn);
@@ -128,14 +129,9 @@ public class CatalogueScreen extends BaseScreen
 	
 	private void updateData(CatalogueResult result) {
 		book = result.getBook();
+		book.setRID(rid);
 		
-		int visibility = View.VISIBLE;
-		String memberId = settings.getString(Settings.MEMBER_ID);
-		if (!TextUtils.isEmpty(memberId)) {
-			boolean isBookmark = dbManager.isBookmarked(memberId, book);
-			visibility = isBookmark ? View.GONE : visibility;	
-		}	
-		bookmarkBtn.setVisibility(visibility);
+		updateBookmarkBtn();
 		
 		ImageLoader.getInstance().displayImage(book.getBookCover(), bookCover);
 		
@@ -305,12 +301,33 @@ public class CatalogueScreen extends BaseScreen
 			startActivity(intent);
 			break;
 		case R.id.bookmarkBtn:
-			showBookmarkCatalogueDialog(book);
+			String memberId = settings.getString(Settings.MEMBER_ID);
+			if (!TextUtils.isEmpty(memberId)) {
+				boolean isBookmark = dbManager.isBookmarked(memberId, book);
+				if (!isBookmark) {
+					showBookmarkCatalogueDialog(book, new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							updateBookmarkBtn();
+						}
+					});
+				}
+			}
 			break;
 		case R.id.shareBtn:
 			showShareCatalogueDialog(book);
 			break;
 		}
+	}
+	
+	private void updateBookmarkBtn() {
+		int resId = R.drawable.icon_bookmark;
+		String memberId = settings.getString(Settings.MEMBER_ID);
+		if (!TextUtils.isEmpty(memberId)) {
+			boolean isBookmark = dbManager.isBookmarked(memberId, book);
+			resId = isBookmark ? R.drawable.icon_bookmark_disabled : resId;	
+		}	
+		bookmarkBtn.setImageResource(resId);
 	}
 	
 	private void showShareCatalogueDialog(Book book) {

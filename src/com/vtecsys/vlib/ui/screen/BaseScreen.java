@@ -139,12 +139,15 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 		);
 	}
 	
-	public void showBookmarkCatalogueDialog(final Book book) {
+	public void showBookmarkCatalogueDialog(final Book book, final DialogInterface.OnClickListener okListener) {
 		if (book != null) {
 			DialogUtils.showConfirmDialog(this, null, locale.get(LocaleManager.BOOKMARK_CATALOGUE), new DialogInterface.OnClickListener() {
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					bookmarkBook(book);
+					if (okListener != null) {
+						okListener.onClick(dialog, which);
+					}
 				}
 			}, null);
 		}

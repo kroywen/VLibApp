@@ -81,12 +81,12 @@ public class DatabaseManager {
 				do {
 					bookmarks.add(new Book(
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_RID)),
-						c.getString(c.getColumnIndex(DatabaseHelper.KEY_ISBN)),
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_TITLE)),
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_AUTHOR)),
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_PUBLICATION)),
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_CALL_NUMBER)),
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_BOOK_COVER)),
+						c.getString(c.getColumnIndex(DatabaseHelper.KEY_ISBN)),
 						c.getString(c.getColumnIndex(DatabaseHelper.KEY_EDITION))
 					));
 				} while (c.moveToNext());
@@ -100,25 +100,19 @@ public class DatabaseManager {
 		return bookmarks;
 	}
 	
-	public boolean isBookmarked(String memberId, Book book) {
-		if (TextUtils.isEmpty(memberId) || book == null) {
-			return false;
+	public boolean isBookmarked(String memberId, Book book) {		
+		String selection = DatabaseHelper.KEY_MEMBER_ID + "='" + memberId + "' AND " + DatabaseHelper.KEY_RID + "='" + book.getRID() + "'";
+		String sql = "select count(*) from " + DatabaseHelper.TABLE_BOOKMARKS +
+			" where " + selection;
+		Cursor c = db.rawQuery(sql, null);
+		boolean found = false;
+		if (c != null && c.moveToFirst()) {
+			found = c.getInt(0) > 0;
 		}
-		boolean result = false;
-		try {
-			String selection = DatabaseHelper.KEY_MEMBER_ID + "='" + memberId + "' AND " + DatabaseHelper.KEY_RID + "='" + book.getRID() + "'";
-			Cursor c = db.query(DatabaseHelper.TABLE_BOOKMARKS, null, 
-				selection, null, null, null, null);
-			if (c != null && c.moveToFirst()) {
-				result = true;
-			}
-			if (c != null && !c.isClosed()) {
-				c.close();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		if (c != null && !c.isClosed()) {
+			c.close();
 		}
-		return result;
+		return found;
 	}
 	
 	public void addBookmark(String memberId, Book book) {
