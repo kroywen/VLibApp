@@ -101,10 +101,10 @@ public class BibDetailScreen extends BaseScreen {
 			View layout = inflater.inflate(R.layout.bib_detail_tag, null);
 			
 			TextView tagName = (TextView) layout.findViewById(R.id.tagName);
-			tagName.setText(tag.getCaption());
+			tagName.setText(tag.hasCaption() ? tag.getCaption().trim() : null);
 			
 			TextView tagValue = (TextView) layout.findViewById(R.id.tagValue);
-			tagValue.setText(tag.getContents());
+			tagValue.setText(tag.hasCaption() ? tag.getContents().trim() : null);
 			tagValue.setMovementMethod(LinkMovementMethod.getInstance());
 			
 			tagContainer.addView(layout);

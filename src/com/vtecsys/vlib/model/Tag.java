@@ -1,5 +1,7 @@
 package com.vtecsys.vlib.model;
 
+import android.text.TextUtils;
+
 public class Tag {
 	
 	private int seq;
@@ -33,12 +35,20 @@ public class Tag {
 		this.caption = caption;
 	}
 	
+	public boolean hasCaption() {
+		return !TextUtils.isEmpty(caption);
+	}
+	
 	public String getContents() {
 		return contents;
 	}
 	
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+	
+	public boolean hasContents() {
+		return !TextUtils.isEmpty(contents);
 	}
 
 }
