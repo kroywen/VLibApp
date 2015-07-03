@@ -7,9 +7,11 @@ import android.net.Uri;
 import android.os.Bundle;
 
 public class ApiData {
+	public static final String START_URL = "http://123.100.239.16:9001/";
+//	public static final String BASE_URL = "http://123.100.239.16:6061/";
 	
-	public static final String BASE_URL = "http://123.100.239.16:6061/";
-	
+	public static final String COMMAND_SITELIST = "SiteList";
+	public static final String COMMAND_SITESELECT = "SiteSelect";
 	public static final String COMMAND_SITENAME = "SiteName";
 	public static final String COMMAND_ABOUT = "About";
 	public static final String COMMAND_BROWSE = "Browse";
@@ -41,12 +43,14 @@ public class ApiData {
 	public static final String PARAM_N_COLL = "n_coll";
 	public static final String PARAM_PREDUE = "predue";
 	public static final String PARAM_ITEMNO = "itemNo";
+	public static final String PARAM_CODE = "code";
 	
 	public static final String TYPE_SEARCH = "search";
 	public static final String TYPE_BROWSE = "browse";
 	
-	public static String createURL(String command, Bundle params) {
-		Uri.Builder uriBuilder = Uri.parse(BASE_URL + command).buildUpon();
+	public static String createURL(String baseUrl, String command, Bundle params) {
+		
+		Uri.Builder uriBuilder = Uri.parse(baseUrl + command).buildUpon();
 		if (params != null) {
 			Set<String> keys = params.keySet();
 			if (keys != null && !keys.isEmpty()) {

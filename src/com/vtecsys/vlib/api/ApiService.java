@@ -14,6 +14,7 @@ import android.util.Log;
 
 import com.vtecsys.vlib.parser.ApiParser;
 import com.vtecsys.vlib.parser.ParserFactory;
+import com.vtecsys.vlib.storage.Settings;
 
 public class ApiService extends IntentService {
 	
@@ -38,8 +39,20 @@ public class ApiService extends IntentService {
 	@Override
 	protected void onHandleIntent(Intent intent) {
 		String command = intent.getAction();
-		String url = ApiData.createURL(command, intent.getExtras());
+		
+		Settings settings = new Settings(this);
+		String baseUrl = null;
+		if (ApiData.COMMAND_SITELIST.equalsIgnoreCase(command) ||
+			ApiData.COMMAND_SITESELECT.equalsIgnoreCase(command)) 
+		{
+			baseUrl = ApiData.START_URL;
+		} else {
+			baseUrl = settings.getString(Settings.SITE_URL) + '/';
+		}
+		
+		String url = ApiData.createURL(baseUrl, command, intent.getExtras());
 		Log.d(TAG, "URL: " + url);
+		
 		AndroidHttpClient client = AndroidHttpClient.newInstance(
 			System.getProperty("http.agent"), this);
 		HttpGet request = new HttpGet(url);

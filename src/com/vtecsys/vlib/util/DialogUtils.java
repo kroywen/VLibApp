@@ -119,5 +119,25 @@ public class DialogUtils {
 	public static void showDialog(Context context, String title, String message) {
 		showDialog(context, title, message, null, null);
 	}
+	
+	public static void showSelectionDialog(Context context, String title, String[] items, 
+		final DialogInterface.OnClickListener listener, 
+		DialogInterface.OnCancelListener cancelListener) 
+	{
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+		builder.setTitle(title)
+			.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					if (listener != null) {
+						listener.onClick(dialog, which);
+					}
+				}
+			})
+			.setOnCancelListener(cancelListener)
+			.create()
+			.show();
+	}
 
 }

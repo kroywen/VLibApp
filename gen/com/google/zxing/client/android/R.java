@@ -35,10 +35,12 @@ public final class R {
 		public static final int history_title = 0x7f070037;
 		public static final int image_view = 0x7f070033;
 		public static final int launch_product_query = 0x7f070003;
+		public static final int page_number_view = 0x7f070054;
 		public static final int preview_view = 0x7f070035;
 		public static final int quit = 0x7f070004;
 		public static final int restart_preview = 0x7f070005;
 		public static final int return_scan_result = 0x7f070006;
+		public static final int snippet_view = 0x7f070055;
 		public static final int viewfinder_view = 0x7f070036;
 	}
 	public static final class layout {
@@ -46,6 +48,8 @@ public final class R {
 		public static final int encode = 0x7f030010;
 		public static final int fragment_capture = 0x7f030011;
 		public static final int history_list_item = 0x7f030012;
+		public static final int search_book_contents_header = 0x7f030021;
+		public static final int search_book_contents_list_item = 0x7f030022;
 	}
 	public static final class raw {
 		public static final int beep = 0x7f040000;

@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.View;
@@ -147,6 +146,7 @@ public class LocaleManager {
 		try {
 			updateTranslations(context);
 		} catch (Exception e) {
+			this.language = -1;
 			e.printStackTrace();
 		}
 	}
@@ -157,9 +157,8 @@ public class LocaleManager {
 		if (translations == null) {
 			translations = new SparseArray<String>();
 		}
-		AssetManager assetManager = context.getAssets();
-		String filename = "lang" + language + ".txt";
-		InputStream is = assetManager.open(filename);
+		
+		InputStream is = context.openFileInput("lang" + language + ".txt");
 		String str = Utilities.streamToString(is);
 		String[] lines = str.split("\n");
 		for (String line : lines) {

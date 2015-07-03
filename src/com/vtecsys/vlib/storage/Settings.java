@@ -18,9 +18,20 @@ public class Settings {
 	public static final String PASSWORD = "password";
 	public static final String REMEMBER_PASSWORD = "remember_password";
 	public static final String MEMBER_NAME = "member_name";
-	public static final String APP_TITLE = "app_title";
 	public static final String WEB_OPAC_URL = "web_opac_url";
 	public static final String MAX_BOOKMARKS = "max_bookmarks";
+	
+	public static final String SITE_SELECTED = "site_selected"; 
+	public static final String SITE_URL = "site_url";
+	public static final String SITE_CODE = "site_code";
+	public static final String SITE_NAME = "site_name";
+	public static final String SITE_ICON = "site_icon";
+	public static final String SITE_SPLASH = "site_splash";
+	public static final String SITE_LANGUAGES = "site_languages";
+	public static final String SITE_LANG0 = "site_lang0";
+	public static final String SITE_LANG1 = "site_lang1";
+	public static final String SITE_LANG2 = "site_lang2";
+	public static final String SITE_MSC = "site_msc";
 	
 	public static final int PRE_DUE_THREE_DAYS = 0;
 	public static final int PRE_DUE_SEVEN_DAYS = 1;

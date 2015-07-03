@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
@@ -147,6 +148,13 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 				}
 			}
 		});
+		
+		int languages = settings.getInt(Settings.SITE_LANGUAGES);
+		for (int i=0; i<3; i++) {
+			int resId = getResources().getIdentifier("lang" + i, "id", getActivity().getPackageName());
+			RadioButton radio = (RadioButton) rootView.findViewById(resId);
+			radio.setVisibility(i < languages ? View.VISIBLE : View.INVISIBLE);
+		}
 	}
 	
 	private void populateFontSizeSpinner() {
@@ -272,9 +280,9 @@ public class SettingsFragment extends BaseFragment implements OnClickListener {
 			if (apiResponse.getStatus() == ApiResponse.STATUS_OK) {
 				if (ApiData.COMMAND_SITENAME.equals(apiResponse.getRequestName())) {
 					SiteNameResult result = (SiteNameResult) apiResponse.getData();
-					settings.setString(Settings.APP_TITLE, result.getSiteName());
+					settings.setString(Settings.SITE_NAME, result.getSiteName());
 					settings.setString(Settings.WEB_OPAC_URL, result.getUrl());
-					getActivity().setTitle(result.getSiteName());
+					getActivity().setTitle(settings.getString(Settings.SITE_NAME));
 					settings.setInt(Settings.LANGUAGE, getLanguage());
 					updateViews();
 					langChanged = false;

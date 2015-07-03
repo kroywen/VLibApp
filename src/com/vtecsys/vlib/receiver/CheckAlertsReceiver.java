@@ -71,9 +71,9 @@ public class CheckAlertsReceiver extends BroadcastReceiver implements OnApiRespo
 					Notices notices = (Notices) apiResponse.getData();
 					if (notices != null && notices.hasNotices()) {
 						Settings settings = new Settings(context);
-						String contentTitle = TextUtils.isEmpty(settings.getString(Settings.APP_TITLE)) ?
+						String contentTitle = TextUtils.isEmpty(settings.getString(Settings.SITE_NAME)) ?
 							context.getString(R.string.app_name) :
-							settings.getString(Settings.APP_TITLE);
+							settings.getString(Settings.SITE_NAME);
 						String contentText = Notices.getNoticesText(notices);
 						
 						NotificationCompat.Builder mBuilder =

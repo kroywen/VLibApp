@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">V-App</string>
+    <string name="select_resource_centre">Please select the library\/resource centre that you are a member</string>
         
     <string-array name="sort_by_params">
         <item></item>

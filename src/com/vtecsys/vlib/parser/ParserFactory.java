@@ -9,6 +9,10 @@ public class ParserFactory {
 	public static ApiParser getParser(String command) {
 		if (TextUtils.isEmpty(command)) {
 			return null;
+		} else if (ApiData.COMMAND_SITELIST.equalsIgnoreCase(command)) {
+			return new SiteListParser();
+		} else if (ApiData.COMMAND_SITESELECT.equalsIgnoreCase(command)) {
+			return new SiteSelectParser();
 		} else if (ApiData.COMMAND_SITENAME.equalsIgnoreCase(command)) {
 			return new SiteNameParser();
 		} else if (ApiData.COMMAND_SEARCH.equalsIgnoreCase(command)) {

@@ -51,7 +51,7 @@ public class BaseScreen extends Activity implements OnApiResponseListener {
 		locale.setLanguage(this, settings.getInt(Settings.LANGUAGE));
 		inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 		
-		setTitle(settings.getString(Settings.APP_TITLE));
+		setTitle(settings.getString(Settings.SITE_NAME));
 		ActionBar actionBar = getActionBar();
 		if (actionBar != null) {
 			actionBar.setDisplayHomeAsUpEnabled(true);

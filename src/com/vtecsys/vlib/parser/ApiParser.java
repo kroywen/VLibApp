@@ -77,6 +77,19 @@ public abstract class ApiParser {
 	public static final String TAG_TAG = "Tag";
 	public static final String TAG_CAPTION = "Caption";
 	public static final String TAG_CONTENTS = "Contents";
+	public static final String TAG_SITES = "Sites";
+	public static final String TAG_ONE_SITE = "OneSite";
+	public static final String TAG_SITE_CODE = "SiteCode";
+	public static final String TAG_SITE = "site";
+	public static final String TAG_CODE = "code";
+	public static final String TAG_URL = "URL";
+	public static final String TAG_ICON = "icon";
+	public static final String TAG_SPLASH = "splash";
+	public static final String TAG_LANGUAGES = "languages";
+	public static final String TAG_LANG0 = "lang0";
+	public static final String TAG_LANG1 = "lang1";
+	public static final String TAG_LANG2 = "lang2";
+	public static final String TAG_MSC = "MSC";
 	
 	protected static final String namespace = null;
 	
